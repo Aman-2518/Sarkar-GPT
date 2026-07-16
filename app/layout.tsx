@@ -3,7 +3,11 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { LanguageProvider } from "@/lib/languageContext";
-import FloatingVoiceGuide from "@/components/FloatingVoiceGuide";
+import dynamic from "next/dynamic";
+
+const FloatingVoiceGuide = dynamic(() => import("@/components/FloatingVoiceGuide"), {
+  ssr: false,
+});
 
 export const metadata: Metadata = {
   title: "SarkarGPT — Find Government Schemes for You",

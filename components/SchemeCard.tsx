@@ -5,7 +5,11 @@ import { useState, useEffect } from "react";
 import { Scheme } from "@/lib/types";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/lib/languageContext";
-import DocumentGuideModal from "./DocumentGuideModal";
+import dynamic from "next/dynamic";
+
+const DocumentGuideModal = dynamic(() => import("./DocumentGuideModal"), {
+  ssr: false,
+});
 
 export default function SchemeCard({ scheme, onBookmarkChange }: { scheme: Scheme; onBookmarkChange?: () => void }) {
   const { t, currentSpeechLang } = useLanguage();
