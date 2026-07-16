@@ -6,6 +6,13 @@ html.font-normal { font-size: 16px; }
 html.font-large { font-size: 18px; }
 html.font-xl { font-size: 20px; }
 
+html {
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 @layer base {
   body {
     @apply bg-saffron-50 text-ink-900 dark:bg-ink-900 dark:text-saffron-50 font-body;
