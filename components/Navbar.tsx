@@ -1,12 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { Landmark, Languages } from "lucide-react";
+import { Landmark, Languages, Volume2 } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 import { useLanguage, SUPPORTED_LANGUAGES, LanguageCode } from "@/lib/languageContext";
 
 export default function Navbar() {
-  const { language, setLanguage, t } = useLanguage();
+  const { language, setLanguage, t, voiceGender, setVoiceGender } = useLanguage();
 
   return (
     <header className="sticky top-0 z-50 glass border-b border-white/30">
@@ -24,6 +24,16 @@ export default function Navbar() {
           <Link href="/chat" className="text-sm font-medium hover:text-saffron-600 transition-colors">
             {t("aiChat")}
           </Link>
+
+          {/* Voice Gender Toggle */}
+          <button
+            onClick={() => setVoiceGender(voiceGender === "female" ? "male" : "female")}
+            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-saffron-500/20 bg-saffron-500/5 hover:bg-saffron-500/10 text-saffron-800 dark:text-saffron-400 font-semibold text-[11px] sm:text-xs transition-all"
+            title="Toggle between Male and Female voice tone"
+          >
+            <Volume2 size={13} />
+            <span>{voiceGender === "female" ? "👩 Female Voice" : "👨 Male Voice"}</span>
+          </button>
 
           {/* Language Dropdown Selector */}
           <div className="relative flex items-center gap-1 text-xs">

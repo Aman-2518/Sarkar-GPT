@@ -5,7 +5,7 @@ import { Copy, RotateCcw, Send, Trash2, Mic, MicOff, Volume2, VolumeX, Sparkles,
 import { motion } from "framer-motion";
 import schemesData from "@/data/schemes.json";
 import { ChatMessage, Scheme, UserProfile } from "@/lib/types";
-import { useLanguage } from "@/lib/languageContext";
+import { useLanguage, configureSpeechUtterance } from "@/lib/languageContext";
 
 const SUGGESTED = [
   "Which schemes help small farmers?",
@@ -21,7 +21,7 @@ interface IWindow extends Window {
 }
 
 export default function ChatWindow() {
-  const { language, t, currentSpeechLang } = useLanguage();
+  const { language, t, currentSpeechLang, voiceGender } = useLanguage();
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -151,6 +151,7 @@ export default function ChatWindow() {
       window.speechSynthesis.cancel();
       const utterance = new SpeechSynthesisUtterance(text);
       utterance.lang = currentSpeechLang;
+      configureSpeechUtterance(utterance, voiceGender);
       utterance.onend = () => setSpeakingMsgIndex(null);
       utterance.onerror = () => setSpeakingMsgIndex(null);
       setSpeakingMsgIndex(index);

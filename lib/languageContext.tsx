@@ -994,28 +994,94 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
   },
 };
 
+export function configureSpeechUtterance(utterance: SpeechSynthesisUtterance, gender: "male" | "female") {
+  if (typeof window === "undefined" || !window.speechSynthesis) return;
+  const voices = window.speechSynthesis.getVoices();
+  const lang = utterance.lang;
+
+  // Filter voices that match the language prefix (e.g. "hi" or "en")
+  const langVoices = voices.filter((v) =>
+    v.lang.toLowerCase().startsWith(lang.toLowerCase().split("-")[0])
+  );
+
+  let selectedVoice = null;
+  if (gender === "female") {
+    selectedVoice = langVoices.find((v) => {
+      const name = v.name.toLowerCase();
+      return (
+        name.includes("female") ||
+        name.includes("swara") ||
+        name.includes("heera") ||
+        name.includes("zira") ||
+        name.includes("google हिन्दी") ||
+        name.includes("kavita") ||
+        name.includes("sangeeta")
+      );
+    });
+    utterance.pitch = 1.1; // Clear, slightly higher warm tone
+  } else {
+    selectedVoice = langVoices.find((v) => {
+      const name = v.name.toLowerCase();
+      return (
+        name.includes("male") ||
+        name.includes("hemant") ||
+        name.includes("ravi") ||
+        name.includes("david") ||
+        name.includes("madhur") ||
+        name.includes("harsh")
+      );
+    });
+    utterance.pitch = 0.85; // Warm, lower resonant tone
+  }
+
+  if (selectedVoice) {
+    utterance.voice = selectedVoice;
+  } else if (langVoices.length > 0) {
+    utterance.voice = langVoices[0];
+  }
+
+  utterance.rate = 0.92; // Slightly slower speed for excellent, clear comprehension
+}
+
 interface LanguageContextType {
   language: LanguageCode;
   setLanguage: (lang: LanguageCode) => void;
   t: (key: string) => string;
   currentSpeechLang: string;
+  voiceGender: "male" | "female";
+  setVoiceGender: (gender: "male" | "female") => void;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [language, setLanguageState] = useState<LanguageCode>("en");
+  const [voiceGender, setVoiceGenderState] = useState<"male" | "female">("female");
 
   useEffect(() => {
     const saved = localStorage.getItem("sarkargpt_lang") as LanguageCode;
     if (saved && TRANSLATIONS[saved]) {
       setLanguageState(saved);
     }
+    const savedGender = localStorage.getItem("sarkargpt_voice_gender") as "male" | "female";
+    if (savedGender === "male" || savedGender === "female") {
+      setVoiceGenderState(savedGender);
+    }
+    
+    // Trigger window.speechSynthesis.getVoices() once on mount to populate Chrome cache
+    if (typeof window !== "undefined" && window.speechSynthesis) {
+      window.speechSynthesis.getVoices();
+    }
   }, []);
 
   const setLanguage = (lang: LanguageCode) => {
     setLanguageState(lang);
     localStorage.setItem("sarkargpt_lang", lang);
+  };
+
+  const setVoiceGender = (gender: "male" | "female") => {
+    setVoiceGenderState(gender);
+    localStorage.setItem("sarkargpt_voice_gender", gender);
   };
 
   const t = (key: string): string => {
@@ -1026,7 +1092,16 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     SUPPORTED_LANGUAGES.find((l) => l.code === language)?.speechLang || "en-US";
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t, currentSpeechLang }}>
+    <LanguageContext.Provider
+      value={{
+        language,
+        setLanguage,
+        t,
+        currentSpeechLang,
+        voiceGender,
+        setVoiceGender,
+      }}
+    >
       {children}
     </LanguageContext.Provider>
   );

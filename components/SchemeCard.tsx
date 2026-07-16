@@ -4,7 +4,7 @@ import { Bookmark, ExternalLink, FileText, Volume2, VolumeX } from "lucide-react
 import { useState, useEffect } from "react";
 import { Scheme } from "@/lib/types";
 import { motion } from "framer-motion";
-import { useLanguage } from "@/lib/languageContext";
+import { useLanguage, configureSpeechUtterance } from "@/lib/languageContext";
 import dynamic from "next/dynamic";
 
 const DocumentGuideModal = dynamic(() => import("./DocumentGuideModal"), {
@@ -12,7 +12,7 @@ const DocumentGuideModal = dynamic(() => import("./DocumentGuideModal"), {
 });
 
 export default function SchemeCard({ scheme, onBookmarkChange }: { scheme: Scheme; onBookmarkChange?: () => void }) {
-  const { t, currentSpeechLang } = useLanguage();
+  const { t, currentSpeechLang, voiceGender } = useLanguage();
   const [saved, setSaved] = useState(false);
   const [open, setOpen] = useState(false);
   const [isSpeaking, setIsSpeaking] = useState(false);
@@ -69,6 +69,7 @@ export default function SchemeCard({ scheme, onBookmarkChange }: { scheme: Schem
       
       const utterance = new SpeechSynthesisUtterance(textToSpeak);
       utterance.lang = currentSpeechLang;
+      configureSpeechUtterance(utterance, voiceGender);
       utterance.onend = () => setIsSpeaking(false);
       utterance.onerror = () => setIsSpeaking(false);
       setIsSpeaking(true);

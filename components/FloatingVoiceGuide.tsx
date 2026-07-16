@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { Volume2, VolumeX, Mic, MicOff, HelpCircle, Navigation } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useLanguage } from "@/lib/languageContext";
+import { useLanguage, configureSpeechUtterance } from "@/lib/languageContext";
 
 // Localized helper announcements for pages
 const NAV_INTRODUCTIONS: Record<string, Record<string, string>> = {
@@ -21,7 +21,7 @@ const NAV_INTRODUCTIONS: Record<string, Record<string, string>> = {
 };
 
 export default function FloatingVoiceGuide() {
-  const { language, currentSpeechLang, t } = useLanguage();
+  const { language, currentSpeechLang, t, voiceGender } = useLanguage();
   const pathname = usePathname();
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
@@ -53,6 +53,7 @@ export default function FloatingVoiceGuide() {
 
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = currentSpeechLang;
+    configureSpeechUtterance(utterance, voiceGender);
     utterance.onend = () => setIsSpeaking(false);
     utterance.onerror = () => setIsSpeaking(false);
     setIsSpeaking(true);
