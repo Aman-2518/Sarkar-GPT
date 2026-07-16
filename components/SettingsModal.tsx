@@ -11,10 +11,6 @@ export default function SettingsModal({ onClose }: { onClose: () => void }) {
     setLanguage,
     voiceGender,
     setVoiceGender,
-    voiceRate,
-    setVoiceRate,
-    voicePitch,
-    setVoicePitch,
     selectedVoiceName,
     setSelectedVoiceName,
     availableVoices,
@@ -55,8 +51,6 @@ export default function SettingsModal({ onClose }: { onClose: () => void }) {
     localStorage.removeItem("sarkargpt_profile");
     localStorage.removeItem("sarkargpt_saved_schemes");
     localStorage.removeItem("sarkargpt_voice_gender");
-    localStorage.removeItem("sarkargpt_voice_rate");
-    localStorage.removeItem("sarkargpt_voice_pitch");
     localStorage.removeItem("sarkargpt_selected_voice_name");
     localStorage.removeItem("sarkargpt_font_size");
     localStorage.removeItem("sarkargpt_autoplay");
@@ -64,8 +58,6 @@ export default function SettingsModal({ onClose }: { onClose: () => void }) {
     
     // Reset to local defaults
     setVoiceGender("female");
-    setVoiceRate(0.95);
-    setVoicePitch(1.0);
     setSelectedVoiceName("");
     setFontSize("normal");
     setAutoPlaySpeech(false);
@@ -254,40 +246,6 @@ export default function SettingsModal({ onClose }: { onClose: () => void }) {
                 </select>
               </div>
             )}
-
-            {/* Voice Speed Slider */}
-            <div className="flex flex-col gap-1">
-              <div className="flex justify-between items-center text-xs">
-                <span className="font-semibold text-neutral-700 dark:text-neutral-300">Narration Speed</span>
-                <span className="text-saffron-600 dark:text-saffron-400 font-bold">{Math.round(voiceRate * 100)}%</span>
-              </div>
-              <input
-                type="range"
-                min="0.5"
-                max="1.5"
-                step="0.05"
-                value={voiceRate}
-                onChange={(e) => setVoiceRate(parseFloat(e.target.value))}
-                className="w-full h-1 bg-neutral-200 dark:bg-white/10 rounded-lg appearance-none cursor-pointer accent-saffron-500"
-              />
-            </div>
-
-            {/* Voice Pitch Slider */}
-            <div className="flex flex-col gap-1">
-              <div className="flex justify-between items-center text-xs">
-                <span className="font-semibold text-neutral-700 dark:text-neutral-300">Voice Pitch</span>
-                <span className="text-saffron-600 dark:text-saffron-400 font-bold">{Math.round(voicePitch * 100)}%</span>
-              </div>
-              <input
-                type="range"
-                min="0.5"
-                max="1.5"
-                step="0.05"
-                value={voicePitch}
-                onChange={(e) => setVoicePitch(parseFloat(e.target.value))}
-                className="w-full h-1 bg-neutral-200 dark:bg-white/10 rounded-lg appearance-none cursor-pointer accent-saffron-500"
-              />
-            </div>
           </div>
 
           {/* Autoplay & Sound toggles */}

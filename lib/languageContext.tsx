@@ -997,8 +997,6 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
 export function configureSpeechUtterance(
   utterance: SpeechSynthesisUtterance,
   gender: "male" | "female",
-  rate: number,
-  pitch: number,
   selectedVoiceName?: string
 ) {
   if (typeof window === "undefined" || !window.speechSynthesis) return;
@@ -1095,9 +1093,18 @@ export function configureSpeechUtterance(
     utterance.voice = langVoices[0];
   }
 
-  // Apply custom pitch and rate from settings
-  utterance.pitch = pitch;
-  utterance.rate = rate;
+  // Adjust synthesis rates. Neural/Natural voices sound realistic at 1.0 pitch,
+  // whereas offline legacy synthesizers need adjustment to sound less robotic.
+  const selectedName = selectedVoice ? selectedVoice.name.toLowerCase() : "";
+  const isNeural = selectedName.includes("natural") || selectedName.includes("neural");
+
+  if (gender === "female") {
+    utterance.pitch = isNeural ? 1.0 : 1.1;
+  } else {
+    utterance.pitch = isNeural ? 1.0 : 0.85;
+  }
+
+  utterance.rate = isNeural ? 0.96 : 0.92; // Pacing setup for high fluency
 }
 
 interface LanguageContextType {
@@ -1107,10 +1114,6 @@ interface LanguageContextType {
   currentSpeechLang: string;
   voiceGender: "male" | "female";
   setVoiceGender: (gender: "male" | "female") => void;
-  voiceRate: number;
-  setVoiceRate: (rate: number) => void;
-  voicePitch: number;
-  setVoicePitch: (pitch: number) => void;
   selectedVoiceName: string;
   setSelectedVoiceName: (name: string) => void;
   availableVoices: SpeechSynthesisVoice[];
@@ -1127,8 +1130,6 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [language, setLanguageState] = useState<LanguageCode>("en");
   const [voiceGender, setVoiceGenderState] = useState<"male" | "female">("female");
-  const [voiceRate, setVoiceRateState] = useState<number>(0.95);
-  const [voicePitch, setVoicePitchState] = useState<number>(1.0);
   const [selectedVoiceName, setSelectedVoiceNameState] = useState<string>("");
   const [availableVoices, setAvailableVoices] = useState<SpeechSynthesisVoice[]>([]);
   const [fontSize, setFontSizeState] = useState<"normal" | "large" | "xl">("normal");
@@ -1150,14 +1151,6 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     const savedGender = localStorage.getItem("sarkargpt_voice_gender") as "male" | "female";
     if (savedGender === "male" || savedGender === "female") {
       setVoiceGenderState(savedGender);
-    }
-    const savedRate = localStorage.getItem("sarkargpt_voice_rate");
-    if (savedRate) {
-      setVoiceRateState(parseFloat(savedRate));
-    }
-    const savedPitch = localStorage.getItem("sarkargpt_voice_pitch");
-    if (savedPitch) {
-      setVoicePitchState(parseFloat(savedPitch));
     }
     const savedVoice = localStorage.getItem("sarkargpt_selected_voice_name");
     if (savedVoice) {
@@ -1200,16 +1193,6 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     localStorage.setItem("sarkargpt_voice_gender", gender);
   };
 
-  const setVoiceRate = (rate: number) => {
-    setVoiceRateState(rate);
-    localStorage.setItem("sarkargpt_voice_rate", rate.toString());
-  };
-
-  const setVoicePitch = (pitch: number) => {
-    setVoicePitchState(pitch);
-    localStorage.setItem("sarkargpt_voice_pitch", pitch.toString());
-  };
-
   const setSelectedVoiceName = (name: string) => {
     setSelectedVoiceNameState(name);
     localStorage.setItem("sarkargpt_selected_voice_name", name);
@@ -1246,10 +1229,6 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
         currentSpeechLang,
         voiceGender,
         setVoiceGender,
-        voiceRate,
-        setVoiceRate,
-        voicePitch,
-        setVoicePitch,
         selectedVoiceName,
         setSelectedVoiceName,
         availableVoices,
