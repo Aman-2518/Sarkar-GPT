@@ -15,6 +15,10 @@ export interface Scheme {
   };
   documents: string[];
   applyUrl: string;
+  eligibilityCriteria?: string[];
+  amountDetails?: string;
+  applicationSteps?: string[];
+  extraIntel?: string[];
 }
 
 export interface UserProfile {

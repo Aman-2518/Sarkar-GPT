@@ -60,7 +60,12 @@ export default function SchemeCard({ scheme, onBookmarkChange }: { scheme: Schem
       setIsSpeaking(false);
     } else {
       window.speechSynthesis.cancel();
-      const textToSpeak = `${scheme.name}. ${scheme.description}. ${t("benefits")}: ${scheme.benefits.join(". ")}. ${t("docsNeeded")}: ${scheme.documents.join(". ")}`;
+      
+      const amountSpeech = scheme.amountDetails ? `Benefit Details: ${scheme.amountDetails}. ` : "";
+      const criteriaSpeech = scheme.eligibilityCriteria ? `Eligibility Criteria: ${scheme.eligibilityCriteria.join(". ")}. ` : "";
+      const stepsSpeech = scheme.applicationSteps ? `Steps to apply: ${scheme.applicationSteps.join(". ")}. ` : "";
+      
+      const textToSpeak = `${scheme.name}. ${scheme.description}. ${t("benefits")}: ${scheme.benefits.join(". ")}. ${amountSpeech}${criteriaSpeech}${stepsSpeech}${t("docsNeeded")}: ${scheme.documents.join(". ")}`;
       
       const utterance = new SpeechSynthesisUtterance(textToSpeak);
       utterance.lang = currentSpeechLang;
@@ -111,17 +116,53 @@ export default function SchemeCard({ scheme, onBookmarkChange }: { scheme: Schem
         <p className="text-sm text-ink-900/80 dark:text-saffron-50/80 leading-relaxed">{scheme.description}</p>
 
         {open && (
-          <div className="flex flex-col gap-3 border-t border-white/30 pt-3 text-sm">
+          <div className="flex flex-col gap-4 border-t border-white/30 pt-4 text-sm">
+            {/* Benefit Amount Callout Box */}
+            {scheme.amountDetails && (
+              <div className="bg-saffron-500/10 dark:bg-saffron-500/5 border border-saffron-500/20 rounded-xl p-3 text-xs text-saffron-800 dark:text-saffron-300 font-medium leading-relaxed">
+                <span className="font-bold">💵 Benefit Amount Details:</span> {scheme.amountDetails}
+              </div>
+            )}
+
+            {/* General Benefits List */}
             <div>
-              <p className="font-semibold text-ink-900 dark:text-white mb-1">{t("benefits")}</p>
-              <ul className="list-inside list-disc text-ink-900/80 dark:text-saffron-50/80 flex flex-col gap-0.5">
+              <p className="font-semibold text-ink-900 dark:text-white mb-1.5">{t("benefits")}</p>
+              <ul className="list-inside list-disc text-ink-900/80 dark:text-saffron-50/80 flex flex-col gap-0.5 text-xs leading-relaxed">
                 {scheme.benefits.map((b) => (
                   <li key={b}>{b}</li>
                 ))}
               </ul>
             </div>
+
+            {/* Detailed Eligibility criteria */}
+            {scheme.eligibilityCriteria && scheme.eligibilityCriteria.length > 0 && (
+              <div>
+                <p className="font-semibold text-ink-900 dark:text-white mb-1.5">Detailed Eligibility Criteria</p>
+                <ul className="list-inside list-disc text-ink-900/80 dark:text-saffron-50/80 flex flex-col gap-0.5 text-xs leading-relaxed">
+                  {scheme.eligibilityCriteria.map((criteria, ci) => (
+                    <li key={ci}>{criteria}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {/* Application Steps */}
+            {scheme.applicationSteps && scheme.applicationSteps.length > 0 && (
+              <div>
+                <p className="font-semibold text-ink-900 dark:text-white mb-1.5">Steps to Fill Application Form</p>
+                <ol className="list-decimal list-inside text-ink-900/80 dark:text-saffron-50/80 flex flex-col gap-1 text-xs leading-relaxed">
+                  {scheme.applicationSteps.map((step, si) => (
+                    <li key={si} className="pl-1">
+                      <span className="text-neutral-800 dark:text-saffron-50/90">{step}</span>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            )}
+
+            {/* Documents Required */}
             <div>
-              <p className="font-semibold text-ink-900 dark:text-white mb-1.5">{t("docsNeeded")} <span className="text-xs font-normal text-ink-900/50 dark:text-saffron-50/50">({t("learnMore")} / {t("listenDetails")})</span></p>
+              <p className="font-semibold text-ink-900 dark:text-white mb-2">{t("docsNeeded")} <span className="text-xs font-normal text-ink-900/50 dark:text-saffron-50/50">({t("learnMore")} / {t("listenDetails")})</span></p>
               <div className="flex flex-wrap gap-2">
                 {scheme.documents.map((d) => (
                   <button
@@ -135,6 +176,16 @@ export default function SchemeCard({ scheme, onBookmarkChange }: { scheme: Schem
                 ))}
               </div>
             </div>
+
+            {/* Extra Pro Tips and Helpdesk */}
+            {scheme.extraIntel && scheme.extraIntel.length > 0 && (
+              <div className="bg-neutral-100 dark:bg-white/5 border border-neutral-200 dark:border-white/5 rounded-xl p-3 text-[11px] text-ink-900/70 dark:text-saffron-50/70 flex flex-col gap-1 leading-relaxed">
+                <span className="font-bold text-neutral-800 dark:text-white">💡 Important Notes & Helpline:</span>
+                {scheme.extraIntel.map((intel, ii) => (
+                  <span key={ii}>• {intel}</span>
+                ))}
+              </div>
+            )}
           </div>
         )}
 

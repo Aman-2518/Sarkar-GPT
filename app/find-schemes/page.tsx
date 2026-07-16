@@ -263,14 +263,42 @@ export default function FindSchemesPage() {
                   </div>
                   <p style={{ fontSize: "9.5pt", color: "#4b5563", margin: "8px 0" }}>{scheme.description}</p>
                   
+                  {scheme.amountDetails && (
+                    <div style={{ marginTop: "8px", padding: "8px", background: "#fff7ed", border: "1px solid #ffedd5", borderRadius: "5px", fontSize: "9pt" }}>
+                      <strong style={{ color: "#c2410c" }}>Benefit Amount:</strong> {scheme.amountDetails}
+                    </div>
+                  )}
+
                   <div style={{ marginTop: "10px" }}>
                     <strong style={{ fontSize: "9pt", color: "#111827" }}>Key Benefits:</strong>
-                    <ul style={{ margin: "4px 0 0 0", paddingLeft: "20px", fontSize: "9pt", color: "#374151" }}>
+                    <ul style={{ margin: "3px 0 0 0", paddingLeft: "18px", fontSize: "8.5pt", color: "#374151" }}>
                       {scheme.benefits.map((benefit, bi) => (
-                        <li key={bi} style={{ marginBottom: "3px" }}>{benefit}</li>
+                        <li key={bi} style={{ marginBottom: "2px" }}>{benefit}</li>
                       ))}
                     </ul>
                   </div>
+
+                  {scheme.eligibilityCriteria && scheme.eligibilityCriteria.length > 0 && (
+                    <div style={{ marginTop: "10px" }}>
+                      <strong style={{ fontSize: "9pt", color: "#111827" }}>Detailed Eligibility:</strong>
+                      <ul style={{ margin: "3px 0 0 0", paddingLeft: "18px", fontSize: "8.5pt", color: "#374151" }}>
+                        {scheme.eligibilityCriteria.map((c, ci) => (
+                          <li key={ci} style={{ marginBottom: "2px" }}>{c}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {scheme.applicationSteps && scheme.applicationSteps.length > 0 && (
+                    <div style={{ marginTop: "10px" }}>
+                      <strong style={{ fontSize: "9pt", color: "#111827" }}>Application Steps:</strong>
+                      <ol style={{ margin: "3px 0 0 0", paddingLeft: "18px", fontSize: "8.5pt", color: "#374151" }}>
+                        {scheme.applicationSteps.map((step, si) => (
+                          <li key={si} style={{ marginBottom: "2px" }}>{step}</li>
+                        ))}
+                      </ol>
+                    </div>
+                  )}
 
                   <div style={{ marginTop: "10px", fontSize: "9pt" }}>
                     <strong style={{ color: "#111827" }}>Required Documents:</strong>{" "}
