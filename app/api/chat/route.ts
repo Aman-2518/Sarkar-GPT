@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import OpenAI from "openai";
 import { Scheme, UserProfile } from "@/lib/types";
 
-// Simple in-memory response cache (resets on server restart). Keyed by question + scheme ids.
+// Simple in-memory response cache (resets on server restart). Keyed by question + scheme ids + profile.
 const cache = new Map<string, string>();
 
 export async function POST(req: NextRequest) {
@@ -27,7 +27,12 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Missing question or schemes" }, { status: 400 });
   }
 
-  const cacheKey = `${question.trim().toLowerCase()}::${schemes.map((s) => s.id).join(",")}::${language || "en"}::${geminiKey ? "gemini" : "openai"}`;
+  // Include profile in the cache key so different users don't get each other's cached answers.
+  const profileKey = JSON.stringify(profile ?? {});
+  const cacheKey = `${question.trim().toLowerCase()}::${schemes
+    .map((s) => s.id)
+    .join(",")}::${profileKey}::${language || "en"}::${geminiKey ? "gemini" : "openai"}`;
+
   const cached = cache.get(cacheKey);
   if (cached) return NextResponse.json({ answer: cached, cached: true });
 
@@ -53,22 +58,30 @@ export async function POST(req: NextRequest) {
   // Option 1: Use Google Gemini API (Free Tier)
   if (geminiKey) {
     try {
-      const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${geminiKey}`;
-      
+      // "gemini-flash-latest" is an auto-updating alias, so this stays valid as Google
+      // rotates underlying model versions (gemini-1.5-flash was fully shut down in 2026).
+      const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=${geminiKey}`;
+
       const response = await fetch(url, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          contents: [{ 
-            parts: [{ 
-              text: `System Instruction: ${systemInstruction}\n\nContext: ${JSON.stringify(context)}\n\nQuestion: ${question}` 
-            }] 
-          }],
+          contents: [
+            {
+              parts: [
+                {
+                  text: `System Instruction: ${systemInstruction}\n\nContext: ${JSON.stringify(
+                    context
+                  )}\n\nQuestion: ${question}`,
+                },
+              ],
+            },
+          ],
           generationConfig: {
             temperature: 0.3,
-            maxOutputTokens: 450
-          }
-        })
+            maxOutputTokens: 450,
+          },
+        }),
       });
 
       const data = await response.json();
@@ -76,7 +89,9 @@ export async function POST(req: NextRequest) {
         throw new Error(data.error?.message || "Failed to get response from Gemini API");
       }
 
-      const answer = data.candidates?.[0]?.content?.parts?.[0]?.text ?? "I couldn't generate a response — please try again.";
+      const answer =
+        data.candidates?.[0]?.content?.parts?.[0]?.text ??
+        "I couldn't generate a response — please try again.";
       cache.set(cacheKey, answer);
 
       return NextResponse.json({ answer, cached: false });
@@ -105,7 +120,8 @@ export async function POST(req: NextRequest) {
       ],
     });
 
-    const answer = completion.choices[0]?.message?.content ?? "I couldn't generate a response — please try again.";
+    const answer =
+      completion.choices[0]?.message?.content ?? "I couldn't generate a response — please try again.";
     cache.set(cacheKey, answer);
 
     return NextResponse.json({ answer, cached: false });
