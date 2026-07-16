@@ -96,5 +96,33 @@
     "time": "Instant (same day) or 1-2 days.",
     "fees": "FREE (Zero balance under PM Jan Dhan Yojana).",
     "onlineUrl": "https://www.pmjdy.gov.in"
+  },
+  "Vending Certificate (Livelihood proof)": {
+    "whatIsIt": "An official letter, vending ID, or certificate issued by the local Town Vending Committee (TVC) or Municipal body verifying you are a street vendor.",
+    "howToGet": "Apply to your local municipality office or through the PM SVANidhi portal during vendor survey drives. The municipality will inspect and issue a letter of recommendation (LoR).",
+    "time": "7 to 14 days.",
+    "fees": "FREE.",
+    "onlineUrl": "https://pmsvanidhi.mohua.gov.in"
+  },
+  "Caste Certificate": {
+    "whatIsIt": "An official state document certifying that a citizen belongs to a specific Scheduled Caste (SC), Scheduled Tribe (ST), or Other Backward Class (OBC).",
+    "howToGet": "Apply online through your state's e-District portal or offline at your local SDM, Tehsildar, or Revenue office. You need to provide ancestral land records, educational certificates showing caste, and a declaration.",
+    "time": "15 to 30 working days.",
+    "fees": "₹10 to ₹50 depending on the state portal.",
+    "onlineUrl": "https://services.india.gov.in"
+  },
+  "Fee Receipt": {
+    "whatIsIt": "A payment voucher or acknowledgment slip issued by an educational institution (school/college) proving tuition fees have been paid for the current term.",
+    "howToGet": "Obtain this from your school or college accounts office immediately after depositing fees. It can also be downloaded from the college's student portal.",
+    "time": "Instant.",
+    "fees": "FREE.",
+    "onlineUrl": ""
+  },
+  "KYC Form": {
+    "whatIsIt": "Know Your Customer form, along with identity and address proofs, used by companies and banks to verify account holder details.",
+    "howToGet": "Can be obtained at local gas distributors or bank branches. Fill in details and attach copies of Aadhaar, bank passbook, and photos.",
+    "time": "Instant.",
+    "fees": "FREE.",
+    "onlineUrl": ""
   }
 }
