@@ -46,7 +46,7 @@ export default function Home() {
   }, [activeCategory]);
 
   const stats = [
-    { value: "30+", label: "Government Schemes" },
+    { value: "50+", label: "Government Schemes" },
     { value: "15", label: "Indian Languages" },
     { value: "100%", label: "Local Privacy" },
   ];
@@ -221,6 +221,47 @@ export default function Home() {
               Equipped with a floating voice guide helper and audio speaker read-outs. Makes discovery simple for citizens who cannot read or write easily.
             </p>
           </div>
+        </div>
+      </section>
+
+      {/* 50+ Schemes Directory Section */}
+      <section className="flex flex-col gap-8 max-w-6xl mx-auto px-4 pb-16">
+        <div className="text-center flex flex-col gap-2">
+          <h2 className="font-display text-3xl font-extrabold text-neutral-800 dark:text-white">
+            Directory of 50+ Monitored Government Schemes
+          </h2>
+          <p className="text-sm text-ink-900/60 dark:text-saffron-50/60 max-w-2xl mx-auto">
+            Browse our complete live catalog of government schemes across multiple sectors and ministries.
+          </p>
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          {Array.from(new Set(schemes.map((s) => s.category))).map((category) => {
+            const catSchemes = schemes.filter((s) => s.category === category);
+            return (
+              <div
+                key={category}
+                className="p-5 rounded-2xl border border-neutral-200 dark:border-white/10 bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md flex flex-col gap-3.5 hover:shadow-lg transition-all duration-300"
+              >
+                <div className="flex items-center justify-between border-b border-neutral-200 dark:border-white/5 pb-2">
+                  <span className="font-bold text-sm text-saffron-600 dark:text-saffron-400 uppercase tracking-wider">
+                    {category}
+                  </span>
+                  <span className="text-[10px] bg-saffron-500/10 text-saffron-700 dark:text-saffron-300 px-2 py-0.5 rounded-full font-bold">
+                    {catSchemes.length}
+                  </span>
+                </div>
+                <ul className="flex flex-col gap-2 text-xs">
+                  {catSchemes.map((s) => (
+                    <li key={s.id} className="text-neutral-700 dark:text-saffron-50/80 hover:text-saffron-600 dark:hover:text-saffron-400 transition-colors flex items-start gap-1.5 leading-tight">
+                      <span className="text-saffron-500 mt-0.5">•</span>
+                      <span>{s.name}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            );
+          })}
         </div>
       </section>
     </div>
