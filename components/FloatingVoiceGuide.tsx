@@ -9,15 +9,21 @@ import { useLanguage, configureSpeechUtterance } from "@/lib/languageContext";
 // Localized helper announcements for pages
 const NAV_INTRODUCTIONS: Record<string, Record<string, string>> = {
   en: {
-    "/": "Welcome to SarkarGPT. I will help you find government schemes you qualify for. Click 'Find my schemes' to fill out the form, or click 'Ask SarkarGPT' to start chatting.",
-    "/find-schemes": "You are on the scheme finder page. Fill out the three steps with your state, age, occupation, and income. If you qualify for any schemes, they will show up instantly. You can click the speaker icon on any question to hear it aloud.",
-    "/chat": "You are on the AI Chat assistant. Click the microphone icon at the bottom of the screen to speak your question, or type it in. I will help you understand any scheme details or document requirements.",
+    "/": "Namaste! Welcome to SarkarGPT. I am your Indian voice guide. I will help you find government schemes you qualify for. Click 'Find my schemes' to fill out the eligibility form, or click 'Ask SarkarGPT' to start chatting with our AI assistant.",
+    "/find-schemes": "You are on the scheme finder page. Fill out the three steps with your state, age, occupation, and income details. If you qualify for any schemes, they will show up instantly. You can click the speaker icon on any question to hear it read aloud.",
+    "/chat": "You are on the AI Chat assistant page. Click the microphone icon at the bottom of the screen to speak your question in Hindi or English, or type it in. I will help you understand any scheme details, eligibility criteria, or document requirements.",
   },
   hi: {
-    "/": "सरकारजीपीटी में आपका स्वागत है। मैं आपकी पात्रता वाली सरकारी योजनाओं को खोजने में मदद करूँगा। फ़ॉर्म भरने के लिए 'मेरी योजनाएं खोजें' पर क्लिक करें, या चैट शुरू करने के लिए 'सरकारजीपीटी से पूछें' पर क्लिक करें।",
+    "/": "नमस्ते! सरकारजीपीटी में आपका स्वागत है। मैं आपका भारतीय वॉइस गाइड हूँ। मैं आपकी पात्रता वाली सरकारी योजनाओं को खोजने में मदद करूँगा। फ़ॉर्म भरने के लिए 'मेरी योजनाएं खोजें' पर क्लिक करें, या चैट शुरू करने के लिए 'सरकारजीपीटी से पूछें' पर क्लिक करें।",
     "/find-schemes": "आप योजना खोजक पृष्ठ पर हैं। तीन चरणों में अपने राज्य, आयु, व्यवसाय और आय की जानकारी भरें। आपकी पात्रता वाली योजनाएं तुरंत दिखाई देंगी। आप किसी भी प्रश्न को सुनने के लिए उसके पास वाले स्पीकर आइकन पर क्लिक कर सकते हैं।",
-    "/chat": "आप एआई चैट सहायक पर हैं। प्रश्न पूछने के लिए स्क्रीन के नीचे माइक्रोफ़ोन आइकन पर क्लिक करें और बोलें। मैं आपको किसी भी योजना के विवरण या आवश्यक दस्तावेजों को समझने में मदद करूँगा।",
+    "/chat": "आप एआई चैट सहायक पर हैं। प्रश्न पूछने के लिए स्क्रीन के नीचे माइक्रोफ़ोन आइकन पर क्लिक करें और हिंदी या अंग्रेजी में बोलें। मैं आपको किसी भी योजना के विवरण या आवश्यक दस्तावेजों को समझने में मदद करूँगा।",
   },
+};
+
+// Short auto-greetings (spoken once per session when user first opens the site)
+const AUTO_GREETINGS: Record<string, string> = {
+  en: "Namaste! Welcome to SarkarGPT. I am your voice guide. Tap the orange button anytime for help.",
+  hi: "नमस्ते! सरकारजीपीटी में आपका स्वागत है। मैं आपका वॉइस गाइड हूँ। मदद के लिए कभी भी ऑरेंज बटन दबाएं।",
 };
 
 export default function FloatingVoiceGuide() {
@@ -28,7 +34,46 @@ export default function FloatingVoiceGuide() {
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [isListening, setIsListening] = useState(false);
   const [feedbackMsg, setFeedbackMsg] = useState("");
+  const [hasGreeted, setHasGreeted] = useState(false);
+  const [showLabel, setShowLabel] = useState(true);
   const recognitionRef = useRef<any>(null);
+
+  // Auto-greeting on first visit (once per session, after splash screen)
+  useEffect(() => {
+    if (typeof window === "undefined" || !window.speechSynthesis) return;
+    if (sessionStorage.getItem("sarkargpt_voice_greeted")) {
+      setHasGreeted(true);
+      return;
+    }
+
+    // Delay greeting to play after splash screen finishes (2.5s)
+    const greetTimer = setTimeout(() => {
+      const greetText = AUTO_GREETINGS[language] || AUTO_GREETINGS["en"];
+      const utterance = new SpeechSynthesisUtterance(greetText);
+      utterance.lang = currentSpeechLang;
+      configureSpeechUtterance(utterance, voiceGender, selectedVoiceName);
+      utterance.rate = 0.95;
+      utterance.onend = () => {
+        setIsSpeaking(false);
+        setHasGreeted(true);
+      };
+      utterance.onerror = () => {
+        setIsSpeaking(false);
+        setHasGreeted(true);
+      };
+      setIsSpeaking(true);
+      window.speechSynthesis.speak(utterance);
+      sessionStorage.setItem("sarkargpt_voice_greeted", "true");
+    }, 2800);
+
+    return () => clearTimeout(greetTimer);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Hide label after 5 seconds
+  useEffect(() => {
+    const labelTimer = setTimeout(() => setShowLabel(false), 6000);
+    return () => clearTimeout(labelTimer);
+  }, []);
 
   useEffect(() => {
     // Stop speaking when path changes
@@ -89,31 +134,37 @@ export default function FloatingVoiceGuide() {
 
     recognition.onstart = () => {
       setIsListening(true);
-      setFeedbackMsg("Listening for navigation commands...");
+      setFeedbackMsg(language === "hi" ? "सुन रहा हूँ... अब बोलें" : "Listening for commands...");
     };
 
     recognition.onresult = (event: any) => {
       const command = event.results[0][0].transcript.toLowerCase();
-      setFeedbackMsg(`Recognized: "${command}"`);
+      setFeedbackMsg(`"${command}"`);
 
-      // Simple navigation command processing (supports English and Hindi matches)
-      if (command.includes("chat") || command.includes("चैट") || command.includes("सहेजें") || command.includes("पूछें")) {
+      // Navigation command processing (supports English and Hindi)
+      if (command.includes("chat") || command.includes("चैट") || command.includes("सहेजें") || command.includes("पूछें") || command.includes("बात")) {
         router.push("/chat");
-        setFeedbackMsg("Navigating to AI Chat...");
-      } else if (command.includes("scheme") || command.includes("योजना") || command.includes("खोजें") || command.includes("पात्रता")) {
+        setFeedbackMsg(language === "hi" ? "चैट पर जा रहे हैं..." : "Navigating to AI Chat...");
+      } else if (command.includes("scheme") || command.includes("योजना") || command.includes("खोजें") || command.includes("पात्रता") || command.includes("find")) {
         router.push("/find-schemes");
-        setFeedbackMsg("Navigating to Scheme Finder...");
-      } else if (command.includes("home") || command.includes("मुख्य") || command.includes("घर") || command.includes("सत्कार")) {
+        setFeedbackMsg(language === "hi" ? "योजना खोजक पर जा रहे हैं..." : "Navigating to Scheme Finder...");
+      } else if (command.includes("home") || command.includes("मुख्य") || command.includes("घर") || command.includes("सत्कार") || command.includes("होम")) {
         router.push("/");
-        setFeedbackMsg("Navigating Home...");
+        setFeedbackMsg(language === "hi" ? "होम पर जा रहे हैं..." : "Navigating Home...");
+      } else if (command.includes("help") || command.includes("मदद") || command.includes("सहायता")) {
+        speakGuide();
+        setFeedbackMsg(language === "hi" ? "पेज निर्देश पढ़ रहा हूँ..." : "Reading page instructions...");
       } else {
-        setFeedbackMsg(`Unknown command: "${command}". Try: "chat", "scheme", or "home"`);
+        setFeedbackMsg(language === "hi"
+          ? `"${command}" — "चैट", "योजना", या "होम" बोलें`
+          : `"${command}" — Try: "chat", "scheme", or "home"`
+        );
       }
     };
 
     recognition.onerror = (e: any) => {
       setIsListening(false);
-      setFeedbackMsg("Speech error. Please try again.");
+      setFeedbackMsg(language === "hi" ? "त्रुटि। कृपया पुनः प्रयास करें।" : "Speech error. Please try again.");
     };
 
     recognition.onend = () => {
@@ -137,11 +188,13 @@ export default function FloatingVoiceGuide() {
           >
             <div className="flex items-center gap-2 border-b border-neutral-100 dark:border-white/5 pb-2">
               <HelpCircle className="text-saffron-600 shrink-0" size={16} />
-              <span className="font-bold text-xs text-neutral-800 dark:text-white">Voice Help Desk</span>
+              <span className="font-bold text-xs text-neutral-800 dark:text-white">🇮🇳 Indian Voice Guide</span>
             </div>
 
             <p className="text-xs text-neutral-600 dark:text-neutral-300 leading-relaxed">
-              Listen to page instructions or navigate the site using simple voice commands.
+              {language === "hi"
+                ? "पेज निर्देश सुनें या हिंदी/अंग्रेजी वॉइस कमांड से नेविगेट करें।"
+                : "Listen to page instructions in Indian accent or navigate using Hindi/English voice commands."}
             </p>
 
             <div className="flex flex-col gap-2">
@@ -155,7 +208,9 @@ export default function FloatingVoiceGuide() {
                 }`}
               >
                 {isSpeaking ? <VolumeX size={14} /> : <Volume2 size={14} />}
-                {isSpeaking ? "Stop Voice Help" : "Read Page Instructions"}
+                {isSpeaking
+                  ? (language === "hi" ? "वॉइस रोकें" : "Stop Voice Help")
+                  : (language === "hi" ? "📢 पेज निर्देश सुनें" : "📢 Read Page Instructions")}
               </button>
 
               {/* Navigation Commands Mic */}
@@ -168,7 +223,7 @@ export default function FloatingVoiceGuide() {
                 }`}
               >
                 {isListening ? <MicOff size={14} /> : <Mic size={14} />}
-                Voice Navigate
+                {language === "hi" ? "🎙️ वॉइस नेविगेशन" : "🎙️ Voice Navigate"}
               </button>
             </div>
 
@@ -180,29 +235,47 @@ export default function FloatingVoiceGuide() {
             )}
 
             <div className="text-[10px] text-neutral-400 dark:text-neutral-500 border-t border-neutral-100 dark:border-white/5 pt-2 flex flex-col gap-0.5">
-              <span className="font-semibold">Voice Commands list:</span>
-              <span>• "Go to chat" / "चैट"</span>
-              <span>• "Find schemes" / "योजना"</span>
-              <span>• "Home" / "मुख्य पृष्ठ"</span>
+              <span className="font-semibold">{language === "hi" ? "वॉइस कमांड सूची:" : "Voice Commands:"}</span>
+              <span>• &quot;Chat&quot; / &quot;चैट&quot; / &quot;बात करो&quot;</span>
+              <span>• &quot;Find schemes&quot; / &quot;योजना खोजें&quot;</span>
+              <span>• &quot;Home&quot; / &quot;होम&quot; / &quot;मुख्य पृष्ठ&quot;</span>
+              <span>• &quot;Help&quot; / &quot;मदद&quot;</span>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Floating Action Button */}
-      <motion.button
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center justify-center h-12 w-12 rounded-full bg-warm-gradient text-white shadow-xl focus:outline-none relative border border-white/20"
-        aria-label="Toggle Voice Assistant Help"
-      >
-        {isListening || isSpeaking ? (
-          <div className="absolute inset-0 rounded-full bg-saffron-500 animate-ping opacity-25" />
-        ) : null}
-        
-        {isListening ? <Mic size={20} /> : isSpeaking ? <Volume2 size={20} /> : <Navigation size={20} />}
-      </motion.button>
+      {/* Floating Label + Action Button */}
+      <div className="flex items-center gap-2">
+        {/* Animated "Indian Voice Guide" label */}
+        <AnimatePresence>
+          {showLabel && !isOpen && (
+            <motion.div
+              initial={{ opacity: 0, x: 20, scale: 0.9 }}
+              animate={{ opacity: 1, x: 0, scale: 1 }}
+              exit={{ opacity: 0, x: 20, scale: 0.9 }}
+              transition={{ delay: 2.5, duration: 0.4 }}
+              className="bg-white dark:bg-zinc-800 border border-saffron-500/30 shadow-lg rounded-full px-3 py-1.5 text-[10px] font-bold text-saffron-700 dark:text-saffron-300 whitespace-nowrap"
+            >
+              🇮🇳 {language === "hi" ? "वॉइस गाइड" : "Indian Voice Guide"}
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={() => setIsOpen(!isOpen)}
+          className="flex items-center justify-center h-12 w-12 rounded-full bg-warm-gradient text-white shadow-xl focus:outline-none relative border border-white/20"
+          aria-label="Toggle Indian Voice Guide"
+        >
+          {isListening || isSpeaking ? (
+            <div className="absolute inset-0 rounded-full bg-saffron-500 animate-ping opacity-25" />
+          ) : null}
+          
+          {isListening ? <Mic size={20} /> : isSpeaking ? <Volume2 size={20} /> : <Navigation size={20} />}
+        </motion.button>
+      </div>
     </div>
   );
 }
