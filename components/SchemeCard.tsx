@@ -64,8 +64,11 @@ export default function SchemeCard({ scheme, onBookmarkChange }: { scheme: Schem
       const amountSpeech = scheme.amountDetails ? `Benefit Details: ${scheme.amountDetails}. ` : "";
       const criteriaSpeech = scheme.eligibilityCriteria ? `Eligibility Criteria: ${scheme.eligibilityCriteria.join(". ")}. ` : "";
       const stepsSpeech = scheme.applicationSteps ? `Steps to apply: ${scheme.applicationSteps.join(". ")}. ` : "";
+      const scheduleSpeech = `${scheme.applicationPeriod ? `Application window is: ${scheme.applicationPeriod}. ` : ""}${
+        scheme.disbursementSchedule ? `Payment schedule: ${scheme.disbursementSchedule}. ` : ""
+      }${scheme.nextMilestoneDate ? `Next release date: ${scheme.nextMilestoneDate}. ` : ""}`;
       
-      const textToSpeak = `${scheme.name}. ${scheme.description}. ${t("benefits")}: ${scheme.benefits.join(". ")}. ${amountSpeech}${criteriaSpeech}${stepsSpeech}${t("docsNeeded")}: ${scheme.documents.join(". ")}`;
+      const textToSpeak = `${scheme.name}. ${scheme.description}. ${t("benefits")}: ${scheme.benefits.join(". ")}. ${amountSpeech}${criteriaSpeech}${stepsSpeech}${scheduleSpeech}${t("docsNeeded")}: ${scheme.documents.join(". ")}`;
       
       const utterance = new SpeechSynthesisUtterance(textToSpeak);
       utterance.lang = currentSpeechLang;
@@ -158,6 +161,35 @@ export default function SchemeCard({ scheme, onBookmarkChange }: { scheme: Schem
                     </li>
                   ))}
                 </ol>
+              </div>
+            )}
+
+            {/* Timeline & Payment Schedule */}
+            {(scheme.applicationPeriod || scheme.disbursementSchedule || scheme.nextMilestoneDate) && (
+              <div className="bg-neutral-100 dark:bg-white/5 border border-neutral-200 dark:border-white/5 rounded-xl p-3 text-xs flex flex-col gap-2 leading-relaxed">
+                <span className="font-bold text-neutral-800 dark:text-white flex items-center gap-1.5">
+                  📅 Dates & Funding Schedules:
+                </span>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  {scheme.applicationPeriod && (
+                    <div className="flex flex-col">
+                      <span className="text-[10px] uppercase font-bold text-neutral-500 dark:text-neutral-400">Application Window</span>
+                      <span className="text-neutral-800 dark:text-saffron-50/90 font-medium">{scheme.applicationPeriod}</span>
+                    </div>
+                  )}
+                  {scheme.disbursementSchedule && (
+                    <div className="flex flex-col">
+                      <span className="text-[10px] uppercase font-bold text-neutral-500 dark:text-neutral-400">Payment Cycle</span>
+                      <span className="text-neutral-800 dark:text-saffron-50/90 font-medium">{scheme.disbursementSchedule}</span>
+                    </div>
+                  )}
+                  {scheme.nextMilestoneDate && (
+                    <div className="flex flex-col">
+                      <span className="text-[10px] uppercase font-bold text-neutral-500 dark:text-neutral-400">Next Milestone Release</span>
+                      <span className="text-saffron-600 dark:text-saffron-400 font-bold">{scheme.nextMilestoneDate}</span>
+                    </div>
+                  )}
+                </div>
               </div>
             )}
 

@@ -29,7 +29,10 @@
     "extraIntel": [
       "Toll-free helpline numbers: 1800-11-3377, 1800-11-6111.",
       "Ensure the property title has the female head of the household listed as the owner or co-owner."
-    ]
+    ],
+    "applicationPeriod": "Open all year (Continuous roll)",
+    "disbursementSchedule": "Loan subsidy credited at disbursement; direct construction grants in 3 installments based on physical progress.",
+    "nextMilestoneDate": "Ongoing / No fixed deadline"
   },
   {
     "id": "pmkisan",
@@ -61,7 +64,10 @@
     "extraIntel": [
       "PM-Kisan Helpline: 155261 or 1800115526.",
       "Your bank account must be Aadhaar-seeded and e-KYC must be completed on the portal to receive transfers."
-    ]
+    ],
+    "applicationPeriod": "Open all year (Continuous roll)",
+    "disbursementSchedule": "Thrice a year: Installment 1 (April-July), Installment 2 (August-November), Installment 3 (December-March).",
+    "nextMilestoneDate": "18th Installment release scheduled: November 2026"
   },
   {
     "id": "pmmy",
@@ -93,7 +99,10 @@
     "extraIntel": [
       "Mudra National Helpline: 1800-180-1111 / 1800-11-0001.",
       "Avoid brokers. Mudra loans are collateral-free and do not require processing fees for the Shishu category."
-    ]
+    ],
+    "applicationPeriod": "Open all year (Bank working days)",
+    "disbursementSchedule": "Lump sum credit to Mudra account or business cash credit line on approval.",
+    "nextMilestoneDate": "Instant processing (typically 7-15 days for Shishu category)"
   },
   {
     "id": "ssy",
@@ -125,7 +134,10 @@
     "extraIntel": [
       "Toll-free Post Office Helpline: 1800-266-6868.",
       "Deposits must be made for 15 years from account opening. The account matures 21 years from the date of opening."
-    ]
+    ],
+    "applicationPeriod": "Open year-round",
+    "disbursementSchedule": "Maturity disbursement 21 years from account opening, or partial withdrawal at age 18 for higher education.",
+    "nextMilestoneDate": "Annual interest credited: March 31st (end of fiscal year)"
   },
   {
     "id": "abpmjay",
@@ -157,7 +169,10 @@
     "extraIntel": [
       "National Health Helpline: 14555 or 1800-111-565.",
       "The scheme covers both government and empanelled private hospitals. Check the hospital directory on the portal."
-    ]
+    ],
+    "applicationPeriod": "Open all year (Continuous eligibility)",
+    "disbursementSchedule": "Cashless claim settled directly with hospital at discharge.",
+    "nextMilestoneDate": "Ongoing coverage (auto-renews annually)"
   },
   {
     "id": "skillindia",
@@ -189,7 +204,10 @@
     "extraIntel": [
       "Skill India Helpline: 088000-55555 / 1800-123-9626.",
       "DigiLocker hosts digital copies of Skill India Certificates for instant resume verification."
-    ]
+    ],
+    "applicationPeriod": "Rolling batches throughout the year",
+    "disbursementSchedule": "Training fees paid directly to centers; candidate reward incentives credited within 30 days of certificate issue.",
+    "nextMilestoneDate": "Batch enrolment limits update monthly"
   },
   {
     "id": "startupindia",
@@ -221,7 +239,10 @@
     "extraIntel": [
       "Startup India Toll-free helpline: 1800-115-565.",
       "Ensure your startup is working towards innovation, development, or improvement of products, processes, or services."
-    ]
+    ],
+    "applicationPeriod": "Open all year",
+    "disbursementSchedule": "Rebates credited at application; seed funding disbursed in stages milestones by incubator boards.",
+    "nextMilestoneDate": "DPIIT certificate processing: 2-4 weeks from submission"
   },
   {
     "id": "apy",
@@ -253,7 +274,10 @@
     "extraIntel": [
       "NPS/APY Helpline: 1800-110-708.",
       "Start early. The monthly contribution amount increases significantly if you enroll closer to age 40."
-    ]
+    ],
+    "applicationPeriod": "Open year-round",
+    "disbursementSchedule": "Monthly pension paid out starting from the 1st of the month following the subscriber's 60th birthday.",
+    "nextMilestoneDate": "Pension payouts initiate post age 60"
   },
   {
     "id": "pmsvanidhi",
@@ -285,7 +309,10 @@
     "extraIntel": [
       "PM SVANidhi Helpline: 1800-111-979.",
       "Conducting transactions digitally using UPI (PhonePe, Paytm, etc.) earns you cashback rewards that can cover your monthly interest."
-    ]
+    ],
+    "applicationPeriod": "Open year-round (Extended window)",
+    "disbursementSchedule": "Full loan value disbursed into the vendor's bank account within 3-5 days of bank clearance.",
+    "nextMilestoneDate": "Interest subsidy payout: End of each financial quarter"
   },
   {
     "id": "postmatric",
@@ -317,7 +344,10 @@
     "extraIntel": [
       "NSP Helpdesk Helpline: 0120-6619540.",
       "Applications must be verified at both institute and state levels on the portal. Track your status under the 'Track Application' tab."
-    ]
+    ],
+    "applicationPeriod": "Annual window (Typically July to November/December)",
+    "disbursementSchedule": "One-time annual direct bank transfer (DBT) post college and state verification approvals.",
+    "nextMilestoneDate": "NSP Application portal closing: January 31st, 2027"
   },
   {
     "id": "pmuy",
@@ -349,6 +379,9 @@
     "extraIntel": [
       "PMUY Ujjwala Helpline: 1800-266-6696 or 1906.",
       "Subsequent cylinder refills can be purchased on subsidized interest-free EMI loans deducted from government subsidy transfers."
-    ]
+    ],
+    "applicationPeriod": "Open year-round",
+    "disbursementSchedule": "Instant physical connection allocation at distributor depot upon registration verification.",
+    "nextMilestoneDate": "Ongoing distribution batches"
   }
 ]

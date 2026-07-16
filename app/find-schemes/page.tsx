@@ -300,7 +300,33 @@ export default function FindSchemesPage() {
                     </div>
                   )}
 
-                  <div style={{ marginTop: "10px", fontSize: "9pt" }}>
+                  {(scheme.applicationPeriod || scheme.disbursementSchedule || scheme.nextMilestoneDate) && (
+                    <div style={{ marginTop: "10px", fontSize: "8.5pt", borderTop: "1px dashed #e5e7eb", paddingTop: "8px" }}>
+                      <strong style={{ fontSize: "9pt", color: "#111827" }}>Dates & Schedules:</strong>
+                      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "10px", marginTop: "4px" }}>
+                        {scheme.applicationPeriod && (
+                          <div>
+                            <span style={{ color: "#6b7280", fontSize: "7.5pt", display: "block" }}>WINDOW</span>
+                            <span style={{ color: "#374151" }}>{scheme.applicationPeriod}</span>
+                          </div>
+                        )}
+                        {scheme.disbursementSchedule && (
+                          <div>
+                            <span style={{ color: "#6b7280", fontSize: "7.5pt", display: "block" }}>PAYMENT CYCLE</span>
+                            <span style={{ color: "#374151" }}>{scheme.disbursementSchedule}</span>
+                          </div>
+                        )}
+                        {scheme.nextMilestoneDate && (
+                          <div>
+                            <span style={{ color: "#6b7280", fontSize: "7.5pt", display: "block" }}>NEXT RELEASE</span>
+                            <span style={{ color: "#ea580c", fontWeight: "bold" }}>{scheme.nextMilestoneDate}</span>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  )}
+
+                  <div style={{ marginTop: "10px", fontSize: "9pt", borderTop: "1px dashed #e5e7eb", paddingTop: "8px" }}>
                     <strong style={{ color: "#111827" }}>Required Documents:</strong>{" "}
                     <span style={{ color: "#4b5563" }}>{scheme.documents.join(", ")}</span>
                   </div>

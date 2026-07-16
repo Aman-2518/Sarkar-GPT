@@ -19,6 +19,9 @@ export interface Scheme {
   amountDetails?: string;
   applicationSteps?: string[];
   extraIntel?: string[];
+  applicationPeriod?: string;
+  disbursementSchedule?: string;
+  nextMilestoneDate?: string;
 }
 
 export interface UserProfile {
