@@ -994,6 +994,26 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
   },
 };
 
+const isIndianVoice = (v: SpeechSynthesisVoice) => {
+  const langLower = v.lang.toLowerCase();
+  const nameLower = v.name.toLowerCase();
+  return (
+    langLower.includes("-in") ||
+    nameLower.includes("india") ||
+    nameLower.includes("neerja") ||
+    nameLower.includes("prabhat") ||
+    nameLower.includes("ravi") ||
+    nameLower.includes("heera") ||
+    nameLower.includes("swara") ||
+    nameLower.includes("madhur") ||
+    nameLower.includes("hemant") ||
+    nameLower.includes("हिन्दी") ||
+    nameLower.includes("kavita") ||
+    nameLower.includes("sangeeta") ||
+    nameLower.includes("shruti")
+  );
+};
+
 export function configureSpeechUtterance(
   utterance: SpeechSynthesisUtterance,
   gender: "male" | "female",
@@ -1003,9 +1023,9 @@ export function configureSpeechUtterance(
   const voices = window.speechSynthesis.getVoices();
   const lang = utterance.lang;
 
-  // Filter voices that match the language prefix (e.g. "hi" or "en")
+  // Filter voices that match the language prefix and are Indian voices
   const langVoices = voices.filter((v) =>
-    v.lang.toLowerCase().startsWith(lang.toLowerCase().split("-")[0])
+    v.lang.toLowerCase().startsWith(lang.toLowerCase().split("-")[0]) && isIndianVoice(v)
   );
 
   let selectedVoice = null;
@@ -1027,23 +1047,19 @@ export function configureSpeechUtterance(
         if (
           name.includes("neerja") ||
           name.includes("swara") ||
-          name.includes("jenny") ||
-          name.includes("aria") ||
-          name.includes("samantha") ||
           name.includes("heera")
         ) {
-          score += 50; // Ultra high priority for top tier natural human voices
+          score += 60; // High priority for local Indian female accents
         }
       } else {
-        if (
+        if (name.includes("ravi")) {
+          score += 100; // Prioritize Ravi India above all other male voices!
+        } else if (
           name.includes("prabhat") ||
           name.includes("madhur") ||
-          name.includes("guy") ||
-          name.includes("ravi") ||
-          name.includes("david") ||
           name.includes("hemant")
         ) {
-          score += 50;
+          score += 60; // High priority for local Indian male accents
         }
       }
 
@@ -1051,12 +1067,10 @@ export function configureSpeechUtterance(
       if (targetGender === "female") {
         if (
           name.includes("female") ||
-          name.includes("zira") ||
           name.includes("google हिन्दी") ||
           name.includes("kavita") ||
           name.includes("sangeeta") ||
-          name.includes("shruti") ||
-          name.includes("haruka")
+          name.includes("shruti")
         ) {
           score += 15;
         }
@@ -1139,7 +1153,9 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   // Function to load system voices
   const loadVoices = () => {
     if (typeof window !== "undefined" && window.speechSynthesis) {
-      setAvailableVoices(window.speechSynthesis.getVoices());
+      const allVoices = window.speechSynthesis.getVoices();
+      const indianOnly = allVoices.filter(isIndianVoice);
+      setAvailableVoices(indianOnly);
     }
   };
 
