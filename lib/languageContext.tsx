@@ -1047,9 +1047,12 @@ export function configureSpeechUtterance(
         if (
           name.includes("neerja") ||
           name.includes("swara") ||
-          name.includes("heera")
+          name.includes("heera") ||
+          name.includes("kavita") ||
+          name.includes("sangeeta") ||
+          name.includes("shruti")
         ) {
-          score += 60; // High priority for local Indian female accents
+          score += 100; // High priority for local Indian female accents
         }
       } else {
         if (name.includes("ravi")) {
@@ -1067,10 +1070,7 @@ export function configureSpeechUtterance(
       if (targetGender === "female") {
         if (
           name.includes("female") ||
-          name.includes("google हिन्दी") ||
-          name.includes("kavita") ||
-          name.includes("sangeeta") ||
-          name.includes("shruti")
+          name.includes("google हिन्दी")
         ) {
           score += 15;
         }
