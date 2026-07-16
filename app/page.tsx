@@ -264,6 +264,63 @@ export default function Home() {
           })}
         </div>
       </section>
+
+      {/* Upcoming Features & Roadmap Section */}
+      <section className="flex flex-col gap-8 max-w-4xl mx-auto px-4 pb-20 border-t border-neutral-200 dark:border-white/10 pt-16">
+        <div className="text-center flex flex-col gap-2">
+          <span className="w-fit mx-auto rounded-full bg-saffron-100 dark:bg-white/10 px-3 py-1 text-[10px] font-bold text-saffron-700 dark:text-saffron-300 uppercase tracking-widest">
+            Future Roadmap
+          </span>
+          <h2 className="font-display text-3xl font-extrabold text-neutral-800 dark:text-white">
+            What's Coming Next to SarkarGPT?
+          </h2>
+          <p className="text-sm text-ink-900/60 dark:text-saffron-50/60">
+            We are continuously building new features to make government scheme discovery more accessible to every citizen.
+          </p>
+        </div>
+
+        <div className="grid gap-6 sm:grid-cols-2 mt-4">
+          <div className="flex gap-4 p-5 rounded-2xl border border-neutral-200 dark:border-white/5 bg-white/30 dark:bg-zinc-900/30">
+            <span className="text-2xl mt-1">💬</span>
+            <div className="flex flex-col gap-1">
+              <h3 className="font-bold text-sm text-neutral-800 dark:text-white">WhatsApp & SMS Assistant</h3>
+              <p className="text-xs text-ink-900/70 dark:text-saffron-50/70 leading-relaxed">
+                Query eligibility and receive step-by-step application guidelines directly on WhatsApp, tailored for remote village areas.
+              </p>
+            </div>
+          </div>
+
+          <div className="flex gap-4 p-5 rounded-2xl border border-neutral-200 dark:border-white/5 bg-white/30 dark:bg-zinc-900/30">
+            <span className="text-2xl mt-1">📡</span>
+            <div className="flex flex-col gap-1">
+              <h3 className="font-bold text-sm text-neutral-800 dark:text-white">100% Offline Mode (PWA)</h3>
+              <p className="text-xs text-ink-900/70 dark:text-saffron-50/70 leading-relaxed">
+                Full offline database availability, allowing citizens to search schemes and verify documents in zero-connectivity areas.
+              </p>
+            </div>
+          </div>
+
+          <div className="flex gap-4 p-5 rounded-2xl border border-neutral-200 dark:border-white/5 bg-white/30 dark:bg-zinc-900/30">
+            <span className="text-2xl mt-1">🎙️</span>
+            <div className="flex flex-col gap-1">
+              <h3 className="font-bold text-sm text-neutral-800 dark:text-white">Regional Dialect Support</h3>
+              <p className="text-xs text-ink-900/70 dark:text-saffron-50/70 leading-relaxed">
+                Expanding voice synthesis readouts to include regional local accents and localized dialects of major Indian states.
+              </p>
+            </div>
+          </div>
+
+          <div className="flex gap-4 p-5 rounded-2xl border border-neutral-200 dark:border-white/5 bg-white/30 dark:bg-zinc-900/30">
+            <span className="text-2xl mt-1">📝</span>
+            <div className="flex flex-col gap-1">
+              <h3 className="font-bold text-sm text-neutral-800 dark:text-white">Direct Form Pre-filling</h3>
+              <p className="text-xs text-ink-900/70 dark:text-saffron-50/70 leading-relaxed">
+                Use your local saved demographic profile to automatically pre-fill official scheme application forms with one click.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
