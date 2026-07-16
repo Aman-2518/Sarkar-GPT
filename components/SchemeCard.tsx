@@ -64,9 +64,13 @@ export default function SchemeCard({ scheme, onBookmarkChange }: { scheme: Schem
       const amountSpeech = scheme.amountDetails ? `Benefit Details: ${scheme.amountDetails}. ` : "";
       const criteriaSpeech = scheme.eligibilityCriteria ? `Eligibility Criteria: ${scheme.eligibilityCriteria.join(". ")}. ` : "";
       const stepsSpeech = scheme.applicationSteps ? `Steps to apply: ${scheme.applicationSteps.join(". ")}. ` : "";
-      const scheduleSpeech = `${scheme.applicationPeriod ? `Application window is: ${scheme.applicationPeriod}. ` : ""}${
-        scheme.disbursementSchedule ? `Payment schedule: ${scheme.disbursementSchedule}. ` : ""
-      }${scheme.nextMilestoneDate ? `Next release date: ${scheme.nextMilestoneDate}. ` : ""}`;
+      const scheduleSpeech = `${scheme.applyStartDate ? `Scheme started on: ${scheme.applyStartDate}. ` : ""}${
+        scheme.applicationPeriod ? `Application window is: ${scheme.applicationPeriod}. ` : ""
+      }${scheme.lastDateToApply ? `Last date to apply is: ${scheme.lastDateToApply}. ` : ""}${
+        scheme.disbursementSchedule ? `Payment cycle: ${scheme.disbursementSchedule}. ` : ""
+      }${scheme.benefitDuration ? `Benefit duration: ${scheme.benefitDuration}. ` : ""}${
+        scheme.nextMilestoneDate ? `Next release date: ${scheme.nextMilestoneDate}. ` : ""
+      }`;
       
       const textToSpeak = `${scheme.name}. ${scheme.description}. ${t("benefits")}: ${scheme.benefits.join(". ")}. ${amountSpeech}${criteriaSpeech}${stepsSpeech}${scheduleSpeech}${t("docsNeeded")}: ${scheme.documents.join(". ")}`;
       
@@ -165,11 +169,13 @@ export default function SchemeCard({ scheme, onBookmarkChange }: { scheme: Schem
             )}
 
             {/* Timeline & Payment Schedule */}
-            {(scheme.applicationPeriod || scheme.disbursementSchedule || scheme.nextMilestoneDate) && (
-              <div className="bg-neutral-100 dark:bg-white/5 border border-neutral-200 dark:border-white/5 rounded-xl p-3 text-xs flex flex-col gap-2 leading-relaxed">
-                <span className="font-bold text-neutral-800 dark:text-white flex items-center gap-1.5">
-                  📅 Dates & Funding Schedules:
+            {(scheme.applicationPeriod || scheme.disbursementSchedule || scheme.nextMilestoneDate || scheme.applyStartDate || scheme.benefitDuration || scheme.lastDateToApply) && (
+              <div className="bg-neutral-100 dark:bg-white/5 border border-neutral-200 dark:border-white/5 rounded-xl p-4 text-xs flex flex-col gap-3 leading-relaxed">
+                <span className="font-bold text-neutral-800 dark:text-white flex items-center gap-1.5 border-b border-neutral-200 dark:border-white/5 pb-1.5">
+                  📅 Dates, Timelines & Schedules:
                 </span>
+                
+                {/* Row 1: Cycle Schedules */}
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   {scheme.applicationPeriod && (
                     <div className="flex flex-col">
@@ -187,6 +193,28 @@ export default function SchemeCard({ scheme, onBookmarkChange }: { scheme: Schem
                     <div className="flex flex-col">
                       <span className="text-[10px] uppercase font-bold text-neutral-500 dark:text-neutral-400">Next Milestone Release</span>
                       <span className="text-saffron-600 dark:text-saffron-400 font-bold">{scheme.nextMilestoneDate}</span>
+                    </div>
+                  )}
+                </div>
+
+                {/* Row 2: Milestone Dates */}
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 border-t border-neutral-200 dark:border-white/5 pt-2.5">
+                  {scheme.applyStartDate && (
+                    <div className="flex flex-col">
+                      <span className="text-[10px] uppercase font-bold text-neutral-500 dark:text-neutral-400">Launch Date</span>
+                      <span className="text-neutral-800 dark:text-saffron-50/90 font-medium">{scheme.applyStartDate}</span>
+                    </div>
+                  )}
+                  {scheme.benefitDuration && (
+                    <div className="flex flex-col">
+                      <span className="text-[10px] uppercase font-bold text-neutral-500 dark:text-neutral-400">Benefit Duration</span>
+                      <span className="text-neutral-800 dark:text-saffron-50/90 font-medium">{scheme.benefitDuration}</span>
+                    </div>
+                  )}
+                  {scheme.lastDateToApply && (
+                    <div className="flex flex-col">
+                      <span className="text-[10px] uppercase font-bold text-neutral-500 dark:text-neutral-400">Last Date to Apply</span>
+                      <span className="text-red-600 dark:text-red-400 font-bold">{scheme.lastDateToApply}</span>
                     </div>
                   )}
                 </div>

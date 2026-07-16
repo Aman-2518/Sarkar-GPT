@@ -300,24 +300,42 @@ export default function FindSchemesPage() {
                     </div>
                   )}
 
-                  {(scheme.applicationPeriod || scheme.disbursementSchedule || scheme.nextMilestoneDate) && (
+                  {(scheme.applicationPeriod || scheme.disbursementSchedule || scheme.nextMilestoneDate || scheme.applyStartDate || scheme.benefitDuration || scheme.lastDateToApply) && (
                     <div style={{ marginTop: "10px", fontSize: "8.5pt", borderTop: "1px dashed #e5e7eb", paddingTop: "8px" }}>
                       <strong style={{ fontSize: "9pt", color: "#111827" }}>Dates & Schedules:</strong>
                       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "10px", marginTop: "4px" }}>
+                        {scheme.applyStartDate && (
+                          <div>
+                            <span style={{ color: "#6b7280", fontSize: "7.5pt", display: "block" }}>LAUNCH DATE</span>
+                            <span style={{ color: "#374151" }}>{scheme.applyStartDate}</span>
+                          </div>
+                        )}
                         {scheme.applicationPeriod && (
                           <div>
                             <span style={{ color: "#6b7280", fontSize: "7.5pt", display: "block" }}>WINDOW</span>
                             <span style={{ color: "#374151" }}>{scheme.applicationPeriod}</span>
                           </div>
                         )}
-                        {scheme.disbursementSchedule && (
+                        {scheme.lastDateToApply && (
                           <div>
+                            <span style={{ color: "#6b7280", fontSize: "7.5pt", display: "block" }}>LAST DATE</span>
+                            <span style={{ color: "#dc2626", fontWeight: "bold" }}>{scheme.lastDateToApply}</span>
+                          </div>
+                        )}
+                        {scheme.disbursementSchedule && (
+                          <div style={{ marginTop: "6px" }}>
                             <span style={{ color: "#6b7280", fontSize: "7.5pt", display: "block" }}>PAYMENT CYCLE</span>
                             <span style={{ color: "#374151" }}>{scheme.disbursementSchedule}</span>
                           </div>
                         )}
+                        {scheme.benefitDuration && (
+                          <div style={{ marginTop: "6px" }}>
+                            <span style={{ color: "#6b7280", fontSize: "7.5pt", display: "block" }}>DURATION</span>
+                            <span style={{ color: "#374151" }}>{scheme.benefitDuration}</span>
+                          </div>
+                        )}
                         {scheme.nextMilestoneDate && (
-                          <div>
+                          <div style={{ marginTop: "6px" }}>
                             <span style={{ color: "#6b7280", fontSize: "7.5pt", display: "block" }}>NEXT RELEASE</span>
                             <span style={{ color: "#ea580c", fontWeight: "bold" }}>{scheme.nextMilestoneDate}</span>
                           </div>

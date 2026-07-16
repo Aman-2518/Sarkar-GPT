@@ -32,7 +32,10 @@
     ],
     "applicationPeriod": "Open all year (Continuous roll)",
     "disbursementSchedule": "Loan subsidy credited at disbursement; direct construction grants in 3 installments based on physical progress.",
-    "nextMilestoneDate": "Ongoing / No fixed deadline"
+    "nextMilestoneDate": "Ongoing / No fixed deadline",
+    "applyStartDate": "1st June 2015",
+    "benefitDuration": "20 Years (Home Loan Tenure)",
+    "lastDateToApply": "December 31st, 2026 (Extended)"
   },
   {
     "id": "pmkisan",
@@ -67,7 +70,10 @@
     ],
     "applicationPeriod": "Open all year (Continuous roll)",
     "disbursementSchedule": "Thrice a year: Installment 1 (April-July), Installment 2 (August-November), Installment 3 (December-March).",
-    "nextMilestoneDate": "18th Installment release scheduled: November 2026"
+    "nextMilestoneDate": "18th Installment release scheduled: November 2026",
+    "applyStartDate": "1st December 2018",
+    "benefitDuration": "Ongoing (As long as landholding criteria are met)",
+    "lastDateToApply": "No deadline (Continuous registration)"
   },
   {
     "id": "pmmy",
@@ -102,7 +108,10 @@
     ],
     "applicationPeriod": "Open all year (Bank working days)",
     "disbursementSchedule": "Lump sum credit to Mudra account or business cash credit line on approval.",
-    "nextMilestoneDate": "Instant processing (typically 7-15 days for Shishu category)"
+    "nextMilestoneDate": "Instant processing (typically 7-15 days for Shishu category)",
+    "applyStartDate": "8th April 2015",
+    "benefitDuration": "Up to 5 Years (Loan repayment period)",
+    "lastDateToApply": "No deadline (Ongoing scheme)"
   },
   {
     "id": "ssy",
@@ -137,7 +146,10 @@
     ],
     "applicationPeriod": "Open year-round",
     "disbursementSchedule": "Maturity disbursement 21 years from account opening, or partial withdrawal at age 18 for higher education.",
-    "nextMilestoneDate": "Annual interest credited: March 31st (end of fiscal year)"
+    "nextMilestoneDate": "Annual interest credited: March 31st (end of fiscal year)",
+    "applyStartDate": "22nd January 2015",
+    "benefitDuration": "21 Years (or marriage of the girl child after age 18)",
+    "lastDateToApply": "Before the girl child reaches 10 years of age"
   },
   {
     "id": "abpmjay",
@@ -172,7 +184,10 @@
     ],
     "applicationPeriod": "Open all year (Continuous eligibility)",
     "disbursementSchedule": "Cashless claim settled directly with hospital at discharge.",
-    "nextMilestoneDate": "Ongoing coverage (auto-renews annually)"
+    "nextMilestoneDate": "Ongoing coverage (auto-renews annually)",
+    "applyStartDate": "23rd September 2018",
+    "benefitDuration": "Lifetime / Annual Auto-Renewal",
+    "lastDateToApply": "No deadline (Continuous registration)"
   },
   {
     "id": "skillindia",
@@ -207,7 +222,10 @@
     ],
     "applicationPeriod": "Rolling batches throughout the year",
     "disbursementSchedule": "Training fees paid directly to centers; candidate reward incentives credited within 30 days of certificate issue.",
-    "nextMilestoneDate": "Batch enrolment limits update monthly"
+    "nextMilestoneDate": "Batch enrolment limits update monthly",
+    "applyStartDate": "15th July 2015",
+    "benefitDuration": "Duration of Course (typically 3 to 6 Months)",
+    "lastDateToApply": "Rolling enrollment (No fixed deadline)"
   },
   {
     "id": "startupindia",
@@ -242,7 +260,10 @@
     ],
     "applicationPeriod": "Open all year",
     "disbursementSchedule": "Rebates credited at application; seed funding disbursed in stages milestones by incubator boards.",
-    "nextMilestoneDate": "DPIIT certificate processing: 2-4 weeks from submission"
+    "nextMilestoneDate": "DPIIT certificate processing: 2-4 weeks from submission",
+    "applyStartDate": "16th January 2016",
+    "benefitDuration": "10 Years from date of incorporation",
+    "lastDateToApply": "Within 10 years of company incorporation"
   },
   {
     "id": "apy",
@@ -277,7 +298,10 @@
     ],
     "applicationPeriod": "Open year-round",
     "disbursementSchedule": "Monthly pension paid out starting from the 1st of the month following the subscriber's 60th birthday.",
-    "nextMilestoneDate": "Pension payouts initiate post age 60"
+    "nextMilestoneDate": "Pension payouts initiate post age 60",
+    "applyStartDate": "1st June 2015",
+    "benefitDuration": "Lifetime of Subscriber and Spouse",
+    "lastDateToApply": "Before reaching 40 years of age"
   },
   {
     "id": "pmsvanidhi",
@@ -312,7 +336,10 @@
     ],
     "applicationPeriod": "Open year-round (Extended window)",
     "disbursementSchedule": "Full loan value disbursed into the vendor's bank account within 3-5 days of bank clearance.",
-    "nextMilestoneDate": "Interest subsidy payout: End of each financial quarter"
+    "nextMilestoneDate": "Interest subsidy payout: End of each financial quarter",
+    "applyStartDate": "1st June 2020",
+    "benefitDuration": "1 to 3 Years depending on loan tier",
+    "lastDateToApply": "December 31st, 2024 (Subject to ULB updates)"
   },
   {
     "id": "postmatric",
@@ -347,7 +374,10 @@
     ],
     "applicationPeriod": "Annual window (Typically July to November/December)",
     "disbursementSchedule": "One-time annual direct bank transfer (DBT) post college and state verification approvals.",
-    "nextMilestoneDate": "NSP Application portal closing: January 31st, 2027"
+    "nextMilestoneDate": "NSP Application portal closing: January 31st, 2027",
+    "applyStartDate": "1st July annually",
+    "benefitDuration": "1 Year (Renewable annually for course duration)",
+    "lastDateToApply": "January 31st, 2027 (For active cycle)"
   },
   {
     "id": "pmuy",
@@ -382,6 +412,9 @@
     ],
     "applicationPeriod": "Open year-round",
     "disbursementSchedule": "Instant physical connection allocation at distributor depot upon registration verification.",
-    "nextMilestoneDate": "Ongoing distribution batches"
+    "nextMilestoneDate": "Ongoing distribution batches",
+    "applyStartDate": "1st May 2016",
+    "benefitDuration": "One-time initial connection allocation (Subsequent refills subsidized)",
+    "lastDateToApply": "No deadline (Ongoing scheme)"
   }
 ]

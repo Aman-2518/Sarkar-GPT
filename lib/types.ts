@@ -22,6 +22,9 @@ export interface Scheme {
   applicationPeriod?: string;
   disbursementSchedule?: string;
   nextMilestoneDate?: string;
+  applyStartDate?: string;
+  benefitDuration?: string;
+  lastDateToApply?: string;
 }
 
 export interface UserProfile {
