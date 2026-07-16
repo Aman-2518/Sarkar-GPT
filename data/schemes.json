@@ -416,5 +416,155 @@
     "applyStartDate": "1st May 2016",
     "benefitDuration": "One-time initial connection allocation (Subsequent refills subsidized)",
     "lastDateToApply": "No deadline (Ongoing scheme)"
+  },
+  {
+    "id": "pmvishwakarma",
+    "name": "PM Vishwakarma Scheme",
+    "ministry": "Ministry of Micro, Small and Medium Enterprises",
+    "category": "Finance",
+    "description": "Support for traditional artisans and craftspeople using hands and tools in 18 trades, providing recognition, skill upgrades, toolkit incentives, and collateral-free credit.",
+    "benefits": [
+      "Recognition through PM Vishwakarma Certificate and ID Card",
+      "Skill upgradation training (5-7 days basic, 15+ days advanced) with Rs. 500/day stipend",
+      "Toolkit incentive of Rs. 15,000 grant",
+      "Collateral-free enterprise development loans up to Rs. 3 Lakh at 5% interest rate"
+    ],
+    "eligibility": { "occupation": ["artisan", "self-employed"], "states": [] },
+    "documents": ["Aadhaar Card", "Bank Account Details", "Mobile Number", "Ration Card"],
+    "applyUrl": "https://pmvishwakarma.gov.in",
+    "eligibilityCriteria": [
+      "An artisan or craftsperson working with hands and tools in one of the 18 family-based traditional trades.",
+      "Minimum age of 18 years on the date of registration.",
+      "Only one member of the family can receive benefits. Government servants are excluded."
+    ],
+    "amountDetails": "Rs. 15,000 toolkit grant. Collateral-free credit support of Rs. 1 Lakh (1st tranche) and Rs. 2 Lakh (2nd tranche) at an attractive interest rate of 5%.",
+    "applicationSteps": [
+      "Visit PM Vishwakarma portal (pmvishwakarma.gov.in) and register using Aadhaar authentication.",
+      "Complete the mobile and Aadhaar biometric e-KYC.",
+      "Apply for the Vishwakarma digital ID Card and certificate.",
+      "Submit enterprise loan application or toolkit incentive request."
+    ],
+    "extraIntel": [
+      "Helpline: 1800-267-7777 or 1800-111-555.",
+      "Includes 18 trades such as Carpenter, Boat Maker, Blacksmith, Potter, Sculptor, Cobbler, Tailor, and Weaver."
+    ],
+    "applicationPeriod": "Open all year",
+    "disbursementSchedule": "Direct benefit transfer for stipends/grants; loan tranches disbursed upon training completion.",
+    "nextMilestoneDate": "Continuous selection batches",
+    "applyStartDate": "17th September 2023",
+    "benefitDuration": "Loans repayable over 18 to 30 months",
+    "lastDateToApply": "No deadline (Continuous registration)"
+  },
+  {
+    "id": "pmfby",
+    "name": "Pradhan Mantri Fasal Bima Yojana (PMFBY)",
+    "ministry": "Ministry of Agriculture and Farmers Welfare",
+    "category": "Agriculture",
+    "description": "A crop insurance scheme to provide financial support to farmers suffering crop loss or damage due to natural calamities, pests, or diseases, stabilizing their income.",
+    "benefits": [
+      "Comprehensive insurance cover against crop failure from sowing to post-harvest",
+      "Very low premium rates for farmers: 2% for Kharif, 1.5% for Rabi, and 5% for horticultural crops",
+      "Direct claim settlements credited directly into bank accounts",
+      "Coverage for localized calamities like hailstorm, landslide, and inundation"
+    ],
+    "eligibility": { "occupation": ["farmer"], "states": [] },
+    "documents": ["Land record (Khasra/Khatauni)", "Sowing certificate", "Aadhaar Card", "Bank passbook"],
+    "applyUrl": "https://pmfby.gov.in",
+    "eligibilityCriteria": [
+      "All farmers including sharecroppers and tenant farmers growing notified crops in notified areas.",
+      "Must have insurable interest in the cultivated crop."
+    ],
+    "amountDetails": "Claim amount based on threshold yield and actual crop damage assessment, up to 100% of sum insured value.",
+    "applicationSteps": [
+      "Log in to Crop Insurance portal (pmfby.gov.in) or visit nearest bank/CSC.",
+      "Enter farmer details, land survey numbers, and crop sown details.",
+      "Pay the nominal farmer premium share online or authorize bank auto-deduction.",
+      "Submit and download the policy receipt detailing sum insured."
+    ],
+    "extraIntel": [
+      "PMFBY Helpline: 1800-180-1551.",
+      "Loss must be reported within 72 hours of occurrence to the insurance company or local agriculture office to claim localized damage benefits."
+    ],
+    "applicationPeriod": "Seasonal windows (Kharif: June-July, Rabi: Oct-Dec)",
+    "disbursementSchedule": "Claim settlements processed within 30 days of yield data submission by state governments.",
+    "nextMilestoneDate": "Rabi 2026 enrolment closes: December 31st, 2026",
+    "applyStartDate": "18th February 2016",
+    "benefitDuration": "1 Crop Season (Renewable per sowing cycle)",
+    "lastDateToApply": "July 31st for Kharif / December 31st for Rabi annually"
+  },
+  {
+    "id": "pmsym",
+    "name": "Pradhan Mantri Shram Yogi Maan-dhan (PM-SYM)",
+    "ministry": "Ministry of Labour and Employment",
+    "category": "Pension",
+    "description": "A voluntary and co-contributory pension scheme for unorganized workers (like street vendors, rickshaw pullers, construction laborers) to ensure financial security in old age.",
+    "benefits": [
+      "Guaranteed minimum monthly pension of Rs. 3,000 after attaining age 60",
+      "50% spouse pension benefits upon death of subscriber",
+      "Equal co-contribution by the Central Government directly into the pension fund",
+      "Simple exit options with interest returns if subscriber exits early"
+    ],
+    "eligibility": { "minAge": 18, "maxAge": 40, "maxIncome": 180000, "occupation": ["self-employed", "street-vendor"], "states": [] },
+    "documents": ["Aadhaar Card", "Savings bank account passbook", "Consent form for auto-debit"],
+    "applyUrl": "https://maandhan.in",
+    "eligibilityCriteria": [
+      "Must be an unorganized worker aged between 18 and 40 years.",
+      "Monthly income must be Rs. 15,000 or less.",
+      "Must not be covered under organized social security (EPF, ESIC, NPS) or be an income taxpayer."
+    ],
+    "amountDetails": "Guaranteed pension of Rs. 3,000/month. Monthly contributions range from Rs. 55 to Rs. 200 based on entry age, matched equally by the government.",
+    "applicationSteps": [
+      "Visit the nearest Common Services Center (CSC) or maandhan.in portal.",
+      "Enter Aadhaar number and savings bank account number.",
+      "Calculate monthly contribution amount and complete biometric authentication.",
+      "Receive Shram Yogi Card with unique Pension Account Number."
+    ],
+    "extraIntel": [
+      "Labour Toll-free helpline: 1800-267-6888.",
+      "Auto-debit is mandatory. Keep sufficient balance in your linked savings bank account every month to avoid interest penalties."
+    ],
+    "applicationPeriod": "Open year-round",
+    "disbursementSchedule": "Monthly pension credited starting on the first day of the month following age 60.",
+    "nextMilestoneDate": "Pension payments commence post age 60",
+    "applyStartDate": "15th February 2019",
+    "benefitDuration": "Lifetime of subscriber and spouse",
+    "lastDateToApply": "Before reaching 40 years of age"
+  },
+  {
+    "id": "lakhpatididi",
+    "name": "Lakhpati Didi Scheme",
+    "ministry": "Ministry of Rural Development",
+    "category": "Women & Girl Child",
+    "description": "A skill development and financial inclusion program targeting women in Self Help Groups (SHGs) to help them start micro-enterprises and earn a sustainable annual income of at least Rs. 1 Lakh.",
+    "benefits": [
+      "Access to skill development training (LED bulb making, plumbing, drone piloting, sewing, etc.)",
+      "Financial assistance and low-interest loan channels through Self Help Groups",
+      "Market linkages, branding support, and digital transaction guidance",
+      "Drone pilot training (NaMo Drone Didi initiative) for agricultural spraying"
+    ],
+    "eligibility": { "gender": "female", "occupation": [], "states": [] },
+    "documents": ["Aadhaar Card", "SHG registration details", "Ration Card", "Bank details"],
+    "applyUrl": "https://nrlm.gov.in",
+    "eligibilityCriteria": [
+      "Must be a resident woman member of an active Self Help Group (SHG) registered under NRLM.",
+      "Willing to take up skill training and start a micro-enterprise/livelihood activity."
+    ],
+    "amountDetails": "Skill training fully sponsored by the government. Access to community investment funds and bank loans up to Rs. 5 Lakh through SHG networks.",
+    "applicationSteps": [
+      "Contact your local Self Help Group (SHG) head or village organization (VO) coordinator.",
+      "Submit application expressing interest in starting a livelihood trade/micro-enterprise.",
+      "Attend local block-level skill training workshops sponsored under NRLM.",
+      "Apply for loan capital through your SHG group channel to launch the business."
+    ],
+    "extraIntel": [
+      "DAY-NRLM Helpline: 1800-110-120.",
+      "Includes specialized drone pilot training for women to offer drone rental services to farmers for crop spraying."
+    ],
+    "applicationPeriod": "Continuous intakes",
+    "disbursementSchedule": "Capital grants and loans disbursed to SHG bank accounts on project plan approval.",
+    "nextMilestoneDate": "Training batch cycles refresh quarterly",
+    "applyStartDate": "15th August 2023",
+    "benefitDuration": "Ongoing business support and credit lines",
+    "lastDateToApply": "No deadline (Continuous intakes)"
   }
 ]
