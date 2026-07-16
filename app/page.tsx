@@ -36,6 +36,7 @@ export default function Home() {
   const { t } = useLanguage();
   const [activeCategory, setActiveCategory] = useState<string>("Finance");
   const [filteredSchemes, setFilteredSchemes] = useState<Scheme[]>([]);
+  const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
 
   useEffect(() => {
     setFilteredSchemes(
@@ -160,27 +161,46 @@ export default function Home() {
             </p>
             
             <div className="mt-6 flex flex-col gap-2">
-              {CATEGORIES.map(({ icon: Icon, label, color }) => (
-                <motion.button
-                  key={label}
-                  onClick={() => setActiveCategory(label)}
-                  whileHover={{ scale: 1.02, x: 3 }}
-                  whileTap={{ scale: 0.98 }}
-                  className={`flex items-center justify-between p-3 rounded-xl border text-sm font-semibold transition-all duration-300 ${
-                    activeCategory === label
-                      ? "border-saffron-500 bg-saffron-500/10 text-saffron-800 dark:text-saffron-300 shadow-md"
-                      : "border-neutral-200 dark:border-white/10 hover:border-saffron-500/30 hover:bg-neutral-50 dark:hover:bg-white/5"
-                  }`}
-                >
-                  <div className="flex items-center gap-2.5">
-                    <span className={`p-1.5 rounded-lg bg-gradient-to-tr ${color}`}>
-                      <Icon size={16} />
-                    </span>
-                    <span>{label}</span>
-                  </div>
-                  <ArrowRight size={14} className={activeCategory === label ? "text-saffron-500" : "text-neutral-400"} />
-                </motion.button>
-              ))}
+              {CATEGORIES.map(({ icon: Icon, label, color }) => {
+                const count = schemes.filter((s) => s.category.toLowerCase().includes(label.toLowerCase().split(" ")[0])).length;
+                return (
+                  <motion.button
+                    key={label}
+                    onClick={() => setActiveCategory(label)}
+                    onMouseEnter={() => setHoveredCategory(label)}
+                    onMouseLeave={() => setHoveredCategory(null)}
+                    whileHover={{ scale: 1.02, x: 3 }}
+                    whileTap={{ scale: 0.98 }}
+                    className={`flex items-center justify-between p-3 rounded-xl border text-sm font-semibold transition-all duration-300 ${
+                      activeCategory === label
+                        ? "border-saffron-500 bg-saffron-500/10 text-saffron-800 dark:text-saffron-300 shadow-md"
+                        : "border-neutral-200 dark:border-white/10 hover:border-saffron-500/30 hover:bg-neutral-50 dark:hover:bg-white/5"
+                    }`}
+                  >
+                    <div className="flex items-center gap-2.5">
+                      <span className={`p-1.5 rounded-lg bg-gradient-to-tr ${color}`}>
+                        <Icon size={16} />
+                      </span>
+                      <span>{label}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <AnimatePresence>
+                        {hoveredCategory === label && (
+                          <motion.span
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0.8 }}
+                            className="text-[10px] bg-saffron-500 text-white font-bold px-2 py-0.5 rounded-full"
+                          >
+                            {count} schemes
+                          </motion.span>
+                        )}
+                      </AnimatePresence>
+                      <ArrowRight size={14} className={activeCategory === label ? "text-saffron-500" : "text-neutral-400"} />
+                    </div>
+                  </motion.button>
+                );
+              })}
             </div>
           </motion.div>
         </motion.div>
