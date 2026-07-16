@@ -1005,33 +1005,55 @@ export function configureSpeechUtterance(utterance: SpeechSynthesisUtterance, ge
   );
 
   let selectedVoice = null;
-  if (gender === "female") {
-    selectedVoice = langVoices.find((v) => {
-      const name = v.name.toLowerCase();
-      return (
+
+  // Smart scoring system to prioritize natural, human-sounding neural voices
+  const getVoiceScore = (voice: SpeechSynthesisVoice, targetGender: "male" | "female") => {
+    const name = voice.name.toLowerCase();
+    let score = 0;
+
+    // 1. Gender Match Indicators
+    if (targetGender === "female") {
+      if (
         name.includes("female") ||
         name.includes("swara") ||
         name.includes("heera") ||
         name.includes("zira") ||
         name.includes("google हिन्दी") ||
         name.includes("kavita") ||
-        name.includes("sangeeta")
-      );
-    });
-    utterance.pitch = 1.1; // Clear, slightly higher warm tone
-  } else {
-    selectedVoice = langVoices.find((v) => {
-      const name = v.name.toLowerCase();
-      return (
+        name.includes("sangeeta") ||
+        name.includes("shruti") ||
+        name.includes("haruka")
+      ) {
+        score += 15;
+      }
+    } else {
+      if (
         name.includes("male") ||
         name.includes("hemant") ||
         name.includes("ravi") ||
         name.includes("david") ||
         name.includes("madhur") ||
-        name.includes("harsh")
-      );
-    });
-    utterance.pitch = 0.85; // Warm, lower resonant tone
+        name.includes("harsh") ||
+        name.includes("george")
+      ) {
+        score += 15;
+      }
+    }
+
+    // 2. Premium Human-like Neural / Natural prioritizers
+    if (name.includes("natural") || name.includes("neural")) {
+      score += 30; // Maximum priority for natural-sounding speech
+    } else if (name.includes("google") || name.includes("online") || name.includes("cloud")) {
+      score += 15; // Medium priority for cloud-assisted voices
+    }
+
+    return score;
+  };
+
+  if (langVoices.length > 0) {
+    // Sort descending by score
+    langVoices.sort((a, b) => getVoiceScore(b, gender) - getVoiceScore(a, gender));
+    selectedVoice = langVoices[0];
   }
 
   if (selectedVoice) {
@@ -1040,7 +1062,18 @@ export function configureSpeechUtterance(utterance: SpeechSynthesisUtterance, ge
     utterance.voice = langVoices[0];
   }
 
-  utterance.rate = 0.92; // Slightly slower speed for excellent, clear comprehension
+  // Adjust synthesis rates. Neural/Natural voices sound realistic at 1.0 pitch,
+  // whereas offline legacy synthesizers need adjustment to sound less robotic.
+  const selectedName = selectedVoice ? selectedVoice.name.toLowerCase() : "";
+  const isNeural = selectedName.includes("natural") || selectedName.includes("neural");
+
+  if (gender === "female") {
+    utterance.pitch = isNeural ? 1.0 : 1.1;
+  } else {
+    utterance.pitch = isNeural ? 1.0 : 0.85;
+  }
+
+  utterance.rate = isNeural ? 0.96 : 0.92; // Pacing setup for high fluency
 }
 
 interface LanguageContextType {
