@@ -11,8 +11,16 @@
       "Special preference given to women, senior citizens, and physically challenged applicants",
       "Mandatory joint ownership with female head of the family to promote women empowerment"
     ],
-    "eligibility": { "maxIncome": 1800000, "occupation": [], "states": [] },
-    "documents": ["Aadhaar Card", "Income Certificate", "Property documents (if any)"],
+    "eligibility": {
+      "maxIncome": 1800000,
+      "occupation": [],
+      "states": []
+    },
+    "documents": [
+      "Aadhaar Card",
+      "Income Certificate",
+      "Property documents (if any)"
+    ],
     "applyUrl": "https://pmaymis.gov.in",
     "eligibilityCriteria": [
       "Beneficiary family must not own a permanent (Pucca) house anywhere in India in the name of any family member.",
@@ -49,8 +57,17 @@
       "Direct benefit transfer (DBT) directly into Aadhaar-seeded bank accounts",
       "Covers all landholding farmer families regardless of land size"
     ],
-    "eligibility": { "occupation": ["farmer"], "states": [] },
-    "documents": ["Aadhaar Card", "Land records", "Bank passbook"],
+    "eligibility": {
+      "occupation": [
+        "farmer"
+      ],
+      "states": []
+    },
+    "documents": [
+      "Aadhaar Card",
+      "Land records",
+      "Bank passbook"
+    ],
     "applyUrl": "https://pmkisan.gov.in",
     "eligibilityCriteria": [
       "All small and marginal landholder farmer families who own cultivable land.",
@@ -87,8 +104,18 @@
       "Low processing fees and flexible repayment periods up to 5 years",
       "Mudra Card provided for easy working capital cash withdrawals"
     ],
-    "eligibility": { "occupation": ["msme", "startup"], "states": [] },
-    "documents": ["Business plan", "Aadhaar Card", "Bank account details"],
+    "eligibility": {
+      "occupation": [
+        "msme",
+        "startup"
+      ],
+      "states": []
+    },
+    "documents": [
+      "Business plan",
+      "Aadhaar Card",
+      "Bank account details"
+    ],
     "applyUrl": "https://www.mudra.org.in",
     "eligibilityCriteria": [
       "Any Indian citizen who has a business plan for a non-farm sector income-generating activity.",
@@ -125,8 +152,16 @@
       "Minimum deposit of just Rs. 250 per year, making it affordable for everyone",
       "Partial withdrawal allowed for higher education expenses after the girl turns 18"
     ],
-    "eligibility": { "gender": "female", "maxAge": 10, "occupation": [], "states": [] },
-    "documents": ["Girl child's birth certificate", "Guardian's ID proof"],
+    "eligibility": {
+      "gender": "female",
+      "maxAge": 10,
+      "occupation": [],
+      "states": []
+    },
+    "documents": [
+      "Girl child's birth certificate",
+      "Guardian's ID proof"
+    ],
     "applyUrl": "https://www.nsiindia.gov.in",
     "eligibilityCriteria": [
       "Account can only be opened by a natural parent or legal guardian in the name of a girl child.",
@@ -163,8 +198,15 @@
       "No cap on family size, age of members, or gender of the beneficiaries",
       "Covers up to 3 days of pre-hospitalization and 15 days of post-hospitalization costs (including medicines)"
     ],
-    "eligibility": { "maxIncome": 250000, "occupation": [], "states": [] },
-    "documents": ["Aadhaar Card", "Ration Card / SECC ID"],
+    "eligibility": {
+      "maxIncome": 250000,
+      "occupation": [],
+      "states": []
+    },
+    "documents": [
+      "Aadhaar Card",
+      "Ration Card / SECC ID"
+    ],
     "applyUrl": "https://pmjay.gov.in",
     "eligibilityCriteria": [
       "Families listed under the Socio-Economic Caste Census (SECC) database.",
@@ -201,8 +243,19 @@
       "Placement assistance, job fairs, and entrepreneurship guidance support",
       "Pravasi Kaushal Vikas Yojana option for overseas job seekers"
     ],
-    "eligibility": { "minAge": 15, "maxAge": 45, "occupation": ["student", "unemployed"], "states": [] },
-    "documents": ["Aadhaar Card", "Educational certificates"],
+    "eligibility": {
+      "minAge": 15,
+      "maxAge": 45,
+      "occupation": [
+        "student",
+        "unemployed"
+      ],
+      "states": []
+    },
+    "documents": [
+      "Aadhaar Card",
+      "Educational certificates"
+    ],
     "applyUrl": "https://www.skillindia.gov.in",
     "eligibilityCriteria": [
       "Unemployed youth, school dropouts, or college graduates seeking employability skills.",
@@ -239,8 +292,16 @@
       "80% rebate on patent filing fees and 50% rebate on trademark applications",
       "Easy winding up process (within 90 days) under the Insolvency Code"
     ],
-    "eligibility": { "occupation": ["startup"], "states": [] },
-    "documents": ["Certificate of Incorporation", "Business description"],
+    "eligibility": {
+      "occupation": [
+        "startup"
+      ],
+      "states": []
+    },
+    "documents": [
+      "Certificate of Incorporation",
+      "Business description"
+    ],
     "applyUrl": "https://www.startupindia.gov.in",
     "eligibilityCriteria": [
       "The company must be incorporated as a Private Limited, LL Partnership, or Registered Partnership.",
@@ -277,8 +338,16 @@
       "Maturity corpus handed over to the nominee after both subscriber and spouse pass away",
       "Auto-debit facility from savings bank account with flexible contribution upgrades"
     ],
-    "eligibility": { "minAge": 18, "maxAge": 40, "occupation": [], "states": [] },
-    "documents": ["Aadhaar Card", "Savings bank account"],
+    "eligibility": {
+      "minAge": 18,
+      "maxAge": 40,
+      "occupation": [],
+      "states": []
+    },
+    "documents": [
+      "Aadhaar Card",
+      "Savings bank account"
+    ],
     "applyUrl": "https://www.npscra.nsdl.co.in/scheme-details.php",
     "eligibilityCriteria": [
       "Must be an Indian citizen aged between 18 and 40 years.",
@@ -315,8 +384,17 @@
       "Cashback incentives up to Rs. 1,200 per year on conducting digital transactions",
       "No prepayment penalty for clearing the loan before the scheduled tenure"
     ],
-    "eligibility": { "occupation": ["self-employed", "street-vendor"], "states": [] },
-    "documents": ["Aadhaar Card", "Vending Certificate (Livelihood proof)"],
+    "eligibility": {
+      "occupation": [
+        "self-employed",
+        "street-vendor"
+      ],
+      "states": []
+    },
+    "documents": [
+      "Aadhaar Card",
+      "Vending Certificate (Livelihood proof)"
+    ],
     "applyUrl": "https://pmsvanidhi.mohua.gov.in",
     "eligibilityCriteria": [
       "Street vendors vending in urban areas on or before March 24, 2020.",
@@ -353,8 +431,19 @@
       "Additional allowances provided for study tours, thesis typing, and disabled students",
       "Online direct bank transfer of scholarship amounts into students' bank accounts"
     ],
-    "eligibility": { "maxIncome": 250000, "occupation": ["student"], "states": [] },
-    "documents": ["Aadhaar Card", "Income Certificate", "Caste Certificate", "Fee Receipt"],
+    "eligibility": {
+      "maxIncome": 250000,
+      "occupation": [
+        "student"
+      ],
+      "states": []
+    },
+    "documents": [
+      "Aadhaar Card",
+      "Income Certificate",
+      "Caste Certificate",
+      "Fee Receipt"
+    ],
     "applyUrl": "https://scholarships.gov.in",
     "eligibilityCriteria": [
       "Must belong to Scheduled Caste (SC), Scheduled Tribe (ST), or Other Backward Class (OBC) categories.",
@@ -391,8 +480,17 @@
       "Interest-free loans available to purchase hot plates and pay for subsequent refills",
       "Distributions done directly to the female head of BPL/SECC households"
     ],
-    "eligibility": { "gender": "female", "maxIncome": 150000, "occupation": [], "states": [] },
-    "documents": ["Aadhaar Card", "Ration Card / SECC ID", "KYC Form"],
+    "eligibility": {
+      "gender": "female",
+      "maxIncome": 150000,
+      "occupation": [],
+      "states": []
+    },
+    "documents": [
+      "Aadhaar Card",
+      "Ration Card / SECC ID",
+      "KYC Form"
+    ],
     "applyUrl": "https://www.pmuy.gov.in",
     "eligibilityCriteria": [
       "Applicant must be a female resident of India aged 18 years or older.",
@@ -429,8 +527,19 @@
       "Toolkit incentive of Rs. 15,000 grant",
       "Collateral-free enterprise development loans up to Rs. 3 Lakh at 5% interest rate"
     ],
-    "eligibility": { "occupation": ["artisan", "self-employed"], "states": [] },
-    "documents": ["Aadhaar Card", "Bank Account Details", "Mobile Number", "Ration Card"],
+    "eligibility": {
+      "occupation": [
+        "artisan",
+        "self-employed"
+      ],
+      "states": []
+    },
+    "documents": [
+      "Aadhaar Card",
+      "Bank Account Details",
+      "Mobile Number",
+      "Ration Card"
+    ],
     "applyUrl": "https://pmvishwakarma.gov.in",
     "eligibilityCriteria": [
       "An artisan or craftsperson working with hands and tools in one of the 18 family-based traditional trades.",
@@ -467,8 +576,18 @@
       "Direct claim settlements credited directly into bank accounts",
       "Coverage for localized calamities like hailstorm, landslide, and inundation"
     ],
-    "eligibility": { "occupation": ["farmer"], "states": [] },
-    "documents": ["Land record (Khasra/Khatauni)", "Sowing certificate", "Aadhaar Card", "Bank passbook"],
+    "eligibility": {
+      "occupation": [
+        "farmer"
+      ],
+      "states": []
+    },
+    "documents": [
+      "Land record (Khasra/Khatauni)",
+      "Sowing certificate",
+      "Aadhaar Card",
+      "Bank passbook"
+    ],
     "applyUrl": "https://pmfby.gov.in",
     "eligibilityCriteria": [
       "All farmers including sharecroppers and tenant farmers growing notified crops in notified areas.",
@@ -504,8 +623,21 @@
       "Equal co-contribution by the Central Government directly into the pension fund",
       "Simple exit options with interest returns if subscriber exits early"
     ],
-    "eligibility": { "minAge": 18, "maxAge": 40, "maxIncome": 180000, "occupation": ["self-employed", "street-vendor"], "states": [] },
-    "documents": ["Aadhaar Card", "Savings bank account passbook", "Consent form for auto-debit"],
+    "eligibility": {
+      "minAge": 18,
+      "maxAge": 40,
+      "maxIncome": 180000,
+      "occupation": [
+        "self-employed",
+        "street-vendor"
+      ],
+      "states": []
+    },
+    "documents": [
+      "Aadhaar Card",
+      "Savings bank account passbook",
+      "Consent form for auto-debit"
+    ],
     "applyUrl": "https://maandhan.in",
     "eligibilityCriteria": [
       "Must be an unorganized worker aged between 18 and 40 years.",
@@ -542,8 +674,17 @@
       "Market linkages, branding support, and digital transaction guidance",
       "Drone pilot training (NaMo Drone Didi initiative) for agricultural spraying"
     ],
-    "eligibility": { "gender": "female", "occupation": [], "states": [] },
-    "documents": ["Aadhaar Card", "SHG registration details", "Ration Card", "Bank details"],
+    "eligibility": {
+      "gender": "female",
+      "occupation": [],
+      "states": []
+    },
+    "documents": [
+      "Aadhaar Card",
+      "SHG registration details",
+      "Ration Card",
+      "Bank details"
+    ],
     "applyUrl": "https://nrlm.gov.in",
     "eligibilityCriteria": [
       "Must be a resident woman member of an active Self Help Group (SHG) registered under NRLM.",
@@ -579,8 +720,17 @@
       "Direct auto-debit from linked savings bank account",
       "Simple enrollment without any medical examination required"
     ],
-    "eligibility": { "minAge": 18, "maxAge": 50, "occupation": [], "states": [] },
-    "documents": ["Aadhaar Card", "Savings bank account passbook", "Nominee details"],
+    "eligibility": {
+      "minAge": 18,
+      "maxAge": 50,
+      "occupation": [],
+      "states": []
+    },
+    "documents": [
+      "Aadhaar Card",
+      "Savings bank account passbook",
+      "Nominee details"
+    ],
     "applyUrl": "https://jansuraksha.gov.in",
     "eligibilityCriteria": [
       "All savings bank account holders aged between 18 and 50 years.",
@@ -617,8 +767,17 @@
       "Partial disability cover of Rs. 1 Lakh for loss of one eye/hand/foot",
       "Extremely affordable premium of just Rs. 20 per year"
     ],
-    "eligibility": { "minAge": 18, "maxAge": 70, "occupation": [], "states": [] },
-    "documents": ["Aadhaar Card", "Bank account details", "Nominee details"],
+    "eligibility": {
+      "minAge": 18,
+      "maxAge": 70,
+      "occupation": [],
+      "states": []
+    },
+    "documents": [
+      "Aadhaar Card",
+      "Bank account details",
+      "Nominee details"
+    ],
     "applyUrl": "https://jansuraksha.gov.in",
     "eligibilityCriteria": [
       "All savings bank account holders aged between 18 and 70 years.",
@@ -654,8 +813,14 @@
       "Overdraft facility up to Rs. 10,000 for eligible account holders",
       "Direct Benefit Transfer (DBT) eligibility for all government schemes"
     ],
-    "eligibility": { "occupation": [], "states": [] },
-    "documents": ["Aadhaar Card (or officially valid document)", "Passport photo"],
+    "eligibility": {
+      "occupation": [],
+      "states": []
+    },
+    "documents": [
+      "Aadhaar Card (or officially valid document)",
+      "Passport photo"
+    ],
     "applyUrl": "https://pmjdy.gov.in",
     "eligibilityCriteria": [
       "Any Indian citizen who does not hold a bank account.",
@@ -691,8 +856,16 @@
       "Lump sum fund of Rs. 10 Lakh handed over on attaining 23 years of age",
       "Free health insurance under PM-JAY up to 18 years with premium paid by PM-CARES"
     ],
-    "eligibility": { "maxAge": 18, "occupation": [], "states": [] },
-    "documents": ["Death certificates of parents", "Aadhaar Card of child", "Guardian details"],
+    "eligibility": {
+      "maxAge": 18,
+      "occupation": [],
+      "states": []
+    },
+    "documents": [
+      "Death certificates of parents",
+      "Aadhaar Card of child",
+      "Guardian details"
+    ],
     "applyUrl": "https://pmcaresforchildren.in",
     "eligibilityCriteria": [
       "Children who lost both parents or surviving parent during the period 11th March 2020 to 5th May 2022 due to COVID-19.",
@@ -728,8 +901,16 @@
       "Direct Benefit Transfer (DBT) directly into bank accounts linked with Aadhaar",
       "Encourages institutional deliveries and complete child immunization"
     ],
-    "eligibility": { "gender": "female", "occupation": [], "states": [] },
-    "documents": ["Mother's Aadhaar Card", "MCP Card (Mother & Child Protection Card)", "Birth Certificate of child"],
+    "eligibility": {
+      "gender": "female",
+      "occupation": [],
+      "states": []
+    },
+    "documents": [
+      "Mother's Aadhaar Card",
+      "MCP Card (Mother & Child Protection Card)",
+      "Birth Certificate of child"
+    ],
     "applyUrl": "https://pmmvy.wcd.gov.in",
     "eligibilityCriteria": [
       "Pregnant Women and Lactating Mothers (PW&LM) for their first or second child.",
@@ -752,5 +933,1381 @@
     "applyStartDate": "1st January 2017",
     "benefitDuration": "Pregnancy through 1 year post-delivery",
     "lastDateToApply": "Within 270 days of child birth"
+  },
+  {
+    "id": "pmpranam",
+    "name": "PM Programme for Restoration, Awareness, Nourishment and Amelioration of Mother Earth (PM-PRANAM)",
+    "ministry": "Ministry of Chemicals and Fertilizers",
+    "category": "Agriculture",
+    "description": "An initiative to incentivize States and Union Territories to promote alternative fertilizers and balanced use of chemical fertilizers, helping restore soil health.",
+    "benefits": [
+      "50% of the subsidy savings passed to States as financial grants",
+      "Grants can be used for asset creation, technological adoption, and organic manure distribution",
+      "Promotes bio-fertilizers and organic alternatives to improve crop quality",
+      "Reduces financial burden of chemical fertilizer import subsidies"
+    ],
+    "eligibility": {
+      "occupation": [
+        "farmer"
+      ],
+      "states": []
+    },
+    "documents": [
+      "State registration details",
+      "Soil test report (optional)"
+    ],
+    "applyUrl": "https://fert.nic.in",
+    "eligibilityCriteria": [
+      "Implemented at the State/UT level to benefit agricultural communities.",
+      "Farmers adopting natural/organic farming or reduced chemical fertilizer usage."
+    ],
+    "amountDetails": "Grants calculated based on 50% of the state's total chemical fertilizer subsidy savings in a fiscal year.",
+    "applicationSteps": [
+      "Farmers participate through local panchayat and cooperative society fertilizer distribution cards.",
+      "Purchase organic or alternative bio-fertilizers from registered outlets.",
+      "State departments log chemical reduction yields to claim central subsidy grants."
+    ],
+    "extraIntel": [
+      "Helpline: 011-23381551.",
+      "The scheme does not have a separate budget; it draws from chemical subsidy savings."
+    ],
+    "applicationPeriod": "Seasonal crop cycles",
+    "disbursementSchedule": "Annual central grants released to State treasury on verification of subsidy savings.",
+    "nextMilestoneDate": "Annual state audit review: April 2027",
+    "applyStartDate": "28th June 2023",
+    "benefitDuration": "Continuous participation",
+    "lastDateToApply": "No deadline (State-administered policy)"
+  },
+  {
+    "id": "pmposhan",
+    "name": "Pradhan Mantri Poshan Shakti Nirman (PM-POSHAN)",
+    "ministry": "Ministry of Education",
+    "category": "Education & Skills",
+    "description": "A centrally sponsored school meal program providing hot cooked meals to children in government and government-aided schools, improving nutritional status and attendance.",
+    "benefits": [
+      "Free hot cooked nutritious mid-day meals every school day",
+      "Covers children in pre-primary (Balvatika) and Classes 1 to 8",
+      "Nutritional norms: 450 calories/12g protein for primary; 700 calories/20g protein for upper primary",
+      "Promotes school enrollment, retention, and social socialization among children"
+    ],
+    "eligibility": {
+      "maxAge": 14,
+      "occupation": [
+        "student"
+      ],
+      "states": []
+    },
+    "documents": [
+      "School enrollment ID",
+      "Aadhaar Card of child (optional)"
+    ],
+    "applyUrl": "https://education.gov.in",
+    "eligibilityCriteria": [
+      "Children enrolled and attending government, government-aided, local body, or alternative education schools.",
+      "Aged between 5 and 14 years."
+    ],
+    "amountDetails": "Fully sponsored hot school meals daily. Nutritional quality checked regularly.",
+    "applicationSteps": [
+      "Enroll child in any government-run primary or upper primary school.",
+      "Child is automatically enrolled in the school mid-day meal program register.",
+      "Meals served daily during school recess hours."
+    ],
+    "extraIntel": [
+      "Education Helpdesk: 1800-110-001.",
+      "Enabling kitchen gardens in schools is encouraged to supplement fresh organic micro-nutrients."
+    ],
+    "applicationPeriod": "School academic year (June to April/May)",
+    "disbursementSchedule": "Daily meal distribution at school centers.",
+    "nextMilestoneDate": "Annual school health camps: November 2026",
+    "applyStartDate": "29th September 2021 (Revamped Mid-Day Meal)",
+    "benefitDuration": "Throughout enrollment up to Class 8",
+    "lastDateToApply": "On school admission enrollment"
+  },
+  {
+    "id": "pmshri",
+    "name": "PM Schools for Rising India (PM-SHRI)",
+    "ministry": "Ministry of Education",
+    "category": "Education & Skills",
+    "description": "A centrally sponsored scheme to showcase, develop, and upgrade over 14,500 schools across India into high-quality exemplar institutes embodying the National Education Policy (NEP) 2020.",
+    "benefits": [
+      "State-of-the-art smart classrooms, labs, library, and sports infrastructure",
+      "Eco-friendly school structures (solar panels, water harvesting, waste management)",
+      "Modern experiential learning methodologies and student assessment toolkits",
+      "Career counseling and entrepreneurship training guidance for older students"
+    ],
+    "eligibility": {
+      "occupation": [
+        "student"
+      ],
+      "states": []
+    },
+    "documents": [
+      "School Admission Certificate",
+      "Aadhaar Card"
+    ],
+    "applyUrl": "https://pmshrischools.education.gov.in",
+    "eligibilityCriteria": [
+      "Students enrolled in designated PM-SHRI exemplar schools selected by the Central and State governments.",
+      "Covers K-12 schooling levels."
+    ],
+    "amountDetails": "Fully funded educational infrastructure upgrades. No direct cash to students, but fully subsidized modern schooling.",
+    "applicationSteps": [
+      "Locate and select a designated PM-SHRI school in your district.",
+      "Apply for admission through standard school enrollment procedures.",
+      "Enrolled students automatically gain access to all upgraded infrastructure."
+    ],
+    "extraIntel": [
+      "PM-SHRI Portal Support: wts-pmshri@gov.in.",
+      "Schools are selected based on challenge-method bidding. Track if your local school is selected on the portal."
+    ],
+    "applicationPeriod": "Academic admission window (March to June)",
+    "disbursementSchedule": "Infrastructure fund tranches disbursed directly to school management committees annually.",
+    "nextMilestoneDate": "Phase 2 school selection list: October 2026",
+    "applyStartDate": "7th September 2022",
+    "benefitDuration": "Duration of school education",
+    "lastDateToApply": "Standard school admission deadline"
+  },
+  {
+    "id": "standupindia",
+    "name": "Stand-Up India Scheme",
+    "ministry": "Ministry of Finance",
+    "category": "Entrepreneurship",
+    "description": "Promotes entrepreneurship at the grassroots level by providing bank loans between Rs. 10 Lakh and Rs. 1 Crore to at least one SC/ST and one Woman borrower per bank branch.",
+    "benefits": [
+      "Collateral-free bank loans ranging from Rs. 10 Lakh to Rs. 1 Crore",
+      "Covers greenfield enterprise projects in manufacturing, services, or trading sectors",
+      "Credit Guarantee Fund coverage to secure loans without private guarantors",
+      "Up to 7 years repayment tenure with maximum 18 months moratorium"
+    ],
+    "eligibility": {
+      "minAge": 18,
+      "occupation": [
+        "msme",
+        "startup"
+      ],
+      "states": []
+    },
+    "documents": [
+      "Business plan",
+      "Caste Certificate (if SC/ST)",
+      "Address proof",
+      "Bank statements"
+    ],
+    "applyUrl": "https://www.standupmitra.in",
+    "eligibilityCriteria": [
+      "SC/ST and/or Female entrepreneurs aged above 18 years.",
+      "Only for greenfield (new) enterprise setups in non-farm sectors.",
+      "Borrower must hold at least 51% shareholding in case of non-individual enterprises."
+    ],
+    "amountDetails": "Loans between Rs. 10 Lakh to Rs. 1 Crore. Interest rate is lowest bank rate for category (MCLR + 3% + Tenor Premium).",
+    "applicationSteps": [
+      "Visit Stand-Up Mitra portal (standupmitra.in) and register as an entrepreneur.",
+      "Fill out the eligibility test and select your required handholding support (if any).",
+      "Submit your project plan online to connect with public/private banks.",
+      "Bank processes credit checks and issues the loan sanction letter."
+    ],
+    "extraIntel": [
+      "Stand-Up India Helpdesk: 1800-180-1111.",
+      "Ensure your project is a new (greenfield) unit. Existing business expansions are not eligible for this specific loan."
+    ],
+    "applicationPeriod": "Open year-round (Bank working days)",
+    "disbursementSchedule": "Disbursed in tranches based on project machinery purchase and civil work milestones.",
+    "nextMilestoneDate": "Credit guarantee limits refresh quarterly",
+    "applyStartDate": "5th April 2016",
+    "benefitDuration": "Up to 7 Years (Loan tenure)",
+    "lastDateToApply": "No deadline (Ongoing scheme)"
+  },
+  {
+    "id": "pmgatishakti",
+    "name": "PM Gati Shakti National Master Plan",
+    "ministry": "Ministry of Commerce and Industry",
+    "category": "Entrepreneurship",
+    "description": "A digital platform to coordinate integrated planning and coordinated execution of infrastructure connectivity projects (railways, roadways, shipping) across India, reducing logistics costs.",
+    "benefits": [
+      "Unified portal to plan logistics and infrastructure corridors",
+      "Reduces delays in project clearances and spatial data verification",
+      "Improves connectivity to industrial parks, manufacturing zones, and ports",
+      "Subsidized connectivity support benefits local businesses and exporters"
+    ],
+    "eligibility": {
+      "occupation": [
+        "msme",
+        "startup"
+      ],
+      "states": []
+    },
+    "documents": [
+      "Company GSTIN",
+      "Project layout (if applicable)"
+    ],
+    "applyUrl": "https://gatishakti.dpiit.gov.in",
+    "eligibilityCriteria": [
+      "Industrialists, infrastructure developers, logistics companies, and MSME clusters.",
+      "Registering projects seeking multimodal connectivity integration."
+    ],
+    "amountDetails": "Logistics cost reduction benefits. Multimodal infrastructure grants coordinate over Rs. 100 Lakh Crore central master plan.",
+    "applicationSteps": [
+      "Access the Gati Shakti portal and register your enterprise/MSME zone profile.",
+      "Submit requests or feedback regarding regional road/rail connectivity bottlenecks.",
+      "Logistics departments coordinate directly to resolve transport gaps."
+    ],
+    "extraIntel": [
+      "DPIIT Gati Shakti Desk: logistics-dpiit@gov.in.",
+      "Utilize the portal's GIS spatial mapping tool to find the nearest cargo hubs and railway sidings for your business."
+    ],
+    "applicationPeriod": "Open year-round",
+    "disbursementSchedule": "Infrastructure project funds cleared in stages through Cabinet Committee on Economic Affairs.",
+    "nextMilestoneDate": "Logistics policy updates scheduled: January 2027",
+    "applyStartDate": "13th October 2021",
+    "benefitDuration": "Continuous business infrastructure usage",
+    "lastDateToApply": "Ongoing (No deadline)"
+  },
+  {
+    "id": "pmdevine",
+    "name": "Prime Minister's Development Initiative for North Eastern Region (PM-DevINE)",
+    "ministry": "Ministry of Development of North Eastern Region",
+    "category": "Finance",
+    "description": "A 100% centrally funded scheme for infrastructure development, social development projects, and livelihood opportunities for youth and women in the North Eastern States.",
+    "benefits": [
+      "100% Central funding for infrastructure projects in NE states",
+      "Livelihood support grants for local youth and women enterprises",
+      "Upgraded regional roads, tourist centers, and digital connectivity",
+      "Supports local traditional bamboo, handicraft, and handloom clusters"
+    ],
+    "eligibility": {
+      "states": [
+        "Assam",
+        "Arunachal Pradesh",
+        "Manipur",
+        "Meghalaya",
+        "Mizoram",
+        "Nagaland",
+        "Sikkim",
+        "Tripura"
+      ]
+    },
+    "documents": [
+      "Resident Certificate (NE State)",
+      "Aadhaar Card",
+      "Project plan"
+    ],
+    "applyUrl": "https://mdoner.gov.in",
+    "eligibilityCriteria": [
+      "Resident citizens, local self-help groups, and youth startups located in the 8 North Eastern States.",
+      "Must propose projects aligned with regional development priorities."
+    ],
+    "amountDetails": "Lump sum project grants funded 100% by central budget. Individual livelihood startup grants up to Rs. 5 Lakh.",
+    "applicationSteps": [
+      "Submit project proposals through the state planning department or local DoNER portal.",
+      "Proposals are audited for regional connectivity and employment impact.",
+      "On approval, central grants are disbursed directly to project accounts."
+    ],
+    "extraIntel": [
+      "DoNER Helpline: 011-23022400.",
+      "Focus is given to projects that generate massive employment for local women and school dropouts."
+    ],
+    "applicationPeriod": "Annual project cycles (April to August)",
+    "disbursementSchedule": "Project funding released in installments matching civil construction milestones.",
+    "nextMilestoneDate": "Annual state project submissions: June 2026",
+    "applyStartDate": "12th October 2022",
+    "benefitDuration": "Duration of project execution (typically 2-4 years)",
+    "lastDateToApply": "August 31st annually"
+  },
+  {
+    "id": "svamitva",
+    "name": "SVAMITVA Scheme (Survey of Villages and Mapping with Improvised Technology)",
+    "ministry": "Ministry of Panchayati Raj",
+    "category": "Housing",
+    "description": "A collaborative scheme to map residential land property in rural areas using drone technology, providing 'Property Cards' (Title deeds) to rural household owners.",
+    "benefits": [
+      "Issuance of official Property Cards (Gharouni) establishing absolute ownership",
+      "Enables rural citizens to use their property as collateral for securing bank loans",
+      "Reduces property disputes and land mutation delays in villages",
+      "Enables Gram Panchayats to prepare scientific development and taxation plans"
+    ],
+    "eligibility": {
+      "occupation": [
+        "farmer",
+        "self-employed"
+      ],
+      "states": []
+    },
+    "documents": [
+      "Aadhaar Card",
+      "Ration Card",
+      "Village residency proof"
+    ],
+    "applyUrl": "https://svamitva.nic.in",
+    "eligibilityCriteria": [
+      "Rural property owners possessing residential houses built in the inhabited (Abadi) areas of villages.",
+      "Residing in states where SVAMITVA survey has been notified."
+    ],
+    "amountDetails": "Free drone survey and card generation. Property cards provided with zero survey cost to the land owner.",
+    "applicationSteps": [
+      "Drone survey schedules are announced locally by district administration/Panchayat.",
+      "Reside on-site to mark property boundaries (Chuna marking) with local revenue officials.",
+      "Draft mapping sheets are published for objections/corrections.",
+      "Collect printed Property Card from local panchayat or download digitally."
+    ],
+    "extraIntel": [
+      "Panchayati Raj Helpline: 1800-110-001.",
+      "Ensure all boundaries are clearly marked with lime (Chuna) during the drone flight to avoid mapping errors."
+    ],
+    "applicationPeriod": "Rolling village schedules notified by State revenue departments",
+    "disbursementSchedule": "Physical property cards handed over within 90 days of resolving mapping objections.",
+    "nextMilestoneDate": "Ongoing nationwide village drone flights",
+    "applyStartDate": "24th April 2020",
+    "benefitDuration": "Permanent property title validation",
+    "lastDateToApply": "Continuous (Scheduled district by district)"
+  },
+  {
+    "id": "pmjanman",
+    "name": "PM Janjati Adivasi Nyaya Maha Abhiyan (PM-JANMAN)",
+    "ministry": "Ministry of Tribal Affairs",
+    "category": "Healthcare",
+    "description": "An umbrella mission focusing on 11 critical interventions to uplift Particularly Vulnerable Tribal Groups (PVTGs) with housing, clean water, medical access, and skill training.",
+    "benefits": [
+      "Assured permanent houses under PMAY-Gramin with increased Rs. 2.39 Lakh assistance",
+      "Connecting isolated tribal settlements with all-weather metalled roads",
+      "Free medical camps, mobile health units, and Ayushman Bharat card enrollments",
+      "Skill development centers and Van Dhan Vikas Kendras for forest produce processing"
+    ],
+    "eligibility": {
+      "occupation": [
+        "farmer",
+        "artisan"
+      ],
+      "states": []
+    },
+    "documents": [
+      "Scheduled Tribe (ST) Certificate",
+      "Aadhaar Card",
+      "Resident details"
+    ],
+    "applyUrl": "https://tribal.nic.in",
+    "eligibilityCriteria": [
+      "Families belonging to Particularly Vulnerable Tribal Groups (PVTGs) listed by the government.",
+      "Residing in identified isolated tribal habitations."
+    ],
+    "amountDetails": "Free housing, clean water tap connections, solar lighting kits, and medical coverage up to Rs. 5 Lakh/year.",
+    "applicationSteps": [
+      "District special officers conduct village-level survey verification camps.",
+      "Tribal beneficiaries are enrolled via offline biometric systems.",
+      "PMAY housing grants and solar lighting kits are dispatched directly to the settlement."
+    ],
+    "extraIntel": [
+      "Tribal Affairs Support: 011-23381652.",
+      "Mobile network vans are dispatched regularly to tribal hamlets to issue on-the-spot caste certificates."
+    ],
+    "applicationPeriod": "Open year-round",
+    "disbursementSchedule": "Housing and infrastructure funds managed and disbursed directly by district officers to suppliers.",
+    "nextMilestoneDate": "Winter health camp cycle: December 2026",
+    "applyStartDate": "15th November 2023",
+    "benefitDuration": "Permanent settlement rehabilitation support",
+    "lastDateToApply": "No deadline (Continuous reach-out)"
+  },
+  {
+    "id": "pmebussewa",
+    "name": "PM-eBus Sewa Scheme",
+    "ministry": "Ministry of Housing and Urban Affairs",
+    "category": "Housing",
+    "description": "An initiative to deploy 10,000 electric buses in 169 selected cities across India, upgrading public transit networks and promoting green, pollution-free urban mobility.",
+    "benefits": [
+      "Deployment of modern, air-conditioned eco-friendly electric buses in tier-2 and tier-3 cities",
+      "Creation of dedicated charging infrastructure and bus depot substations",
+      "Provides safe, cheap, and clean public transport option for citizens",
+      "Generates green-jobs in bus operations, charging, and maintenance"
+    ],
+    "eligibility": {
+      "occupation": [],
+      "states": []
+    },
+    "documents": [
+      "N/A (Public transit service benefit)"
+    ],
+    "applyUrl": "https://mohua.gov.in",
+    "eligibilityCriteria": [
+      "Beneficiary public residing in targeted cities with a population of 3 Lakh to 40 Lakh.",
+      "Open to all citizens."
+    ],
+    "amountDetails": "Public infrastructure scheme funded jointly by center and states. Affordable bus ticket fares set by local municipalities.",
+    "applicationSteps": [
+      "Access e-bus services at municipal bus stops in selected cities.",
+      "Use local digital smart cards or mobile transit apps to purchase tickets."
+    ],
+    "extraIntel": [
+      "MoHUA Public Transit Desk: support-ebus@gov.in.",
+      "Prioritizes cities lacking organized public bus transport services. Check if your city is listed on the MoHUA portal."
+    ],
+    "applicationPeriod": "Continuous transit operations",
+    "disbursementSchedule": "Operational subsidies disbursed to bus operators monthly based on kilometers run.",
+    "nextMilestoneDate": "Phase 2 city rollouts: March 2027",
+    "applyStartDate": "16th August 2023",
+    "benefitDuration": "Continuous public utility service",
+    "lastDateToApply": "No deadline"
+  },
+  {
+    "id": "pmbjp",
+    "name": "Pradhan Mantri Bhartiya Janaushadhi Pariyojana (PMBJP)",
+    "ministry": "Ministry of Chemicals and Fertilizers",
+    "category": "Healthcare",
+    "description": "An initiative to provide high-quality generic medicines at highly affordable prices to all citizens through dedicated retail outlets known as Janaushadhi Kendras.",
+    "benefits": [
+      "High-quality generic medicines sold at 50% to 90% cheaper than branded equivalents",
+      "Sourced from WHO-GMP compliant manufacturers to guarantee therapeutic efficacy",
+      "Over 10,000 Janaushadhi Kendras active across India for easy access",
+      "Includes surgical items, health supplements, and sanitary napkins (Suvidha at Rs. 1)"
+    ],
+    "eligibility": {
+      "occupation": [],
+      "states": []
+    },
+    "documents": [
+      "Doctor's prescription (required to buy prescription drugs)"
+    ],
+    "applyUrl": "https://janaushadhi.gov.in",
+    "eligibilityCriteria": [
+      "Open to all Indian citizens looking for affordable healthcare medicines.",
+      "Prescription from a registered medical practitioner is required for regulated drugs."
+    ],
+    "amountDetails": "50%-90% savings on medicine bills. Generic medicines pricing managed strictly by NPPA.",
+    "applicationSteps": [
+      "Locate your nearest Janaushadhi Kendra using the 'Janaushadhi Sugam' mobile app.",
+      "Present your doctor's prescription detailing generic names at the counter.",
+      "Purchase quality generic medicines at printed subsidized prices."
+    ],
+    "extraIntel": [
+      "Janaushadhi National Toll-free: 1800-180-8080.",
+      "Ask your doctor to write generic names of medicines on prescriptions to make buying from Janaushadhi outlets easier."
+    ],
+    "applicationPeriod": "Open year-round",
+    "disbursementSchedule": "Subsidized sales settled instantly at counter checkout.",
+    "nextMilestoneDate": "Ongoing shop network expansions",
+    "applyStartDate": "25th November 2008 (Revamped in 2015)",
+    "benefitDuration": "Continuous access",
+    "lastDateToApply": "No deadline"
+  },
+  {
+    "id": "daynrlm",
+    "name": "Deendayal Antyodaya Yojana - National Rural Livelihoods Mission (DAY-NRLM)",
+    "ministry": "Ministry of Rural Development",
+    "category": "Women & Girl Child",
+    "description": "Organizes rural poor women into Self Help Groups (SHGs) and provides them with continuous financial support, skill training, and bank linkages to build diversified livelihoods.",
+    "benefits": [
+      "Access to Revolving Fund (RF) of Rs. 20,000 and Community Investment Fund (CIF)",
+      "Interest subvention on bank loans reducing interest rates to 7% (or 4% on prompt repayment)",
+      "Extensive skill training for starting dairy, agriculture, sewing, or retail trades",
+      "Direct market access through regional SARAS fairs and online platforms"
+    ],
+    "eligibility": {
+      "gender": "female",
+      "occupation": [],
+      "states": []
+    },
+    "documents": [
+      "Ration Card",
+      "Aadhaar Card",
+      "SHG membership register copy"
+    ],
+    "applyUrl": "https://nrlm.gov.in",
+    "eligibilityCriteria": [
+      "Rural women belonging to BPL or economically weaker households.",
+      "Must be a member of a Self Help Group (SHG) comprising 10-20 women."
+    ],
+    "amountDetails": "Revolving Fund: Rs. 15,000 to Rs. 20,000 per SHG. Community Investment Fund: Rs. 1.10 Lakh per SHG. Direct low-interest loans up to Rs. 5 Lakh.",
+    "applicationSteps": [
+      "Form or join a local Self Help Group (SHG) with 10-20 neighborhood women.",
+      "Open a joint savings bank account for the SHG and maintain regular records.",
+      "Apply for the Revolving Fund and bank credit linkages through your village coordinator.",
+      "Utilize funds collectively for micro-enterprise or household emergencies."
+    ],
+    "extraIntel": [
+      "DAY-NRLM National Helpdesk: 1800-110-120.",
+      "Ensure the SHG holds regular weekly meetings and maintains clean ledger books to qualify for bank loan linkages."
+    ],
+    "applicationPeriod": "Open year-round",
+    "disbursementSchedule": "Funds credited directly to SHG savings bank accounts upon local federation verification.",
+    "nextMilestoneDate": "SHG audit review cycle: March 2027",
+    "applyStartDate": "3rd June 2011 (Aajeevika)",
+    "benefitDuration": "Ongoing SHG credit lines",
+    "lastDateToApply": "No deadline (Continuous intakes)"
+  },
+  {
+    "id": "daynulm",
+    "name": "Deendayal Antyodaya Yojana - National Urban Livelihoods Mission (DAY-NULM)",
+    "ministry": "Ministry of Housing and Urban Affairs",
+    "category": "Finance",
+    "description": "Aims to reduce poverty of urban poor households by enabling them to access gainful self-employment and skilled wage employment opportunities, and providing shelters for urban homeless.",
+    "benefits": [
+      "Subsidized bank loans for self-employment (up to Rs. 2 Lakh for individuals, Rs. 10 Lakh for groups)",
+      "Free skill training in multiple trades under EST&P component",
+      "Interest subvention of 5% to 7% per annum on timely loan repayments",
+      "Upgraded street vending zones and support for urban homeless shelters"
+    ],
+    "eligibility": {
+      "maxIncome": 100000,
+      "occupation": [
+        "self-employed",
+        "street-vendor"
+      ],
+      "states": []
+    },
+    "documents": [
+      "Urban BPL Certificate",
+      "Aadhaar Card",
+      "Bank Account Details",
+      "Business proposal"
+    ],
+    "applyUrl": "https://nulm.gov.in",
+    "eligibilityCriteria": [
+      "Urban poor, street vendors, ragpickers, and homeless citizens.",
+      "Annual family income must not exceed Rs. 1,00,000."
+    ],
+    "amountDetails": "Individual loans: up to Rs. 2 Lakh. Group loans: up to Rs. 10 Lakh. Interest subvention reduces effective loan interest rates.",
+    "applicationSteps": [
+      "Apply through the local Urban Local Body (ULB) office or online NULM portal.",
+      "Submit trade choice for free skill training or upload business plan for self-employment loan.",
+      "ULB task force screens applications and sponsors them to commercial banks.",
+      "On approval, bank releases loan tranches directly to vendor accounts."
+    ],
+    "extraIntel": [
+      "NULM Helpdesk: support-nulm@gov.in.",
+      "Shelters for the homeless under NULM provide free clean bedding, water, and sanitation facilities year-round. Check location mapping on the site."
+    ],
+    "applicationPeriod": "Open year-round",
+    "disbursementSchedule": "Training fees paid to centers; self-employment loans disbursed within 15-30 days of bank approval.",
+    "nextMilestoneDate": "Urban skill batch allocations: Monthly",
+    "applyStartDate": "24th September 2013",
+    "benefitDuration": "Ongoing livelihood loans",
+    "lastDateToApply": "No deadline"
+  },
+  {
+    "id": "spmrm",
+    "name": "Shyama Prasad Mukherji Rurban Mission (SPMRM)",
+    "ministry": "Ministry of Rural Development",
+    "category": "Housing",
+    "description": "Focuses on developing clusters of villages that preserve the character of rural life while offering urban facilities like piped water, 24/7 power, digital connectivity, and hospitals.",
+    "benefits": [
+      "Upgrades rural clusters with smart classrooms, sports arenas, and parks",
+      "Piped drinking water supply, paved roads, and modern sewage infrastructure",
+      "Local agro-processing, warehousing, and cold storage units to support farmers",
+      "Upgraded primary health centers and vocational skill centers inside villages"
+    ],
+    "eligibility": {
+      "occupation": [
+        "farmer",
+        "artisan"
+      ],
+      "states": []
+    },
+    "documents": [
+      "Proof of village residency",
+      "Aadhaar Card"
+    ],
+    "applyUrl": "https://rurban.gov.in",
+    "eligibilityCriteria": [
+      "Residents of village clusters selected under the Rurban program.",
+      "Covers over 300 clusters nationwide."
+    ],
+    "amountDetails": "Direct public infrastructure development. Critical Gap Funding (CGF) up to 30% of project cost funded by Center.",
+    "applicationSteps": [
+      "Village panchayats submit cluster development projects to State government.",
+      "Rurban nodal agencies approve master layouts for transport, health, and solar utilities.",
+      "Upgraded facilities are managed collectively by the Rurban Cluster committee."
+    ],
+    "extraIntel": [
+      "Rurban Helpdesk: rurban@gov.in.",
+      "Check the Rurban dashboard to see if your village cluster has been selected for smart infrastructure upgrades."
+    ],
+    "applicationPeriod": "Continuous project cycles",
+    "disbursementSchedule": "CGF grants released in tranches matching infrastructure construction schedules.",
+    "nextMilestoneDate": "Cluster status audit: December 2026",
+    "applyStartDate": "21st February 2016",
+    "benefitDuration": "Permanent community infrastructure benefits",
+    "lastDateToApply": "No deadline"
+  },
+  {
+    "id": "amrut",
+    "name": "Atal Mission for Rejuvenation and Urban Transformation (AMRUT)",
+    "ministry": "Ministry of Housing and Urban Affairs",
+    "category": "Housing",
+    "description": "A national mission to ensure that every urban household has access to a tap with an assured supply of water, a sewerage connection, and upgraded green spaces/parks.",
+    "benefits": [
+      "Piped household drinking water tap connections to urban households",
+      "Modern storm-water drainage systems to reduce urban street flooding",
+      "Upgraded municipal parks, walking tracks, and children's playgrounds",
+      "Promotes clean public transport and pedestrian-friendly pathways"
+    ],
+    "eligibility": {
+      "occupation": [],
+      "states": []
+    },
+    "documents": [
+      "Property tax receipt",
+      "Water connection application form"
+    ],
+    "applyUrl": "https://amrut.mohua.gov.in",
+    "eligibilityCriteria": [
+      "Residents of over 500 notified cities and towns across India.",
+      "Open to all household property owners."
+    ],
+    "amountDetails": "Free or highly subsidized household tap and sewerage connection installation.",
+    "applicationSteps": [
+      "Submit a tap/sewerage connection application to your local municipal corporation.",
+      "Provide property address verification and identity details.",
+      "Municipal engineers verify on-site piping and install the connection."
+    ],
+    "extraIntel": [
+      "AMRUT Support: support-amrut@gov.in.",
+      "Check with your local ward office if your colony is covered under the current sewer network upgrade phase."
+    ],
+    "applicationPeriod": "Open year-round",
+    "disbursementSchedule": "Municipal plumbing works scheduled matching neighborhood project cycles.",
+    "nextMilestoneDate": "AMRUT 2.0 city water balance audits: November 2026",
+    "applyStartDate": "25th June 2015",
+    "benefitDuration": "Permanent utility service",
+    "lastDateToApply": "No deadline"
+  },
+  {
+    "id": "smartcities",
+    "name": "Smart Cities Mission",
+    "ministry": "Ministry of Housing and Urban Affairs",
+    "category": "Housing",
+    "description": "An urban renewal program to develop 100 cities across India, making them citizen-friendly, technologically advanced, and sustainable through smart solutions.",
+    "benefits": [
+      "24/7 smart water and electricity grid tracking systems",
+      "Integrated Command and Control Centers (ICCC) for city safety and traffic management",
+      "Upgraded smart roads, public Wi-Fi zones, and green utility parks",
+      "Improved municipal e-governance services for quick certificate issues"
+    ],
+    "eligibility": {
+      "occupation": [],
+      "states": []
+    },
+    "documents": [
+      "N/A (Urban citizen benefit)"
+    ],
+    "applyUrl": "https://smartcities.gov.in",
+    "eligibilityCriteria": [
+      "Residents and businesses operating in the 100 designated Smart Cities.",
+      "Open to all urban citizens."
+    ],
+    "amountDetails": "Infrastructure master plan coordinate over Rs. 2,00,000 Crore investment.",
+    "applicationSteps": [
+      "Access municipal services digitally via your smart city's official e-governance app.",
+      "Register civic complaints or request utility services directly on the portal."
+    ],
+    "extraIntel": [
+      "Smart Cities Mission Desk: smartcities@gov.in.",
+      "Use the local Smart City Portal to track live bus schedules, book parking spots, or apply for trade licenses."
+    ],
+    "applicationPeriod": "Continuous infrastructure upgrades",
+    "disbursementSchedule": "Infrastructure grants released to Special Purpose Vehicles (SPV) matching development milestones.",
+    "nextMilestoneDate": "Evaluation of smart corridor completions: June 2026",
+    "applyStartDate": "25th June 2015",
+    "benefitDuration": "Permanent public utility upgrades",
+    "lastDateToApply": "No deadline"
+  },
+  {
+    "id": "sbmurban",
+    "name": "Swachh Bharat Mission - Urban (SBM-U)",
+    "ministry": "Ministry of Housing and Urban Affairs",
+    "category": "Healthcare",
+    "description": "Aims to make all cities Open Defecation Free (ODF), achieve 100% scientific solid waste management, and construct individual household and community toilets.",
+    "benefits": [
+      "Financial subsidy of Rs. 4,000 to Rs. 12,000 to construct Individual Household Latrines (IHHL)",
+      "Access to clean Community Toilets (CT) and Public Toilets (PT) in commercial zones",
+      "Efficient door-to-door waste collection and segregated garbage transport services",
+      "Swachhata App access for quick waste dump cleaning reports"
+    ],
+    "eligibility": {
+      "occupation": [],
+      "states": []
+    },
+    "documents": [
+      "Aadhaar Card",
+      "Bank account passbook",
+      "Land ownership proof (or declaration)"
+    ],
+    "applyUrl": "https://sbmurban.org",
+    "eligibilityCriteria": [
+      "Urban households lacking a toilet facility inside their residence.",
+      "Must have space to construct a toilet or apply for community toilet access."
+    ],
+    "amountDetails": "Subsidy grant up to Rs. 4,000 (Central share) plus state matching (typically totaling Rs. 8,000 to Rs. 12,000) paid directly in two tranches.",
+    "applicationSteps": [
+      "Register on the SBM-Urban portal (sbmurban.org) under IHHL application.",
+      "Upload photo of applicant and front page of bank passbook.",
+      "Local inspectors verify on-site space and approve the first construction tranche.",
+      "Upload photo of completed toilet structure to claim the second tranche."
+    ],
+    "extraIntel": [
+      "SBM-U Toll-free: 1969.",
+      "Use the Swachhata mobile app to take photos of garbage piles in your neighborhood; municipal teams are mandated to resolve them within 24 hours."
+    ],
+    "applicationPeriod": "Open year-round",
+    "disbursementSchedule": "Tranche 1 (50% value) paid at verification; Tranche 2 (balance) paid on completion.",
+    "nextMilestoneDate": "City cleanliness rankings (Swachh Survekshan): October 2026",
+    "applyStartDate": "2nd October 2014",
+    "benefitDuration": "Permanent household asset benefit",
+    "lastDateToApply": "No deadline"
+  },
+  {
+    "id": "sbmgramin",
+    "name": "Swachh Bharat Mission - Gramin (SBM-G)",
+    "ministry": "Ministry of Jal Shakti",
+    "category": "Healthcare",
+    "description": "Focuses on rural sanitation, providing financial incentives to rural households to construct individual toilets, and managing solid and liquid waste in villages.",
+    "benefits": [
+      "Financial assistance of Rs. 12,000 to construct an Individual Household Latrine (IHHL)",
+      "Covers costs of twin-pit construction ensuring waste decomposes safely on-site",
+      "Promotes clean village surroundings with drainage and compost pits",
+      "Supports women safety by eliminating the need for open defecation"
+    ],
+    "eligibility": {
+      "occupation": [
+        "farmer",
+        "self-employed"
+      ],
+      "states": []
+    },
+    "documents": [
+      "Aadhaar Card",
+      "Bank Account Details",
+      "Ration Card"
+    ],
+    "applyUrl": "https://swachhbharatmission.ddws.gov.in",
+    "eligibilityCriteria": [
+      "Rural households lacking a domestic toilet.",
+      "Includes BPL families, and APL families belonging to SC/ST, small/marginal farmers, landless laborers, and physically challenged."
+    ],
+    "amountDetails": "Financial grant incentive of Rs. 12,000 paid directly into the beneficiary's bank account.",
+    "applicationSteps": [
+      "Submit application to local Gram Panchayat secretary or apply online on SBM-G portal.",
+      "Panchayat reviews eligibility and conducts physical space check.",
+      "Construct toilet using prescribed twin-pit design guidelines.",
+      "Biometric upload of geotagged photo of completed toilet triggers subsidy release."
+    ],
+    "extraIntel": [
+      "SBM-Gramin Helpdesk: ddws-sbm@gov.in.",
+      "Twin-pit design is recommended: it converts waste into rich, dry manure over 12 months, which can be safely used in farming."
+    ],
+    "applicationPeriod": "Open year-round",
+    "disbursementSchedule": "One-time direct bank transfer (DBT) post-construction geotagged photo verification.",
+    "nextMilestoneDate": "Village ODF Plus audits: December 2026",
+    "applyStartDate": "2nd October 2014",
+    "benefitDuration": "Permanent household asset benefit",
+    "lastDateToApply": "No deadline"
+  },
+  {
+    "id": "jaljeevan",
+    "name": "Jal Jeevan Mission (Har Ghar Jal)",
+    "ministry": "Ministry of Jal Shakti",
+    "category": "Healthcare",
+    "description": "A national initiative to provide safe and adequate drinking water through individual Functional Household Tap Connections (FHTC) to all households in rural India by 2024 (extended).",
+    "benefits": [
+      "Assured clean drinking water tap connection inside your rural home",
+      "Guarantees minimum 55 liters of safe water per person per day",
+      "Regular testing of water quality managed by local village water committees",
+      "Relieves rural women from the chore of walking long distances for water"
+    ],
+    "eligibility": {
+      "occupation": [
+        "farmer"
+      ],
+      "states": []
+    },
+    "documents": [
+      "Aadhaar Card",
+      "Land or resident proof"
+    ],
+    "applyUrl": "https://jaljeevanmission.gov.in",
+    "eligibilityCriteria": [
+      "Rural households situated in village habitations across India.",
+      "Open to all village resident homes."
+    ],
+    "amountDetails": "Free tap installation. Subsidized water supply maintenance managed locally by Paani Samitis.",
+    "applicationSteps": [
+      "Panchayat Paani Samiti registers household requirements.",
+      "Water department lays public distribution pipes in village streets.",
+      "Tap connection is fitted inside the house and water quality is tested."
+    ],
+    "extraIntel": [
+      "Jal Jeevan Mission Toll-free: 1800-11-0707.",
+      "Locals are trained to test water quality using field testing kits (FTKs). Ask your local Anganwadi worker to run checks."
+    ],
+    "applicationPeriod": "Ongoing village pipeline expansions",
+    "disbursementSchedule": "Subsidized tap installation executed on pipeline completion.",
+    "nextMilestoneDate": "Nationwide water audit updates: October 2026",
+    "applyStartDate": "15th August 2019",
+    "benefitDuration": "Permanent clean water utility",
+    "lastDateToApply": "No deadline"
+  },
+  {
+    "id": "pmkusum",
+    "name": "PM-KUSUM (Kisan Urja Suraksha evam Utthaan Mahabhiyan)",
+    "ministry": "Ministry of New and Renewable Energy",
+    "category": "Agriculture",
+    "description": "Allows farmers to install solar water pumps, grid-connected solar power plants, and solarize existing diesel pumps, ensuring clean energy and additional farm income.",
+    "benefits": [
+      "60% government subsidy (30% center, 30% state) on solar water pumps",
+      "Farmers only pay 10% of pump cost; remaining 30% available as bank loan",
+      "Provides reliable daytime irrigation power, replacing expensive diesel fuel",
+      "Farmers can sell excess solar power back to the grid for extra income"
+    ],
+    "eligibility": {
+      "occupation": [
+        "farmer"
+      ],
+      "states": []
+    },
+    "documents": [
+      "Land registry copy",
+      "Aadhaar Card",
+      "Bank Account Details",
+      "Water source certificate"
+    ],
+    "applyUrl": "https://mnre.gov.in/pm-kusum",
+    "eligibilityCriteria": [
+      "Individual farmers, group of farmers, water user associations, and cooperatives.",
+      "Must own cultivable land with a stable water source (well/borewell)."
+    ],
+    "amountDetails": "60% direct subsidy grant on solar pump cost. Up to 30% loan option. Excess power sold to DISCOM at notified tariff.",
+    "applicationSteps": [
+      "Register on your State's renewable energy agency portal (linked via mnre.gov.in).",
+      "Submit land maps, borewell depth details, and select solar pump capacity.",
+      "Pay your 10% farmer share online upon allocation.",
+      "Nodal agency installs the solar pump and registers DISCOM power feed."
+    ],
+    "extraIntel": [
+      "PM-KUSUM Support: 1800-180-3333.",
+      "Beware of fake websites. Only apply through official state government renewable portals listed on the MNRE main page."
+    ],
+    "applicationPeriod": "Annual allocations released state by state",
+    "disbursementSchedule": "Pump installation and setup completed within 45-60 days of paying the farmer share.",
+    "nextMilestoneDate": "Solar pump batch releases: September 2026",
+    "applyStartDate": "8th March 2019",
+    "benefitDuration": "25 Years (Solar panel warranty period)",
+    "lastDateToApply": "Subject to state allocation targets"
+  },
+  {
+    "id": "pmmsy",
+    "name": "Pradhan Mantri Matsya Sampada Yojana (PMMSY)",
+    "ministry": "Ministry of Fisheries, Animal Husbandry and Dairying",
+    "category": "Agriculture",
+    "description": "A flagship scheme to bring about the 'Blue Revolution' through sustainable development of the fisheries sector, upgrading infrastructure, and supporting fishers.",
+    "benefits": [
+      "Financial assistance up to 40% (general) or 60% (SC/ST/Women) to start aquaculture units",
+      "Subsidies for buying deep-sea fishing vessels, motorboats, and bio-floc ponds",
+      "Insurance cover for fishers and boats against accidents and natural disasters",
+      "Support for cold storage, ice plants, and fish retail markets"
+    ],
+    "eligibility": {
+      "occupation": [
+        "farmer",
+        "self-employed"
+      ],
+      "states": []
+    },
+    "documents": [
+      "Fish farming license",
+      "Aadhaar Card",
+      "Bank details",
+      "Project report"
+    ],
+    "applyUrl": "https://pmmsy.dof.gov.in",
+    "eligibilityCriteria": [
+      "Fishers, fish farmers, fish workers, self-help groups, and cooperative societies.",
+      "Must possess active fish farming license or own suitable water body land."
+    ],
+    "amountDetails": "40% (General) or 60% (Women/SC/ST) subsidy grant on capital costs. Accident insurance up to Rs. 5 Lakh.",
+    "applicationSteps": [
+      "Submit project proposal to the local District Fisheries Office (DFO).",
+      "Enter design specs (e.g. pond size, bio-floc setup, boat capacity).",
+      "DFO conducts field inspections and sanctions the subsidy package.",
+      "Execute project and submit receipts to claim DBT subsidy transfer."
+    ],
+    "extraIntel": [
+      "Fisheries Helpdesk: 011-23380313.",
+      "The scheme promotes seaweed cultivation as an alternative livelihood for coastal women. Training is fully sponsored."
+    ],
+    "applicationPeriod": "Annual project cycles (May to August)",
+    "disbursementSchedule": "Subsidy released in tranches directly to bank accounts post-milestone audits.",
+    "nextMilestoneDate": "Coastal aquaculture allocations: June 2026",
+    "applyStartDate": "20th May 2020",
+    "benefitDuration": "Ongoing project cycles",
+    "lastDateToApply": "August 31st annually"
+  },
+  {
+    "id": "soilhealth",
+    "name": "Soil Health Card Scheme",
+    "ministry": "Ministry of Agriculture and Farmers Welfare",
+    "category": "Agriculture",
+    "description": "Provides printed cards to farmers containing details of soil nutrients (macro, micro) and recommendations on appropriate fertilizer dosages for their land to optimize yields.",
+    "benefits": [
+      "Free soil testing conducted by government labs every 2 years",
+      "Detailed report on 12 key soil parameters (Nitrogen, Phosphorus, pH, etc.)",
+      "Reduces excess fertilizer spending, improving soil health and crop yields",
+      "Customized crop-wise fertilizer dosage recommendations"
+    ],
+    "eligibility": {
+      "occupation": [
+        "farmer"
+      ],
+      "states": []
+    },
+    "documents": [
+      "Land survey number details",
+      "Aadhaar Card"
+    ],
+    "applyUrl": "https://soilhealth.dac.gov.in",
+    "eligibilityCriteria": [
+      "All landholding farmers across India who own cultivable land.",
+      "Open to all crop growers."
+    ],
+    "amountDetails": "100% free soil sample collection, laboratory analysis, and printed card dispatch.",
+    "applicationSteps": [
+      "Agriculture field officers collect soil samples from your farm plot.",
+      "Samples are analyzed in district soil testing laboratories.",
+      "Soil Health Card is printed and delivered directly to the farmer, or accessed on portal."
+    ],
+    "extraIntel": [
+      "Soil Health Portal Support: support-soil@gov.in.",
+      "Avoid sampling soil immediately after fertilizer application to get an accurate baseline report."
+    ],
+    "applicationPeriod": "Twice a year (Pre-Kharif and Pre-Rabi seasons)",
+    "disbursementSchedule": "Soil health cards printed and dispatched within 30 days of sample collection.",
+    "nextMilestoneDate": "Rabi sample testing cycle: October 2026",
+    "applyStartDate": "19th February 2015",
+    "benefitDuration": "Card valid for 2 Years (New testing recommended after)",
+    "lastDateToApply": "Continuous collection"
+  },
+  {
+    "id": "pkvy",
+    "name": "Paramparagat Krishi Vikas Yojana (PKVY)",
+    "ministry": "Ministry of Agriculture and Farmers Welfare",
+    "category": "Agriculture",
+    "description": "Promotes organic farming through a cluster-based approach, providing financial support to farmers for organic input production, certification, and marketing.",
+    "benefits": [
+      "Financial assistance of Rs. 50,000 per hectare over 3 years",
+      "Free organic certification under Participatory Guarantee System (PGS)",
+      "Subsidy for organic inputs (bio-fertilizers, vermicompost, botanical extracts)",
+      "Support for packaging, branding, and local marketing of organic produce"
+    ],
+    "eligibility": {
+      "occupation": [
+        "farmer"
+      ],
+      "states": []
+    },
+    "documents": [
+      "Land registry proof",
+      "Aadhaar Card",
+      "PGS Cluster registration form"
+    ],
+    "applyUrl": "https://dgap.gov.in",
+    "eligibilityCriteria": [
+      "Farmers willing to form clusters of 20 hectares (minimum 20-50 farmers) and adopt organic methods.",
+      "Must transition land from chemical to organic farming."
+    ],
+    "amountDetails": "Rs. 50,000 per hectare grant over 3 years, with Rs. 31,000 (62%) paid directly to farmers for organic inputs.",
+    "applicationSteps": [
+      "Form an organic farming cluster of 20-50 farmers in your village.",
+      "Register the cluster on the local organic portal under Participatory Guarantee System (PGS-India).",
+      "Attend local organic input preparation training.",
+      "Claim fertilizer input subsidies annually directly in your bank account."
+    ],
+    "extraIntel": [
+      "Organic Farming Helpdesk: organic-dac@gov.in.",
+      "Transitioning to organic takes 3 years to get full certification. Be patient and preserve crop records."
+    ],
+    "applicationPeriod": "Annual cluster registration window (April to June)",
+    "disbursementSchedule": "Direct bank transfer (DBT) released in annual installments over the 3-year certification cycle.",
+    "nextMilestoneDate": "PGS cluster audit audits: March 2027",
+    "applyStartDate": "11th April 2015",
+    "benefitDuration": "3 Years (Certification support cycle)",
+    "lastDateToApply": "June 30th annually"
+  },
+  {
+    "id": "pmksy",
+    "name": "Pradhan Mantri Krishi Sinchayee Yojana (PMKSY)",
+    "ministry": "Ministry of Agriculture and Farmers Welfare",
+    "category": "Agriculture",
+    "description": "Focuses on 'Per Drop More Crop' by promoting water-saving micro-irrigation systems (drip and sprinkler systems), optimizing farm water usage.",
+    "benefits": [
+      "Up to 55% (small/marginal farmers) or 45% (other farmers) subsidy on drip/sprinkler systems",
+      "Reduces water usage by up to 50% and improves fertilizer uptake efficiency",
+      "Subsidized construction of farm ponds, check dams, and water harvesting structures",
+      "Increases crop yield quality through precise moisture delivery"
+    ],
+    "eligibility": {
+      "occupation": [
+        "farmer"
+      ],
+      "states": []
+    },
+    "documents": [
+      "Land record (Khasra/Khatauni)",
+      "Borewell/Water Source details",
+      "Aadhaar Card",
+      "Quotation from registered dealer"
+    ],
+    "applyUrl": "https://pmksy.gov.in",
+    "eligibilityCriteria": [
+      "All landholder farmers possessing agricultural land with an active water source.",
+      "Must choose approved micro-irrigation systems from empaneled manufacturers."
+    ],
+    "amountDetails": "Subsidy grant covers 45%-55% of total system invoice value. Remaining paid by farmer or bank loan.",
+    "applicationSteps": [
+      "Apply online on your state's micro-irrigation portal (e.g. MADA, HADA).",
+      "Upload land maps and borewell proof.",
+      "Nodal manufacturer designs system layout and submits invoice estimate.",
+      "Pay your farmer share; manufacturer installs drip/sprinkler systems on-site."
+    ],
+    "extraIntel": [
+      "PMKSY Support: 1800-180-1551.",
+      "Ensure regular filter cleaning in drip lines to prevent clogging from sandy borewell water."
+    ],
+    "applicationPeriod": "Open year-round (State allocations updated annually)",
+    "disbursementSchedule": "Subsidy released to empaneled manufacturer directly post-installation verification check.",
+    "nextMilestoneDate": "Pre-sowing micro-irrigation audits: November 2026",
+    "applyStartDate": "1st July 2015",
+    "benefitDuration": "7-10 Years (System lifespan)",
+    "lastDateToApply": "Continuous intake"
+  },
+  {
+    "id": "nbhm",
+    "name": "National Beekeeping & Honey Mission (NBHM)",
+    "ministry": "Ministry of Agriculture and Farmers Welfare",
+    "category": "Agriculture",
+    "description": "Supports the development of scientific beekeeping (Sweet Revolution) to increase crop pollination, improve honey production, and generate income for rural youth.",
+    "benefits": [
+      "Subsidies up to 40% to buy bee colonies, hives, and honey extractors",
+      "Free scientific training on bee management, colony division, and disease control",
+      "Grants to establish honey testing labs, processing plants, and packaging units",
+      "Enhances crop yields of local farms by improving natural cross-pollination"
+    ],
+    "eligibility": {
+      "occupation": [
+        "farmer",
+        "self-employed"
+      ],
+      "states": []
+    },
+    "documents": [
+      "Beekeeping training certificate (if any)",
+      "Aadhaar Card",
+      "Bank Account Details",
+      "Land details"
+    ],
+    "applyUrl": "https://nbb.gov.in",
+    "eligibilityCriteria": [
+      "Farmers, rural youth, women self-help groups, and cooperative societies.",
+      "Willing to undergo scientific beekeeping training."
+    ],
+    "amountDetails": "Subsidy up to 40% on hive sets (maximum Rs. 80,000 subsidy per beneficiary). 100% free training.",
+    "applicationSteps": [
+      "Apply through the State Horticulture Department or National Bee Board portal.",
+      "Attend the mandatory 7-day basic beekeeping training course.",
+      "Purchase hive sets and bee colonies from registered breeders.",
+      "Submit purchase bills to horticulture officer to claim subsidy DBT."
+    ],
+    "extraIntel": [
+      "National Bee Board Desk: 011-23382432.",
+      "Place hives near mustard, sunflower, or eucalyptus farms during bloom cycles to double both honey yields and crop pollination."
+    ],
+    "applicationPeriod": "Annual training batch enrollments (June to August)",
+    "disbursementSchedule": "Subsidy released to bank accounts within 30 days of invoice verification.",
+    "nextMilestoneDate": "Honey crop testing audits: December 2026",
+    "applyStartDate": "20th May 2020",
+    "benefitDuration": "Ongoing apiculture support",
+    "lastDateToApply": "August 31st annually"
+  },
+  {
+    "id": "pmdaksh",
+    "name": "Pradhan Mantri Dakshata Aur Kushalata Sampanna Hitgrahi (PM-DAKSH)",
+    "ministry": "Ministry of Social Justice and Empowerment",
+    "category": "Education & Skills",
+    "description": "A national skill development scheme providing free skill training, stipends, and placement support to SC, OBC, Safai Karamcharis, and denotified tribes.",
+    "benefits": [
+      "100% free skill development training in multiple modern sectors",
+      "Monthly stipend of Rs. 1,000 (OBC/EBC) or Rs. 1,500 (SC/Safai Karamcharis) during training",
+      "Self-employment loan guidance and direct placement assistance",
+      "Government-recognized Skill Certificate on completion"
+    ],
+    "eligibility": {
+      "minAge": 18,
+      "maxAge": 45,
+      "occupation": [
+        "unemployed",
+        "student"
+      ],
+      "states": []
+    },
+    "documents": [
+      "Aadhaar Card",
+      "Caste Certificate",
+      "Income Certificate (for EBC/OBC)"
+    ],
+    "applyUrl": "https://pmdaksh.dosje.gov.in",
+    "eligibilityCriteria": [
+      "Indian citizens belonging to Scheduled Castes (SC), Other Backward Classes (OBC) with income < Rs. 3 Lakh, Economically Backward Classes (EBC) with income < Rs. 1 Lakh, or Safai Karamcharis.",
+      "Aged between 18 and 45 years."
+    ],
+    "amountDetails": "Free training. Monthly stipend up to Rs. 1,500/month based on course type and category.",
+    "applicationSteps": [
+      "Register on the PM-DAKSH portal or mobile app.",
+      "Select your category and choose from available courses (up-skilling, short-term, entrepreneurship).",
+      "Upload caste, income, and Aadhaar documents.",
+      "Attend the nearest government-designated training institute on selection."
+    ],
+    "extraIntel": [
+      "PM-DAKSH Helpdesk: support-daksh@gov.in.",
+      "The scheme has a mandatory 80% biometric attendance requirement to qualify for the monthly stipend payout. Be punctual."
+    ],
+    "applicationPeriod": "Annual registration windows (typically May to July)",
+    "disbursementSchedule": "Stipend credited directly to Aadhaar-seeded bank accounts monthly.",
+    "nextMilestoneDate": "Skill assessment exam cycles: November 2026",
+    "applyStartDate": "20th August 2021",
+    "benefitDuration": "Duration of course (typically 1 to 6 Months)",
+    "lastDateToApply": "July 31st annually"
+  },
+  {
+    "id": "cgtmse",
+    "name": "Credit Guarantee Fund Trust for Micro and Small Enterprises (CGTMSE)",
+    "ministry": "Ministry of Micro, Small and Medium Enterprises",
+    "category": "Entrepreneurship",
+    "description": "Provides credit guarantees to financial institutions to facilitate collateral-free and third-party guarantee-free business loans to micro and small enterprises.",
+    "benefits": [
+      "Enables collateral-free business loans up to Rs. 5 Crore",
+      "Covers both manufacturing and service sector businesses",
+      "Trust covers up to 85% of default default loan risk, reducing bank lending hesitancy",
+      "Special higher guarantee cover and lower fees for women-owned enterprises"
+    ],
+    "eligibility": {
+      "occupation": [
+        "msme",
+        "startup"
+      ],
+      "states": []
+    },
+    "documents": [
+      "Detailed Project Report (DPR)",
+      "MSME Udyam Registration",
+      "PAN Card",
+      "ITR records"
+    ],
+    "applyUrl": "https://www.cgtmse.in",
+    "eligibilityCriteria": [
+      "New and existing Micro and Small Enterprises (MSEs) seeking bank credit.",
+      "Excludes retail trade (except specified), educational institutions, and agricultural units."
+    ],
+    "amountDetails": "Credit guarantee cover up to Rs. 5 Crore. Guarantee fee ranges from 0.37% to 1.35% per annum.",
+    "applicationSteps": [
+      "Obtain MSME Udyam Registration online (udyamregistration.gov.in).",
+      "Prepare a detailed business project report and approach any commercial bank.",
+      "Apply for loan and request coverage under the CGTMSE trust scheme.",
+      "Bank evaluates project and applies directly to CGTMSE for guarantee coverage."
+    ],
+    "extraIntel": [
+      "CGTMSE Helpdesk: 022-61437800.",
+      "Udyam registration is 100% free. Never pay agents. A clean business plan with realistic financial projections is key to bank approval."
+    ],
+    "applicationPeriod": "Open year-round (Bank working days)",
+    "disbursementSchedule": "Guarantee coverage approved within 7-10 days of bank project recommendation.",
+    "nextMilestoneDate": "Quarterly bank loan review audits",
+    "applyStartDate": "30th August 2000 (Revamped in 2023)",
+    "benefitDuration": "Valid for the tenure of the business loan",
+    "lastDateToApply": "No deadline"
+  },
+  {
+    "id": "pmegp",
+    "name": "Prime Minister's Employment Generation Programme (PMEGP)",
+    "ministry": "Ministry of Micro, Small and Medium Enterprises",
+    "category": "Entrepreneurship",
+    "description": "A credit-linked subsidy program to generate employment opportunities in rural and urban areas by setting up new micro-enterprises (manufacturing and services).",
+    "benefits": [
+      "Financial subsidy up to 35% (rural) or 25% (urban) on project cost",
+      "Covers projects up to Rs. 50 Lakh (manufacturing) and Rs. 20 Lakh (service)",
+      "Only 5% (special category) or 10% (general) beneficiary contribution required",
+      "Subsidized loan processed through commercial banks with easy interest terms"
+    ],
+    "eligibility": {
+      "minAge": 18,
+      "occupation": [
+        "msme",
+        "startup"
+      ],
+      "states": []
+    },
+    "documents": [
+      "Detailed Project Report (DPR)",
+      "Aadhaar Card",
+      "Education certificate (8th pass required for high value)",
+      "Caste Certificate (if applicable)"
+    ],
+    "applyUrl": "https://www.kviconline.gov.in/pmegpeportal",
+    "eligibilityCriteria": [
+      "Any individual entrepreneur aged 18 years or older.",
+      "Must have passed at least 8th standard class to apply for projects > Rs. 10 Lakh (mfg) or > Rs. 5 Lakh (service).",
+      "Only for new (greenfield) micro-enterprises."
+    ],
+    "amountDetails": "Subsidy rate: 15%-35% based on location and category. Margin money (subsidy) kept in a 3-year lock-in FD.",
+    "applicationSteps": [
+      "Apply online on the KVIC PMEGP portal.",
+      "Select sponsoring agency (KVIC, KVIB, or DIC) and upload project DPR.",
+      "Sponsoring agency forwards approved projects to commercial banks.",
+      "Bank sanctions loan, releases funds, and claims margin money subsidy."
+    ],
+    "extraIntel": [
+      "PMEGP National Helpdesk: 1800-3000-0034.",
+      "A mandatory 10-day Entrepreneurship Development Programme (EDP) training must be completed online/offline before loan release."
+    ],
+    "applicationPeriod": "Open year-round",
+    "disbursementSchedule": "Margin money subsidy released to bank branch on loan sanction; locked for 3 years before adjustment.",
+    "nextMilestoneDate": "District level task force committee meetings monthly",
+    "applyStartDate": "15th August 2008 (Revised in 2022)",
+    "benefitDuration": "3-7 Years (Loan repayment cycle)",
+    "lastDateToApply": "No deadline"
+  },
+  {
+    "id": "aspire",
+    "name": "ASPIRE Scheme (A Scheme for Promotion of Innovation, Rural Industries and Entrepreneurship)",
+    "ministry": "Ministry of Micro, Small and Medium Enterprises",
+    "category": "Entrepreneurship",
+    "description": "Sets up Livelihood Business Incubators (LBIs) and Technology Business Incubators (TBIs) to train rural youth, foster innovations, and create local enterprises in agro-rural sectors.",
+    "benefits": [
+      "Free incubation and hands-on skill training in agro-business and manufacturing",
+      "Financial assistance up to Rs. 1 Crore to setup Livelihood Business Incubators",
+      "Grants and seed capital up to Rs. 8 Lakh for eligible startup entrepreneurs",
+      "Supports development of innovative technologies in agro-processing"
+    ],
+    "eligibility": {
+      "occupation": [
+        "msme",
+        "startup"
+      ],
+      "states": []
+    },
+    "documents": [
+      "Business proposal",
+      "Educational records",
+      "Udyam Registration"
+    ],
+    "applyUrl": "https://aspire.msme.gov.in",
+    "eligibilityCriteria": [
+      "Rural youth, MSME units, private partners, and educational institutions.",
+      "Startups working in agro-rural industries sector."
+    ],
+    "amountDetails": "100% free incubator training. Seed capital grants up to Rs. 8,000,000 for innovative business plans.",
+    "applicationSteps": [
+      "Apply as a candidate at any designated ASPIRE Livelihood Business Incubator (LBI).",
+      "Submit enterprise startup plan to the LBI project manager.",
+      "Undergo incubation training and apply for seed capital grants on project clearance."
+    ],
+    "extraIntel": [
+      "ASPIRE Nodal Desk: aspire-msme@gov.in.",
+      "LBIs offer practical training on operating agro-machinery (like mini-flour mills, packaging systems). Utilize this to build real-world skills."
+    ],
+    "applicationPeriod": "Rolling batch schedules at local LBIs",
+    "disbursementSchedule": "Incubator grants released in tranches matching setup machinery procurement.",
+    "nextMilestoneDate": "Quarterly evaluation of incubator batches",
+    "applyStartDate": "16th March 2015",
+    "benefitDuration": "Ongoing incubation support",
+    "lastDateToApply": "No deadline"
+  },
+  {
+    "id": "sfurti",
+    "name": "SFURTI Scheme (Scheme of Fund for Regeneration of Traditional Industries)",
+    "ministry": "Ministry of Micro, Small and Medium Enterprises",
+    "category": "Entrepreneurship",
+    "description": "Organizes traditional artisans and craftspeople into clusters to make them competitive, providing raw material support, common facility centers, and market branding.",
+    "benefits": [
+      "Setup of Common Facility Centers (CFCs) with modern machinery for artisans",
+      "Financial assistance up to Rs. 2.5 Crore (Regular clusters) or Rs. 5 Crore (Major clusters)",
+      "Free design inputs, skill upgrades, exposure visits, and packaging training",
+      "Market linkages through exhibitions, trade fairs, and online e-commerce setups"
+    ],
+    "eligibility": {
+      "occupation": [
+        "artisan",
+        "self-employed"
+      ],
+      "states": []
+    },
+    "documents": [
+      "Artisan ID Card",
+      "Cluster registration details",
+      "Aadhaar Card"
+    ],
+    "applyUrl": "https://sfurti.msme.gov.in",
+    "eligibilityCriteria": [
+      "Traditional artisans, weavers, potters, coir workers, and honey gatherers.",
+      "Must form or join a registered cluster group comprising at least 500 artisans."
+    ],
+    "amountDetails": "100% grant for CFC machinery and capacity building. Individual artisan training is fully sponsored.",
+    "applicationSteps": [
+      "Artisans join their regional registered SFURTI cluster group.",
+      "Nodal agencies (like KVIC, Coir Board) prepare a Detailed Project Report (DPR).",
+      "Common Facility Centers are constructed and equipped with modern machinery.",
+      "Artisans use the CFC collectively to process and package their products."
+    ],
+    "extraIntel": [
+      "SFURTI Helpdesk: sfurti@gov.in.",
+      "Check the portal directory to find an active cluster in your district for coir, khadi, bamboo, or pottery products."
+    ],
+    "applicationPeriod": "Annual cluster approval cycles",
+    "disbursementSchedule": "CFC project funds released in 3 tranches matching civil construction milestones.",
+    "nextMilestoneDate": "Cluster performance audits: March 2027",
+    "applyStartDate": "15th August 2005 (Revised in 2015)",
+    "benefitDuration": "Permanent cluster asset usage",
+    "lastDateToApply": "No deadline"
+  },
+  {
+    "id": "pmsuraj",
+    "name": "PM-SURAJ (Pradhan Mantri Social Utthan and Rozgar Hamrahi)",
+    "ministry": "Ministry of Social Justice and Empowerment",
+    "category": "Finance",
+    "description": "A national portal to provide direct credit support (subsidized loans) and welfare benefits to marginalized sections including Scheduled Castes, OBCs, and sanitation workers.",
+    "benefits": [
+      "Direct channel to apply for subsidized business loans up to Rs. 15 Lakh",
+      "Lower interest rates starting at 4% to 6% per annum",
+      "Direct Benefit Transfer (DBT) of loan tranches to bank accounts without intermediaries",
+      "Ayushman health cards and safety gear kits provided for sanitation workers (Safai Karamcharis)"
+    ],
+    "eligibility": {
+      "occupation": [
+        "self-employed"
+      ],
+      "states": []
+    },
+    "documents": [
+      "Caste Certificate",
+      "Aadhaar Card",
+      "Income Certificate",
+      "Safai Karamchari ID (if applicable)"
+    ],
+    "applyUrl": "https://pmsuraj.dosje.gov.in",
+    "eligibilityCriteria": [
+      "Marginalized individuals belonging to Scheduled Castes (SC), Scheduled Tribes (ST), Other Backward Classes (OBC), or Sanitation Workers (Safai Karamcharis).",
+      "Annual family income must not exceed Rs. 3,00,000."
+    ],
+    "amountDetails": "Loans up to Rs. 15,000,000. Interest rates subsidized between 4.00% to 6.00% based on project size.",
+    "applicationSteps": [
+      "Visit the PM-SURAJ portal and click 'Apply for Credit Support'.",
+      "Enter Aadhaar details and select caste/occupational category.",
+      "Submit business choice (e.g. e-rickshaw, retail shop, small tailoring unit).",
+      "Verify documents online; funds are disbursed directly by state channel partners."
+    ],
+    "extraIntel": [
+      "PM-SURAJ Support: support-suraj@gov.in.",
+      "Sanitation workers applying under this scheme can also get free safety training under the NAMASTE scheme."
+    ],
+    "applicationPeriod": "Open year-round",
+    "disbursementSchedule": "Disbursed directly to state financial development corporations for onward DBT transfer within 15-20 days.",
+    "nextMilestoneDate": "Quarterly target review audits",
+    "applyStartDate": "13th March 2024",
+    "benefitDuration": "Up to 5 Years (Loan repayment tenor)",
+    "lastDateToApply": "No deadline"
   }
 ]
