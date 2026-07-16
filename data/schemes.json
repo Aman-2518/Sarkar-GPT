@@ -2309,5 +2309,476 @@
     "applyStartDate": "13th March 2024",
     "benefitDuration": "Up to 5 Years (Loan repayment tenor)",
     "lastDateToApply": "No deadline"
+  },
+  {
+    "id": "pmkmy",
+    "name": "Pradhan Mantri Kisan Maan-Dhan Yojana (PM-KMY)",
+    "ministry": "Ministry of Agriculture and Farmers Welfare",
+    "category": "Pension",
+    "description": "A government pension scheme providing social security to small and marginal farmers by offering a monthly pension of Rs. 3,000 on reaching 60 years of age.",
+    "benefits": [
+      "Assured monthly pension of Rs. 3,000 upon reaching 60 years of age",
+      "50% voluntary contribution by the farmer; matching 50% contributed by Central Government",
+      "Family pension of 50% (Rs. 1,500/month) to spouse in case of subscriber death",
+      "Auto-debit facility from PM-Kisan installment accounts available"
+    ],
+    "eligibility": {
+      "minAge": 18,
+      "maxAge": 40,
+      "occupation": [
+        "farmer"
+      ],
+      "states": []
+    },
+    "documents": [
+      "Aadhaar Card",
+      "Bank Account Details",
+      "Land possession certificate (up to 2 hectares)"
+    ],
+    "applyUrl": "https://maandhan.in",
+    "eligibilityCriteria": [
+      "Small and marginal farmers owning cultivable land up to 2 hectares.",
+      "Aged between 18 and 40 years.",
+      "Must not be covered under other social security schemes (like NPS, EPFO, ESIC)."
+    ],
+    "amountDetails": "Monthly pension of Rs. 3,000. Monthly subscriber contribution ranges from Rs. 55 to Rs. 200 based on entry age.",
+    "applicationSteps": [
+      "Visit nearest Common Services Centre (CSC) or apply online at maandhan.in.",
+      "Provide Aadhaar card, bank details, and land registry copy.",
+      "Calculate monthly contribution matching your age and complete auto-debit consent.",
+      "Receive Kisan Pension Card with unique subscriber number."
+    ],
+    "extraIntel": [
+      "Maandhan Helpdesk: 1800-3000-3400.",
+      "Farmers can choose to pay their monthly contributions directly out of their PM-Kisan payout installments."
+    ],
+    "applicationPeriod": "Open year-round",
+    "disbursementSchedule": "Pension disbursed on the 1st of every month to beneficiary bank accounts post age 60.",
+    "nextMilestoneDate": "Annual trust auditing: November 2026",
+    "applyStartDate": "12th September 2019",
+    "benefitDuration": "Lifetime benefit post age 60",
+    "lastDateToApply": "No deadline"
+  },
+  {
+    "id": "atalbhujal",
+    "name": "Atal Bhujal Yojana (ATAL JAL)",
+    "ministry": "Ministry of Jal Shakti",
+    "category": "Agriculture",
+    "description": "A community-led groundwater management scheme implemented in water-stressed blocks of 7 Indian states, promoting drip irrigation and water budget planning.",
+    "benefits": [
+      "Subsidized water harvesting, recharge pits, and check dam construction",
+      "Free community water budget planning and groundwater measuring kits",
+      "Increases regional agricultural borewell sustainability and crop output",
+      "Encourages community-led water saving via village Water Security Plans"
+    ],
+    "eligibility": {
+      "occupation": [
+        "farmer"
+      ],
+      "states": [
+        "Gujarat",
+        "Haryana",
+        "Karnataka",
+        "Madhya Pradesh",
+        "Maharashtra",
+        "Rajasthan",
+        "Uttar Pradesh"
+      ]
+    },
+    "documents": [
+      "Resident proof in selected block",
+      "Aadhaar Card"
+    ],
+    "applyUrl": "https://ataljal.mowr.gov.in",
+    "eligibilityCriteria": [
+      "Farmers and rural households situated in notified water-stressed groundwater blocks within the 7 participating states.",
+      "Willing to participate in water security training."
+    ],
+    "amountDetails": "Fully sponsored community infrastructure and training. Individual water harvesting sub-grants up to Rs. 25,000.",
+    "applicationSteps": [
+      "Register details with the local village Gram Panchayat water security committee.",
+      "Participate in regional water budget planning meetings.",
+      "Incorporate micro-irrigation guidelines to claim state agriculture incentive bonuses."
+    ],
+    "extraIntel": [
+      "ATAL JAL Helpdesk: support-ataljal@gov.in.",
+      "Priority is given to village plans that allocate separate water budgets for cattle drinking pools and crop irrigation."
+    ],
+    "applicationPeriod": "Continuous village group cycles",
+    "disbursementSchedule": "Infrastructure funding disbursed in tranches to local water user associations.",
+    "nextMilestoneDate": "Village water security plans review: March 2027",
+    "applyStartDate": "25th December 2019",
+    "benefitDuration": "Permanent village resource benefit",
+    "lastDateToApply": "Subject to local block schedules"
+  },
+  {
+    "id": "npstraders",
+    "name": "National Pension Scheme for Traders, Shopkeepers and Self-Employed Persons",
+    "ministry": "Ministry of Labour and Employment",
+    "category": "Pension",
+    "description": "A voluntary and contributory pension scheme providing social security to retail traders, shopkeepers, and self-employed persons in India.",
+    "benefits": [
+      "Assured monthly pension of Rs. 3,000 upon reaching 60 years of age",
+      "50% subscriber contribution; matching 50% central government contribution",
+      "Spouse family pension of 50% in case of subscriber death post-retirement",
+      "Simple, self-declaration based enrollment with no complex audit paperwork"
+    ],
+    "eligibility": {
+      "minAge": 18,
+      "maxAge": 40,
+      "occupation": [
+        "self-employed"
+      ],
+      "states": []
+    },
+    "documents": [
+      "Aadhaar Card",
+      "Savings Bank Account details",
+      "Self-declaration of turnover"
+    ],
+    "applyUrl": "https://maandhan.in",
+    "eligibilityCriteria": [
+      "Self-employed shopkeepers, retail traders, rice mill owners, commission agents, etc.",
+      "Annual turnover must not exceed Rs. 1.5 Crore.",
+      "Aged between 18 and 40 years."
+    ],
+    "amountDetails": "Monthly pension of Rs. 3,000. Monthly premium contribution ranges from Rs. 55 to Rs. 200 based on age.",
+    "applicationSteps": [
+      "Visit any nearest Common Services Centre (CSC) with Aadhaar and bank passbook.",
+      "Fill out the self-declaration form certifying your business turnover.",
+      "Complete auto-debit consent form for premium contributions.",
+      "Download the pension card instantly."
+    ],
+    "extraIntel": [
+      "Traders Pension Helpdesk: 1800-2676-888.",
+      "Turnover certification is based entirely on self-declaration. No tax return (ITR) copies are required to start the scheme."
+    ],
+    "applicationPeriod": "Open year-round",
+    "disbursementSchedule": "Monthly pension disbursed directly to bank accounts post age 60.",
+    "nextMilestoneDate": "Quarterly subscriber audits",
+    "applyStartDate": "12th September 2019",
+    "benefitDuration": "Lifetime benefit post age 60",
+    "lastDateToApply": "No deadline"
+  },
+  {
+    "id": "pmyuva",
+    "name": "PM-YUVA Yojana (Yuva Entrepreneurship Development)",
+    "ministry": "Ministry of Skill Development and Entrepreneurship",
+    "category": "Education & Skills",
+    "description": "A mentorship and education program that supports young entrepreneurs through training, resource centers, incubator access, and seed capital linkages.",
+    "benefits": [
+      "Fully funded entrepreneurship training courses inside local colleges",
+      "Mentorship access from successful business leaders and startup experts",
+      "Access to regional incubation centers and technology lab workspaces",
+      "Preparation support to pitch for central startup seed funding grants"
+    ],
+    "eligibility": {
+      "minAge": 18,
+      "maxAge": 35,
+      "occupation": [
+        "student",
+        "startup"
+      ],
+      "states": []
+    },
+    "documents": [
+      "Aadhaar Card",
+      "College enrollment or Startup Udyam registration",
+      "Project concept note"
+    ],
+    "applyUrl": "https://www.msde.gov.in",
+    "eligibilityCriteria": [
+      "Young students, startup founders, or vocational trainees aged between 18 and 35 years.",
+      "Willing to undergo structured startup education curriculum."
+    ],
+    "amountDetails": "100% free education and mentorship. Pitch winners receive seed grants up to Rs. 2.5 Lakh.",
+    "applicationSteps": [
+      "Apply online on MSDE portal during annual youth cohort admissions.",
+      "Submit a brief concept note of your business startup idea.",
+      "Attend the 6-week intensive entrepreneurship module at a designated hub.",
+      "Pitch project layout to regional committee for seed capital linkage."
+    ],
+    "extraIntel": [
+      "PM-YUVA Helpdesk: pmyuva-msde@gov.in.",
+      "Focus is given to traditional crafts digitizing ideas and eco-friendly packaging startups."
+    ],
+    "applicationPeriod": "Annual cohorts (July to October)",
+    "disbursementSchedule": "Seed grants paid in 2 milestones: prototype ready and market pilot launch.",
+    "nextMilestoneDate": "Annual cohort list publication: November 2026",
+    "applyStartDate": "9th November 2016",
+    "benefitDuration": "6-12 Months (Training and mentoring period)",
+    "lastDateToApply": "October 15th annually"
+  },
+  {
+    "id": "pmjvk",
+    "name": "Pradhan Mantri Jan Vikas Karyakram (PMJVK)",
+    "ministry": "Ministry of Minority Affairs",
+    "category": "Finance",
+    "description": "A multi-sectoral development program addressing development deficits in identified minority concentration areas by upgrading health, education, and skill infrastructure.",
+    "benefits": [
+      "Upgrades minority area schools with labs, drinking water, and hostels",
+      "Constructs primary health centers, diagnostic units, and maternity wards",
+      "Builds Hunar Hubs and skill centers to support traditional local artisans",
+      "Improves regional employment opportunities through localized infrastructure"
+    ],
+    "eligibility": {
+      "occupation": [],
+      "states": []
+    },
+    "documents": [
+      "Proof of residency in selected block/district",
+      "Aadhaar Card"
+    ],
+    "applyUrl": "https://minorityaffairs.gov.in",
+    "eligibilityCriteria": [
+      "Residents of designated Minority Concentration Areas (MCAs) including blocks, towns, and districts.",
+      "Open to all communities living in MCAs to ensure overall regional growth."
+    ],
+    "amountDetails": "100% funded public infrastructure. Individual training programs fully sponsored.",
+    "applicationSteps": [
+      "Local municipal authorities submit regional development plan to state government.",
+      "State forwards development gap proposals to Minority Affairs ministry.",
+      "Approved schools, hospitals, and skill hubs are constructed locally."
+    ],
+    "extraIntel": [
+      "PMJVK Nodal Support: pmjvk-mma@gov.in.",
+      "Check the Ministry dashboard directory to see if your block is designated as a Minority Concentration Area (MCA)."
+    ],
+    "applicationPeriod": "Continuous infrastructure planning",
+    "disbursementSchedule": "Capital construction funds cleared in stages matching building milestones.",
+    "nextMilestoneDate": "Infrastructure gap survey: September 2026",
+    "applyStartDate": "12th May 2018 (Revamped Multi-sectoral Development Programme)",
+    "benefitDuration": "Permanent regional utility",
+    "lastDateToApply": "No deadline"
+  },
+  {
+    "id": "pmvidyalaxmi",
+    "name": "PM-Vidyalaxmi Education Loan Scheme",
+    "ministry": "Ministry of Finance",
+    "category": "Education & Skills",
+    "description": "A centralized gateway for students seeking education loans, providing access to multiple banks and offering interest subvention benefits for economically weaker sections.",
+    "benefits": [
+      "Centralized portal to apply to multiple banks using a single Common Application Form",
+      "Collateral-free loans up to Rs. 7.5 Lakh with government credit guarantee",
+      "Interest subvention of 3% on loans up to Rs. 10 Lakh during moratorium period",
+      "Flexible repayment options with moratorium extending up to 1 year post-course"
+    ],
+    "eligibility": {
+      "occupation": [
+        "student"
+      ],
+      "states": []
+    },
+    "documents": [
+      "College admission letter",
+      "Fee structure document",
+      "Aadhaar Card",
+      "Income proof of parents"
+    ],
+    "applyUrl": "https://www.vidyalakshmi.co.in",
+    "eligibilityCriteria": [
+      "Indian national students securing admission in higher education courses in India or abroad.",
+      "Income criteria apply for interest subvention component (< Rs. 4.5 Lakh parent income)."
+    ],
+    "amountDetails": "Loans up to Rs. 7.5 Lakh (collateral-free). Single-window portal hosting over 40 banks.",
+    "applicationSteps": [
+      "Register on the Vidyalaxmi portal (vidyalakshmi.co.in).",
+      "Fill out the Common Education Loan Application Form (CELAF).",
+      "Upload admission letter, fee structure, and parent income certificate.",
+      "Select bank branches to process loan request and track status online."
+    ],
+    "extraIntel": [
+      "Vidyalaxmi Helpdesk: vidyalakshmi@nsdl.co.in.",
+      "Applying via Vidyalaxmi prevents banks from demanding private collaterals or guarantors for loans below Rs. 7.5 Lakh under Central Credit Guarantee rules."
+    ],
+    "applicationPeriod": "Open year-round (Admissions season peak)",
+    "disbursementSchedule": "Tuition fees disbursed directly to college accounts; hostel/living allowance paid to student bank accounts.",
+    "nextMilestoneDate": "Pre-admission season updates: May 2026",
+    "applyStartDate": "15th August 2015 (Updated in 2024)",
+    "benefitDuration": "Duration of higher education course + 1 Year moratorium",
+    "lastDateToApply": "No deadline"
+  },
+  {
+    "id": "pmkisansampada",
+    "name": "Pradhan Mantri Kisan Sampada Yojana (PMKSY - Food Processing)",
+    "ministry": "Ministry of Food Processing Industries",
+    "category": "Entrepreneurship",
+    "description": "A comprehensive package aimed at creating modern infrastructure for food processing, reducing wastage, and doubling farmer income.",
+    "benefits": [
+      "Financial grant up to 50% (General) or 75% (NE/Hilly areas) on capital costs",
+      "Supports setup of Mega Food Parks, cold chains, and agro-processing clusters",
+      "Reduces food crop post-harvest transit losses and wastage",
+      "Provides direct value-added export linkages for local farmers"
+    ],
+    "eligibility": {
+      "occupation": [
+        "msme",
+        "startup"
+      ],
+      "states": []
+    },
+    "documents": [
+      "Udyam Registration",
+      "Detailed Project Report (DPR)",
+      "Land ownership/lease registry",
+      "Bank appraisal report"
+    ],
+    "applyUrl": "https://mofpi.gov.in",
+    "eligibilityCriteria": [
+      "Entrepreneurs, food processors, cooperatives, self-help groups, and farmer producer organizations (FPOs).",
+      "Must propose food processing, cold storage, or agro-cluster projects."
+    ],
+    "amountDetails": "Grants up to Rs. 5 Crore based on project component and location. Capital subsidy paid directly.",
+    "applicationSteps": [
+      "Apply online on MoFPI portal under specific scheme component (e.g., Cold Chain setup).",
+      "Upload detailed project report alongside bank term-loan appraisal letter.",
+      "Inter-Ministerial Approval Committee reviews technical and financial feasibility.",
+      "On sanction, grant is disbursed to project bank account in 3 installments."
+    ],
+    "extraIntel": [
+      "MoFPI Helpline: 011-26492245.",
+      "Projects using local traditional millets or farm waste for food packaging get priority scoring during IMAC evaluation."
+    ],
+    "applicationPeriod": "Periodic calls for proposals (expressions of interest)",
+    "disbursementSchedule": "Grant released in 3 tranches: 35% on civil construction start, 35% on machinery delivery, 30% on commercial start.",
+    "nextMilestoneDate": "Agro-processing proposals deadline: October 2026",
+    "applyStartDate": "3rd May 2017",
+    "benefitDuration": "Ongoing business asset support",
+    "lastDateToApply": "Subject to proposal call dates"
+  },
+  {
+    "id": "pmsuryaghar",
+    "name": "PM-Surya Ghar: Muft Bijli Yojana",
+    "ministry": "Ministry of New and Renewable Energy",
+    "category": "Finance",
+    "description": "A rooftop solar scheme providing financial subsidy assistance to 1 crore households, enabling them to get up to 300 units of free electricity monthly.",
+    "benefits": [
+      "Direct central financial subsidy of Rs. 30,000 (1kW) to Rs. 78,000 (3kW or more)",
+      "Enables households to get up to 300 units of free electricity monthly",
+      "Allows households to sell surplus generated solar power back to state DISCOMs",
+      "Access to low-interest, collateral-free bank loans for rooftop solar setup"
+    ],
+    "eligibility": {
+      "occupation": [],
+      "states": []
+    },
+    "documents": [
+      "Electricity connection bill copy",
+      "Aadhaar Card",
+      "Rooftop ownership document/declaration",
+      "Bank details"
+    ],
+    "applyUrl": "https://pmsuryaghar.gov.in",
+    "eligibilityCriteria": [
+      "Indian households owning residential houses with a stable roof structure suitable for solar installation.",
+      "Must have an active domestic electricity connection under their name."
+    ],
+    "amountDetails": "Subsidy rate: Rs. 30,000 per kW for first 2kW; Rs. 18,000 for additional kW. Maximum total subsidy Rs. 78,000.",
+    "applicationSteps": [
+      "Register on the PM-Surya Ghar portal with your electricity provider connection number.",
+      "Submit application and wait for feasibility clearance from state DISCOM.",
+      "Choose any registered vendor from the portal list to install the rooftop solar panels.",
+      "Apply for net-metering; DISCOM verifies connection and issues commissioning certificate.",
+      "Submit bank details on portal to claim DBT subsidy transfer directly."
+    ],
+    "extraIntel": [
+      "PM-Surya Ghar Support: solar-support@gov.in.",
+      "Always check the vendor's panel brand rating. The scheme strictly requires DCR (Domestic Content Requirement) solar modules to qualify for central subsidy."
+    ],
+    "applicationPeriod": "Open year-round",
+    "disbursementSchedule": "DBT subsidy transfer credited to bank accounts within 30 days of DISCOM net-metering commissioning.",
+    "nextMilestoneDate": "DISCOM net-meter approvals check: Monthly",
+    "applyStartDate": "13th February 2024",
+    "benefitDuration": "25 Years (Solar panel lifetime)",
+    "lastDateToApply": "No deadline"
+  },
+  {
+    "id": "vibrantvillages",
+    "name": "Vibrant Villages Programme (VVP)",
+    "ministry": "Ministry of Home Affairs",
+    "category": "Housing",
+    "description": "A centrally sponsored scheme to develop border villages in 4 states and 1 Union Territory, preventing migration, promoting tourism, and upgrading public infrastructure.",
+    "benefits": [
+      "Upgrades rural border villages with 24/7 drinking water, roads, and electricity",
+      "Financial assistance for local youth and women to open homestays and tourist shops",
+      "Constructs local community wellness centers and smart class schools",
+      "Improves mobile and internet network connectivity in high-altitude zones"
+    ],
+    "eligibility": {
+      "occupation": [],
+      "states": [
+        "Himachal Pradesh",
+        "Uttarakhand",
+        "Sikkim",
+        "Arunachal Pradesh",
+        "Ladakh"
+      ]
+    },
+    "documents": [
+      "Resident Certificate in border block",
+      "Aadhaar Card"
+    ],
+    "applyUrl": "https://mha.gov.in",
+    "eligibilityCriteria": [
+      "Indian citizens residing in designated border villages within the participating Northern border states/UT.",
+      "Must propose tourism, agriculture, or local retail development projects."
+    ],
+    "amountDetails": "Infrastructure upgrades funded 100% by central budget. Tourism homestay startup grants up to Rs. 2 Lakh.",
+    "applicationSteps": [
+      "Submit border homestay or agricultural development project plan to village coordinator.",
+      "District border development officer reviews plan.",
+      "Homestay materials or farming equipment grants are disbursed via direct bank transfer."
+    ],
+    "extraIntel": [
+      "MHA Border Management Helpdesk: support-vvp@gov.in.",
+      "Home-stay owners get fully sponsored training from Indian tourism institutes on guest management and hygiene."
+    ],
+    "applicationPeriod": "Annual project cycles (March to June)",
+    "disbursementSchedule": "Direct transfers and infrastructure building completed in stages matching snow-free seasons.",
+    "nextMilestoneDate": "Border infrastructure audit: September 2026",
+    "applyStartDate": "15th February 2023",
+    "benefitDuration": "Permanent regional utility",
+    "lastDateToApply": "No deadline"
+  },
+  {
+    "id": "pmesewa",
+    "name": "PM-eSewa Digital Services Mission",
+    "ministry": "Ministry of Electronics and Information Technology",
+    "category": "Finance",
+    "description": "Promotes local digital access points (Common Services Centers) in panchayats to enable rural citizens to apply online for schemes, download certificates, and withdraw cash.",
+    "benefits": [
+      "Saves travel costs by providing digital scheme applications inside villages",
+      "Provides biometric bank micro-ATM cash withdrawals within walkability",
+      "Subsidized application fee processing for welfare benefit enrollment",
+      "Facilitates easy download of Aadhaar, PAN, and land registry records"
+    ],
+    "eligibility": {
+      "occupation": [],
+      "states": []
+    },
+    "documents": [
+      "N/A (Village digital service benefit)"
+    ],
+    "applyUrl": "https://csc.gov.in",
+    "eligibilityCriteria": [
+      "Indian citizens residing in rural or semi-urban areas lacking direct bank branches or cyber cafés.",
+      "Open to all public."
+    ],
+    "amountDetails": "Subsidy details: standard nominal fee caps (Rs. 10 - Rs. 50) for certificate printouts and applications.",
+    "applicationSteps": [
+      "Visit your village Common Services Center (CSC) or PM-eSewa kiosk.",
+      "Present Aadhaar and select service (e.g., cash withdrawal, scheme upload).",
+      "Authenticate with finger scanner to access portal utilities instantly."
+    ],
+    "extraIntel": [
+      "CSC National Helpdesk: 14599.",
+      "Verify the printed official fee chart at the CSC counter to prevent paying extra service charge fees."
+    ],
+    "applicationPeriod": "Continuous service operations",
+    "disbursementSchedule": "Cash withdrawals cleared instantly at micro-ATM counter.",
+    "nextMilestoneDate": "Rurual digital kiosk audits: October 2026",
+    "applyStartDate": "16th July 2015 (Updated periodically)",
+    "benefitDuration": "Continuous public utility",
+    "lastDateToApply": "No deadline"
   }
 ]

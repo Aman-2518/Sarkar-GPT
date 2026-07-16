@@ -47,7 +47,7 @@ export default function Home() {
   }, [activeCategory]);
 
   const stats = [
-    { value: "50+", label: "Government Schemes" },
+    { value: "60+", label: "Government Schemes" },
     { value: "15", label: "Indian Languages" },
     { value: "100%", label: "Local Privacy" },
   ];
@@ -324,7 +324,7 @@ export default function Home() {
       <section className="flex flex-col gap-8 max-w-6xl mx-auto px-4 pb-16">
         <div className="text-center flex flex-col gap-2">
           <h2 className="font-display text-3xl font-extrabold text-neutral-800 dark:text-white">
-            Directory of 50+ Monitored Government Schemes
+            Directory of 60+ Monitored Government Schemes
           </h2>
           <p className="text-sm text-ink-900/60 dark:text-saffron-50/60 max-w-2xl mx-auto">
             Browse our complete live catalog of government schemes across multiple sectors and ministries.
