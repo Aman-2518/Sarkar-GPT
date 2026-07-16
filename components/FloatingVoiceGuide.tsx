@@ -21,7 +21,7 @@ const NAV_INTRODUCTIONS: Record<string, Record<string, string>> = {
 };
 
 export default function FloatingVoiceGuide() {
-  const { language, currentSpeechLang, t, voiceGender } = useLanguage();
+  const { language, currentSpeechLang, t, voiceGender, voiceRate, voicePitch } = useLanguage();
   const pathname = usePathname();
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
@@ -53,7 +53,7 @@ export default function FloatingVoiceGuide() {
 
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = currentSpeechLang;
-    configureSpeechUtterance(utterance, voiceGender);
+    configureSpeechUtterance(utterance, voiceGender, voiceRate, voicePitch);
     utterance.onend = () => setIsSpeaking(false);
     utterance.onerror = () => setIsSpeaking(false);
     setIsSpeaking(true);

@@ -1,60 +1,57 @@
 "use client";
 
 import Link from "next/link";
-import { Landmark, Languages, Volume2 } from "lucide-react";
-import ThemeToggle from "./ThemeToggle";
-import { useLanguage, SUPPORTED_LANGUAGES, LanguageCode } from "@/lib/languageContext";
+import { Landmark, Settings } from "lucide-react";
+import { useLanguage } from "@/lib/languageContext";
+import { useState } from "react";
+import { AnimatePresence } from "framer-motion";
+import dynamic from "next/dynamic";
+
+const SettingsModal = dynamic(() => import("./SettingsModal"), {
+  ssr: false,
+});
 
 export default function Navbar() {
-  const { language, setLanguage, t, voiceGender, setVoiceGender } = useLanguage();
+  const { t } = useLanguage();
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 glass border-b border-white/30">
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <Link href="/" className="flex items-center gap-2 font-display text-lg font-bold">
-          <span className="grid h-8 w-8 place-items-center rounded-full bg-warm-gradient text-white">
-            <Landmark size={16} />
-          </span>
-          SarkarGPT
-        </Link>
-        <div className="flex items-center gap-4 sm:gap-6">
-          <Link href="/find-schemes" className="text-sm font-medium hover:text-saffron-600 transition-colors">
-            {t("findSchemes")}
+    <>
+      <header className="sticky top-0 z-50 glass border-b border-white/30">
+        <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+          <Link href="/" className="flex items-center gap-2 font-display text-lg font-bold">
+            <span className="grid h-8 w-8 place-items-center rounded-full bg-warm-gradient text-white">
+              <Landmark size={16} />
+            </span>
+            SarkarGPT
           </Link>
-          <Link href="/chat" className="text-sm font-medium hover:text-saffron-600 transition-colors">
-            {t("aiChat")}
-          </Link>
+          <div className="flex items-center gap-4 sm:gap-6">
+            <Link href="/find-schemes" className="text-sm font-medium hover:text-saffron-600 transition-colors">
+              {t("findSchemes")}
+            </Link>
+            <Link href="/chat" className="text-sm font-medium hover:text-saffron-600 transition-colors">
+              {t("aiChat")}
+            </Link>
 
-          {/* Voice Gender Toggle */}
-          <button
-            onClick={() => setVoiceGender(voiceGender === "female" ? "male" : "female")}
-            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-saffron-500/20 bg-saffron-500/5 hover:bg-saffron-500/10 text-saffron-800 dark:text-saffron-400 font-semibold text-[11px] sm:text-xs transition-all"
-            title="Toggle between Male and Female voice tone"
-          >
-            <Volume2 size={13} />
-            <span>{voiceGender === "female" ? "👩 Female Voice" : "👨 Male Voice"}</span>
-          </button>
-
-          {/* Language Dropdown Selector */}
-          <div className="relative flex items-center gap-1 text-xs">
-            <Languages size={15} className="text-ink-900/60 dark:text-saffron-50/60" />
-            <select
-              value={language}
-              onChange={(e) => setLanguage(e.target.value as LanguageCode)}
-              className="bg-transparent font-medium border-0 focus:ring-0 cursor-pointer pr-5 py-1 text-ink-900 dark:text-white rounded-md hover:bg-neutral-100 dark:hover:bg-white/10"
-              style={{ WebkitAppearance: "none", MozAppearance: "none", appearance: "none" }}
+            {/* Unified Settings Gear Button */}
+            <button
+              onClick={() => setIsSettingsOpen(true)}
+              className="rounded-full p-2 transition-colors hover:bg-saffron-100 dark:hover:bg-white/10 text-ink-900/60 dark:text-saffron-50/60"
+              aria-label="Open settings"
+              title="Open Settings"
             >
-              {SUPPORTED_LANGUAGES.map((lang) => (
-                <option key={lang.code} value={lang.code} className="text-neutral-900 bg-white">
-                  {lang.nativeName}
-                </option>
-              ))}
-            </select>
+              <Settings size={18} />
+            </button>
           </div>
+        </nav>
+      </header>
 
-          <ThemeToggle />
-        </div>
-      </nav>
-    </header>
+      {/* Settings Modal overlay */}
+      <AnimatePresence>
+        {isSettingsOpen && (
+          <SettingsModal onClose={() => setIsSettingsOpen(false)} />
+        )}
+      </AnimatePresence>
+    </>
   );
 }

@@ -21,7 +21,7 @@ interface IWindow extends Window {
 }
 
 export default function ChatWindow() {
-  const { language, t, currentSpeechLang, voiceGender } = useLanguage();
+  const { language, t, currentSpeechLang, voiceGender, voiceRate, voicePitch } = useLanguage();
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -151,7 +151,7 @@ export default function ChatWindow() {
       window.speechSynthesis.cancel();
       const utterance = new SpeechSynthesisUtterance(text);
       utterance.lang = currentSpeechLang;
-      configureSpeechUtterance(utterance, voiceGender);
+      configureSpeechUtterance(utterance, voiceGender, voiceRate, voicePitch);
       utterance.onend = () => setSpeakingMsgIndex(null);
       utterance.onerror = () => setSpeakingMsgIndex(null);
       setSpeakingMsgIndex(index);
