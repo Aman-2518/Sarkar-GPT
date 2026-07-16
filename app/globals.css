@@ -36,3 +36,47 @@
       px-3 py-2 text-sm outline-none transition-all duration-200 focus:ring-2 focus:ring-saffron-500 focus:border-saffron-500/40;
   }
 }
+
+/* Print Stylesheet for PDF Generator */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 12pt;
+    line-height: 1.5;
+  }
+  
+  /* Hide standard screen-only elements */
+  nav, footer, .no-print, button, a.btn-primary, button.btn-secondary, [role="button"], .fixed {
+    display: none !important;
+  }
+
+  /* Show print-only containers */
+  .print-only {
+    display: block !important;
+  }
+
+  /* A4 Page Formatting */
+  @page {
+    size: A4;
+    margin: 1.8cm 1.5cm;
+  }
+
+  .report-page {
+    width: 100% !important;
+    max-width: 100% !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+  }
+
+  .page-break {
+    page-break-before: always;
+  }
+}
+
+/* Screen Mode: Hide print layout elements by default */
+.print-only {
+  display: none;
+}
