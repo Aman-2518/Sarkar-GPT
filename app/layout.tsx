@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { LanguageProvider } from "@/lib/languageContext";
+import FloatingVoiceGuide from "@/components/FloatingVoiceGuide";
 
 export const metadata: Metadata = {
   title: "SarkarGPT — Find Government Schemes for You",
@@ -16,6 +17,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <LanguageProvider>
           <Navbar />
           <main className="mx-auto min-h-[70vh] max-w-6xl px-6 py-10">{children}</main>
+          <FloatingVoiceGuide />
           <Footer />
         </LanguageProvider>
       </body>
