@@ -1,0 +1,90 @@
+[
+  {
+    "id": "pmay",
+    "name": "Pradhan Mantri Awas Yojana",
+    "ministry": "Ministry of Housing and Urban Affairs",
+    "category": "Housing",
+    "description": "Financial assistance and interest subsidy to help low and middle income families build or buy a home.",
+    "benefits": ["Interest subsidy on home loans", "Direct construction assistance for eligible families"],
+    "eligibility": { "maxIncome": 1800000, "occupation": [], "states": [] },
+    "documents": ["Aadhaar Card", "Income Certificate", "Property documents (if any)"],
+    "applyUrl": "https://pmaymis.gov.in"
+  },
+  {
+    "id": "pmkisan",
+    "name": "PM Kisan Samman Nidhi",
+    "ministry": "Ministry of Agriculture and Farmers Welfare",
+    "category": "Agriculture",
+    "description": "Direct income support of Rs. 6,000 per year for landholding farmer families.",
+    "benefits": ["Rs. 6,000/year in 3 installments", "Direct bank transfer, no middlemen"],
+    "eligibility": { "occupation": ["farmer"], "states": [] },
+    "documents": ["Aadhaar Card", "Land records", "Bank passbook"],
+    "applyUrl": "https://pmkisan.gov.in"
+  },
+  {
+    "id": "pmmy",
+    "name": "Pradhan Mantri Mudra Yojana",
+    "ministry": "Ministry of Finance",
+    "category": "Entrepreneurship",
+    "description": "Collateral-free loans up to Rs. 10 lakh for micro and small business owners.",
+    "benefits": ["No collateral required", "Loans up to Rs. 10 lakh", "Available via banks and NBFCs"],
+    "eligibility": { "occupation": ["msme", "startup"], "states": [] },
+    "documents": ["Business plan", "Aadhaar Card", "Bank account details"],
+    "applyUrl": "https://www.mudra.org.in"
+  },
+  {
+    "id": "ssy",
+    "name": "Sukanya Samriddhi Yojana",
+    "ministry": "Ministry of Finance",
+    "category": "Women & Girl Child",
+    "description": "High-interest savings scheme for the future education and marriage expenses of a girl child.",
+    "benefits": ["Higher interest than regular savings", "Tax benefits under Section 80C"],
+    "eligibility": { "gender": "female", "maxAge": 10, "occupation": [], "states": [] },
+    "documents": ["Girl child's birth certificate", "Guardian's ID proof"],
+    "applyUrl": "https://www.nsiindia.gov.in"
+  },
+  {
+    "id": "abpmjay",
+    "name": "Ayushman Bharat - PMJAY",
+    "ministry": "Ministry of Health and Family Welfare",
+    "category": "Healthcare",
+    "description": "Free health cover of up to Rs. 5 lakh per family per year for secondary and tertiary hospitalization.",
+    "benefits": ["Cashless hospitalization up to Rs. 5 lakh/year", "Covers pre-existing conditions"],
+    "eligibility": { "maxIncome": 250000, "occupation": [], "states": [] },
+    "documents": ["Aadhaar Card", "Ration Card / SECC ID"],
+    "applyUrl": "https://pmjay.gov.in"
+  },
+  {
+    "id": "skillindia",
+    "name": "Skill India Mission (PMKVY)",
+    "ministry": "Ministry of Skill Development and Entrepreneurship",
+    "category": "Education & Skills",
+    "description": "Free short-term skill training with certification for youth to improve employability.",
+    "benefits": ["Free industry-relevant training", "Certification", "Placement assistance"],
+    "eligibility": { "minAge": 15, "maxAge": 45, "occupation": ["student", "unemployed"], "states": [] },
+    "documents": ["Aadhaar Card", "Educational certificates"],
+    "applyUrl": "https://www.skillindia.gov.in"
+  },
+  {
+    "id": "startupindia",
+    "name": "Startup India",
+    "ministry": "DPIIT",
+    "category": "Entrepreneurship",
+    "description": "Tax exemptions, funding support, and simplified compliance for recognized startups.",
+    "benefits": ["Tax exemption for eligible startups", "Access to seed funding", "Fast-track patent filing"],
+    "eligibility": { "occupation": ["startup"], "states": [] },
+    "documents": ["Certificate of Incorporation", "Business description"],
+    "applyUrl": "https://www.startupindia.gov.in"
+  },
+  {
+    "id": "apy",
+    "name": "Atal Pension Yojana",
+    "ministry": "Ministry of Finance",
+    "category": "Pension",
+    "description": "Guaranteed monthly pension of Rs. 1,000-5,000 after age 60 for unorganized sector workers.",
+    "benefits": ["Guaranteed pension after 60", "Government co-contribution for eligible subscribers"],
+    "eligibility": { "minAge": 18, "maxAge": 40, "occupation": [], "states": [] },
+    "documents": ["Aadhaar Card", "Savings bank account"],
+    "applyUrl": "https://www.npscra.nsdl.co.in/scheme-details.php"
+  }
+]

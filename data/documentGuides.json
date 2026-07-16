@@ -1,0 +1,100 @@
+{
+  "Aadhaar Card": {
+    "whatIsIt": "A 12-digit unique identity number issued by the Government of India based on biometric and demographic data.",
+    "howToGet": "Visit any authorized Aadhaar Enrolment Centre. You can book an appointment online at the UIDAI website. You need to provide proof of identity, address, and birth date, and complete your fingerprint and iris scans.",
+    "time": "Normally 15 to 90 days after registration.",
+    "fees": "First-time enrolment is FREE. Updates or replacements cost ₹50 to ₹100.",
+    "onlineUrl": "https://myaadhaar.uidai.gov.in"
+  },
+  "Income Certificate": {
+    "whatIsIt": "An official government document proving your annual household income, issued by the state revenue authority (usually the Tehsildar or District Magistrate).",
+    "howToGet": "Apply online via your state's e-District portal or offline at your local Tehsildar office or Common Service Centre (CSC). You must submit proof of address, income proofs (like salary slip or declarations), and Aadhaar.",
+    "time": "7 to 15 working days.",
+    "fees": "₹20 to ₹50 depending on the state and application method.",
+    "onlineUrl": "https://services.india.gov.in"
+  },
+  "Property documents (if any)": {
+    "whatIsIt": "Official ownership records, sale deeds, or allotment letters confirming ownership of a plot of land or house.",
+    "howToGet": "Obtain these from your local Sub-Registrar office or municipal records department. Ensure your name is properly mutated in the land register.",
+    "time": "15 to 30 days depending on local municipal offices.",
+    "fees": "Nominal registry inspection fee (₹100 - ₹500).",
+    "onlineUrl": "https://bhulekh.gov.in"
+  },
+  "Land records": {
+    "whatIsIt": "Official land title details (RoR - Record of Rights, Jamabandi, or Khata/Patta) proving you own agricultural or residential land.",
+    "howToGet": "Most states now offer online land records portals (e.g. Bhulekh, AnyRoR, Dharani). You can search by your survey number or name. Offline copies can be obtained from the local Patwari or Tehsildar office.",
+    "time": "Instant download online; 3 to 7 days offline.",
+    "fees": "FREE to view online; ₹10 to ₹50 for certified offline copies.",
+    "onlineUrl": "https://bhulekh.gov.in"
+  },
+  "Bank passbook": {
+    "whatIsIt": "A physical book or statement booklet issued by your bank showing your transaction history, account number, and IFSC code.",
+    "howToGet": "Issued immediately when you open a savings account at any bank. If lost or full, visit your home branch with your ID proof to get a new or updated one.",
+    "time": "Instant across the counter at your bank branch.",
+    "fees": "FREE initially; replacements cost around ₹50 to ₹100.",
+    "onlineUrl": ""
+  },
+  "Business plan": {
+    "whatIsIt": "A document describing your business idea, required loan amount, market analysis, and estimated profits.",
+    "howToGet": "You can write it yourself using simple templates. For Mudra loans, banks provide a basic 1-page template. Common Service Centers (CSC) can also assist in drafting one.",
+    "time": "1 to 2 days.",
+    "fees": "FREE (Self-drafted) or a small fee at CSC center.",
+    "onlineUrl": "https://www.mudra.org.in"
+  },
+  "Bank account details": {
+    "whatIsIt": "Your Bank Account Number and IFSC Code, used to receive direct cash benefits directly into your account (DBT).",
+    "howToGet": "Can be found on the first page of your bank passbook or checkbook. Ensure your account is Aadhaar-seeded for government direct benefit transfer (DBT).",
+    "time": "Instant.",
+    "fees": "FREE.",
+    "onlineUrl": ""
+  },
+  "Girl child's birth certificate": {
+    "whatIsIt": "An official birth document issued by the local Registrar of Births & Deaths (Municipal Corporation or Gram Panchayat).",
+    "howToGet": "Apply at the hospital where birth occurred, online via state municipal portals, or offline at the local Panchayat/Municipal office with hospital discharge receipts.",
+    "time": "7 to 15 days.",
+    "fees": "FREE if registered within 21 days of birth; late registration fee is ₹5 to ₹50.",
+    "onlineUrl": "https://crsorgi.gov.in"
+  },
+  "Guardian's ID proof": {
+    "whatIsIt": "Official identity card of the parent or legal guardian (Aadhaar Card, PAN Card, Voter ID, or Passport).",
+    "howToGet": "If you don't have one, apply online for Voter ID on NVSP portal or Aadhaar on UIDAI portal.",
+    "time": "Varies by ID (7 to 30 days).",
+    "fees": "Usually FREE or nominal.",
+    "onlineUrl": "https://www.nvsp.in"
+  },
+  "Ration Card / SECC ID": {
+    "whatIsIt": "A state government-issued document allowing purchase of subsidized food grains, and used as proof of economic category (BPL/AAY).",
+    "howToGet": "Apply online through your State Food & Civil Supplies portal or offline at the Tehsil/Food office. You must submit income proofs and family photos.",
+    "time": "15 to 30 days.",
+    "fees": "₹5 to ₹45.",
+    "onlineUrl": "https://nfsa.gov.in"
+  },
+  "Educational certificates": {
+    "whatIsIt": "Mark sheets or passing certificates for Class 10, Class 12, or graduation, issued by school boards or universities.",
+    "howToGet": "Issued by your school or university upon successful completion of examinations. Duplicate copies can be downloaded from DigiLocker online.",
+    "time": "Instant on DigiLocker; 15-30 days from board.",
+    "fees": "FREE on DigiLocker; nominal board fees for duplicates.",
+    "onlineUrl": "https://www.digilocker.gov.in"
+  },
+  "Certificate of Incorporation": {
+    "whatIsIt": "Legal document showing your startup or company is registered with the Ministry of Corporate Affairs (MCA) under the Companies Act.",
+    "howToGet": "Register online via the MCA portal or hire a chartered accountant / company secretary. For startups, register through the Startup India portal.",
+    "time": "5 to 10 working days.",
+    "fees": "₹2,000 to ₹10,000 depending on share capital.",
+    "onlineUrl": "https://www.mca.gov.in"
+  },
+  "Business description": {
+    "whatIsIt": "A short brief detailing what your business does, what products or services it sells, and its target customers.",
+    "howToGet": "Write it in simple paragraphs. No special certificate is needed. Highlight how your business creates value or jobs.",
+    "time": "1 hour.",
+    "fees": "FREE.",
+    "onlineUrl": ""
+  },
+  "Savings bank account": {
+    "whatIsIt": "A basic savings bank account at any commercial bank or post office, used to save money and receive government subsidies.",
+    "howToGet": "Visit any bank branch (like SBI, PNB, or nearest Post Office) with Aadhaar and two photos. Under Jan Dhan Yojana, you can open a Zero Balance account.",
+    "time": "Instant (same day) or 1-2 days.",
+    "fees": "FREE (Zero balance under PM Jan Dhan Yojana).",
+    "onlineUrl": "https://www.pmjdy.gov.in"
+  }
+}
