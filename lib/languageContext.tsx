@@ -998,7 +998,8 @@ export function configureSpeechUtterance(
   utterance: SpeechSynthesisUtterance,
   gender: "male" | "female",
   rate: number,
-  pitch: number
+  pitch: number,
+  selectedVoiceName?: string
 ) {
   if (typeof window === "undefined" || !window.speechSynthesis) return;
   const voices = window.speechSynthesis.getVoices();
@@ -1011,54 +1012,81 @@ export function configureSpeechUtterance(
 
   let selectedVoice = null;
 
-  // Smart scoring system to prioritize natural, human-sounding neural voices
-  const getVoiceScore = (voice: SpeechSynthesisVoice, targetGender: "male" | "female") => {
-    const name = voice.name.toLowerCase();
-    let score = 0;
+  // If user selected a specific voice, attempt to use it
+  if (selectedVoiceName) {
+    selectedVoice = voices.find((v) => v.name === selectedVoiceName);
+  }
 
-    // 1. Gender Match Indicators
-    if (targetGender === "female") {
-      if (
-        name.includes("female") ||
-        name.includes("swara") ||
-        name.includes("heera") ||
-        name.includes("zira") ||
-        name.includes("google हिन्दी") ||
-        name.includes("kavita") ||
-        name.includes("sangeeta") ||
-        name.includes("shruti") ||
-        name.includes("haruka")
-      ) {
-        score += 15;
+  // Fallback to automatic neural scoring if no voice selected or selected voice not found
+  if (!selectedVoice) {
+    // Smart scoring system to prioritize natural, human-sounding neural voices
+    const getVoiceScore = (voice: SpeechSynthesisVoice, targetGender: "male" | "female") => {
+      const name = voice.name.toLowerCase();
+      let score = 0;
+
+      // 1. Precise Premium Voice Matches (gives 100% human-like experience)
+      if (targetGender === "female") {
+        if (
+          name.includes("neerja") ||
+          name.includes("swara") ||
+          name.includes("jenny") ||
+          name.includes("aria") ||
+          name.includes("samantha") ||
+          name.includes("heera")
+        ) {
+          score += 50; // Ultra high priority for top tier natural human voices
+        }
+      } else {
+        if (
+          name.includes("prabhat") ||
+          name.includes("madhur") ||
+          name.includes("guy") ||
+          name.includes("ravi") ||
+          name.includes("david") ||
+          name.includes("hemant")
+        ) {
+          score += 50;
+        }
       }
-    } else {
-      if (
-        name.includes("male") ||
-        name.includes("hemant") ||
-        name.includes("ravi") ||
-        name.includes("david") ||
-        name.includes("madhur") ||
-        name.includes("harsh") ||
-        name.includes("george")
-      ) {
-        score += 15;
+
+      // 2. Gender Match Indicators
+      if (targetGender === "female") {
+        if (
+          name.includes("female") ||
+          name.includes("zira") ||
+          name.includes("google हिन्दी") ||
+          name.includes("kavita") ||
+          name.includes("sangeeta") ||
+          name.includes("shruti") ||
+          name.includes("haruka")
+        ) {
+          score += 15;
+        }
+      } else {
+        if (
+          name.includes("male") ||
+          name.includes("george") ||
+          name.includes("harsh")
+        ) {
+          score += 15;
+        }
       }
+
+      // 3. Premium Human-like Neural / Natural prioritizers
+      if (name.includes("natural") || name.includes("neural")) {
+        score += 30; // Maximum priority for natural-sounding speech
+      } else if (name.includes("google") || name.includes("online") || name.includes("cloud")) {
+        score += 15; // Medium priority for cloud-assisted voices
+      }
+
+      return score;
+    };
+
+    if (langVoices.length > 0) {
+      // Sort descending by score
+      langVoices.sort((a, b) => getVoiceScore(b, gender) - getVoiceScore(a, gender));
+      selectedVoice = langVoices[0];
     }
-
-    // 2. Premium Human-like Neural / Natural prioritizers
-    if (name.includes("natural") || name.includes("neural")) {
-      score += 30; // Maximum priority for natural-sounding speech
-    } else if (name.includes("google") || name.includes("online") || name.includes("cloud")) {
-      score += 15; // Medium priority for cloud-assisted voices
-    }
-
-    return score;
-  };
-
-  if (langVoices.length > 0) {
-    // Sort descending by score
-    langVoices.sort((a, b) => getVoiceScore(b, gender) - getVoiceScore(a, gender));
-    selectedVoice = langVoices[0];
   }
 
   if (selectedVoice) {
@@ -1083,6 +1111,9 @@ interface LanguageContextType {
   setVoiceRate: (rate: number) => void;
   voicePitch: number;
   setVoicePitch: (pitch: number) => void;
+  selectedVoiceName: string;
+  setSelectedVoiceName: (name: string) => void;
+  availableVoices: SpeechSynthesisVoice[];
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
@@ -1092,6 +1123,15 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [voiceGender, setVoiceGenderState] = useState<"male" | "female">("female");
   const [voiceRate, setVoiceRateState] = useState<number>(0.95);
   const [voicePitch, setVoicePitchState] = useState<number>(1.0);
+  const [selectedVoiceName, setSelectedVoiceNameState] = useState<string>("");
+  const [availableVoices, setAvailableVoices] = useState<SpeechSynthesisVoice[]>([]);
+
+  // Function to load system voices
+  const loadVoices = () => {
+    if (typeof window !== "undefined" && window.speechSynthesis) {
+      setAvailableVoices(window.speechSynthesis.getVoices());
+    }
+  };
 
   useEffect(() => {
     const saved = localStorage.getItem("sarkargpt_lang") as LanguageCode;
@@ -1110,10 +1150,14 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     if (savedPitch) {
       setVoicePitchState(parseFloat(savedPitch));
     }
+    const savedVoice = localStorage.getItem("sarkargpt_selected_voice_name");
+    if (savedVoice) {
+      setSelectedVoiceNameState(savedVoice);
+    }
     
-    // Trigger window.speechSynthesis.getVoices() once on mount to populate Chrome cache
+    loadVoices();
     if (typeof window !== "undefined" && window.speechSynthesis) {
-      window.speechSynthesis.getVoices();
+      window.speechSynthesis.onvoiceschanged = loadVoices;
     }
   }, []);
 
@@ -1137,6 +1181,11 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     localStorage.setItem("sarkargpt_voice_pitch", pitch.toString());
   };
 
+  const setSelectedVoiceName = (name: string) => {
+    setSelectedVoiceNameState(name);
+    localStorage.setItem("sarkargpt_selected_voice_name", name);
+  };
+
   const t = (key: string): string => {
     return TRANSLATIONS[language]?.[key] || TRANSLATIONS["en"]?.[key] || key;
   };
@@ -1157,6 +1206,9 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
         setVoiceRate,
         voicePitch,
         setVoicePitch,
+        selectedVoiceName,
+        setSelectedVoiceName,
+        availableVoices,
       }}
     >
       {children}

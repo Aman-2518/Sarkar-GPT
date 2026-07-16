@@ -15,6 +15,9 @@ export default function SettingsModal({ onClose }: { onClose: () => void }) {
     setVoiceRate,
     voicePitch,
     setVoicePitch,
+    selectedVoiceName,
+    setSelectedVoiceName,
+    availableVoices,
     t,
   } = useLanguage();
 
@@ -177,6 +180,27 @@ export default function SettingsModal({ onClose }: { onClose: () => void }) {
                 </button>
               </div>
             </div>
+
+            {/* Voice Model Selector Dropdown */}
+            {availableVoices.length > 0 && (
+              <div className="flex flex-col gap-1.5">
+                <span className="text-xs font-semibold text-neutral-700 dark:text-neutral-300">Specific Voice Model</span>
+                <select
+                  value={selectedVoiceName}
+                  onChange={(e) => setSelectedVoiceName(e.target.value)}
+                  className="w-full bg-neutral-100 dark:bg-white/5 border border-neutral-200 dark:border-white/10 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-saffron-500 cursor-pointer"
+                >
+                  <option value="">-- Auto-Select (Neural/Natural) --</option>
+                  {availableVoices
+                    .filter((v) => v.lang.toLowerCase().startsWith(language.toLowerCase().split("-")[0]))
+                    .map((v) => (
+                      <option key={v.name} value={v.name} className="text-neutral-900 bg-white">
+                        {v.name} {!v.localService ? "☁️ (Online/Neural)" : "💻 (Local)"}
+                      </option>
+                    ))}
+                </select>
+              </div>
+            )}
 
             {/* Voice Speed Slider */}
             <div className="flex flex-col gap-1">
