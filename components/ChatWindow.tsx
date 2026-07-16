@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Copy, RotateCcw, Send, Trash2, Mic, MicOff, Volume2, VolumeX } from "lucide-react";
+import { Copy, RotateCcw, Send, Trash2, Mic, MicOff, Volume2, VolumeX, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import schemesData from "@/data/schemes.json";
-import { ChatMessage, Scheme } from "@/lib/types";
+import { ChatMessage, Scheme, UserProfile } from "@/lib/types";
 import { useLanguage } from "@/lib/languageContext";
 
 const SUGGESTED = [
@@ -15,7 +15,6 @@ const SUGGESTED = [
 
 const schemes = schemesData as Scheme[];
 
-// Web Speech API interface for TypeScript
 interface IWindow extends Window {
   webkitSpeechRecognition: any;
   SpeechRecognition: any;
@@ -28,6 +27,7 @@ export default function ChatWindow() {
   const [loading, setLoading] = useState(false);
   const [isListening, setIsListening] = useState(false);
   const [speakingMsgIndex, setSpeakingMsgIndex] = useState<number | null>(null);
+  const [profile, setProfile] = useState<Partial<UserProfile>>({});
   const bottomRef = useRef<HTMLDivElement>(null);
   const recognitionRef = useRef<any>(null);
 
@@ -36,7 +36,18 @@ export default function ChatWindow() {
   }, [messages, loading]);
 
   useEffect(() => {
-    // Cleanup synthesis and speech recognition on unmount
+    // Load profile from localStorage if it exists
+    if (typeof window !== "undefined") {
+      const savedProfile = localStorage.getItem("sarkargpt_profile");
+      if (savedProfile) {
+        try {
+          setProfile(JSON.parse(savedProfile));
+        } catch (e) {
+          console.error("Failed to parse saved profile", e);
+        }
+      }
+    }
+
     return () => {
       if (typeof window !== "undefined") {
         if (window.speechSynthesis) window.speechSynthesis.cancel();
@@ -51,13 +62,11 @@ export default function ChatWindow() {
     setMessages((m) => [...m, { role: "user", content: question }]);
     setLoading(true);
 
-    // Stop speaking if active
     if (typeof window !== "undefined" && window.speechSynthesis) {
       window.speechSynthesis.cancel();
       setSpeakingMsgIndex(null);
     }
 
-    // Local, zero-cost keyword filter before ever calling the AI — only relevant schemes are sent.
     const lower = question.toLowerCase();
     const matched = schemes.filter(
       (s) =>
@@ -70,7 +79,7 @@ export default function ChatWindow() {
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ question, profile: {}, schemes: relevant, language }),
+        body: JSON.stringify({ question, profile, schemes: relevant, language }),
       });
       const data = await res.json();
       if (!res.ok) {
@@ -156,10 +165,21 @@ export default function ChatWindow() {
     }
   }
 
+  const profileSummary = profile.state
+    ? `${profile.state}, ${profile.age} yrs, ${profile.occupation || "Self-employed"}`
+    : null;
+
   return (
     <div className="card mx-auto flex h-[70vh] max-w-2xl flex-col border border-neutral-200 dark:border-white/10 shadow-lg bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md">
       <div className="flex items-center justify-between border-b border-neutral-200 dark:border-white/10 pb-3">
-        <h2 className="font-display font-bold text-ink-900 dark:text-white">{t("chatHeader")}</h2>
+        <div className="flex flex-col">
+          <h2 className="font-display font-bold text-ink-900 dark:text-white">{t("chatHeader")}</h2>
+          {profileSummary && (
+            <span className="text-[11px] text-saffron-600 dark:text-saffron-400 font-medium flex items-center gap-1 mt-0.5">
+              <Sparkles size={10} /> Profile active: {profileSummary}
+            </span>
+          )}
+        </div>
         <button onClick={() => setMessages([])} className="text-xs flex items-center gap-1 text-ink-900/60 dark:text-saffron-50/60 hover:text-red-500 transition-colors">
           <Trash2 size={14} /> {t("clearBtn")}
         </button>

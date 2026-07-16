@@ -7,12 +7,20 @@ import { motion } from "framer-motion";
 import { useLanguage } from "@/lib/languageContext";
 import DocumentGuideModal from "./DocumentGuideModal";
 
-export default function SchemeCard({ scheme }: { scheme: Scheme }) {
+export default function SchemeCard({ scheme, onBookmarkChange }: { scheme: Scheme; onBookmarkChange?: () => void }) {
   const { t, currentSpeechLang } = useLanguage();
   const [saved, setSaved] = useState(false);
   const [open, setOpen] = useState(false);
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [selectedDoc, setSelectedDoc] = useState<string | null>(null);
+
+  // Initialize saved state from localStorage
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const savedIds = JSON.parse(localStorage.getItem("sarkargpt_saved_schemes") || "[]") as string[];
+      setSaved(savedIds.includes(scheme.id));
+    }
+  }, [scheme.id]);
 
   useEffect(() => {
     return () => {
@@ -21,6 +29,23 @@ export default function SchemeCard({ scheme }: { scheme: Scheme }) {
       }
     };
   }, []);
+
+  const toggleBookmark = () => {
+    if (typeof window === "undefined") return;
+
+    const savedIds = JSON.parse(localStorage.getItem("sarkargpt_saved_schemes") || "[]") as string[];
+    let newSavedIds: string[];
+
+    if (saved) {
+      newSavedIds = savedIds.filter((id) => id !== scheme.id);
+    } else {
+      newSavedIds = [...savedIds, scheme.id];
+    }
+
+    localStorage.setItem("sarkargpt_saved_schemes", JSON.stringify(newSavedIds));
+    setSaved(!saved);
+    if (onBookmarkChange) onBookmarkChange();
+  };
 
   const toggleSpeak = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -70,7 +95,7 @@ export default function SchemeCard({ scheme }: { scheme: Scheme }) {
             </button>
             
             <button
-              onClick={() => setSaved((s) => !s)}
+              onClick={toggleBookmark}
               aria-label="Bookmark scheme"
               className={`rounded-full p-2 transition-colors ${saved ? "text-saffron-600" : "text-ink-900/40 dark:text-saffron-50/40"} hover:bg-saffron-100 dark:hover:bg-white/10`}
             >
