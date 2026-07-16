@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Copy, RotateCcw, Send, Trash2, Mic, MicOff, Volume2, VolumeX, Sparkles } from "lucide-react";
+import { Copy, RotateCcw, Send, Trash2, Mic, MicOff, Volume2, VolumeX, Sparkles, Check } from "lucide-react";
 import { motion } from "framer-motion";
 import schemesData from "@/data/schemes.json";
 import { ChatMessage, Scheme, UserProfile } from "@/lib/types";
@@ -27,6 +27,7 @@ export default function ChatWindow() {
   const [loading, setLoading] = useState(false);
   const [isListening, setIsListening] = useState(false);
   const [speakingMsgIndex, setSpeakingMsgIndex] = useState<number | null>(null);
+  const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
   const [profile, setProfile] = useState<Partial<UserProfile>>({});
   const bottomRef = useRef<HTMLDivElement>(null);
   const recognitionRef = useRef<any>(null);
@@ -157,6 +158,14 @@ export default function ChatWindow() {
     }
   };
 
+  const handleCopyMessage = (text: string, index: number) => {
+    navigator.clipboard.writeText(text);
+    setCopiedIndex(index);
+    setTimeout(() => {
+      setCopiedIndex(null);
+    }, 2000);
+  };
+
   function regenerate() {
     const lastUser = [...messages].reverse().find((m) => m.role === "user");
     if (lastUser) {
@@ -214,9 +223,21 @@ export default function ChatWindow() {
               >
                 <p className="whitespace-pre-wrap">{m.content}</p>
                 {m.role === "assistant" && (
-                  <div className="mt-2 flex gap-3 text-ink-900/40 dark:text-saffron-50/50">
-                    <button onClick={() => navigator.clipboard.writeText(m.content)} title="Copy" aria-label="Copy" className="hover:text-saffron-600 transition-colors">
-                      <Copy size={13} />
+                  <div className="mt-2 flex gap-4 text-ink-900/40 dark:text-saffron-50/50">
+                    <button
+                      onClick={() => handleCopyMessage(m.content, i)}
+                      title={copiedIndex === i ? "Copied!" : "Copy"}
+                      aria-label={copiedIndex === i ? "Copied!" : "Copy"}
+                      className="hover:text-saffron-600 transition-all flex items-center gap-1.5"
+                    >
+                      {copiedIndex === i ? (
+                        <>
+                          <Check size={13} className="text-emerald-600 dark:text-emerald-400" />
+                          <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-bold">Copied!</span>
+                        </>
+                      ) : (
+                        <Copy size={13} />
+                      )}
                     </button>
                     <button
                       onClick={() => toggleSpeakMessage(m.content, i)}

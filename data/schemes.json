@@ -1,11 +1,16 @@
 [
   {
     "id": "pmay",
-    "name": "Pradhan Mantri Awas Yojana",
+    "name": "Pradhan Mantri Awas Yojana (PMAY)",
     "ministry": "Ministry of Housing and Urban Affairs",
     "category": "Housing",
-    "description": "Financial assistance and interest subsidy to help low and middle income families build or buy a home.",
-    "benefits": ["Interest subsidy on home loans", "Direct construction assistance for eligible families"],
+    "description": "A flagship credit-linked subsidy and direct financial assistance scheme to help low, middle-income families, and economically weaker sections build or purchase their first permanent (Pucca) house. Covers urban and rural developments.",
+    "benefits": [
+      "Interest subsidy up to 6.5% on home loans (up to Rs. 6 Lakh loan amount)",
+      "Direct central assistance of Rs. 1.5 Lakh for house construction in urban areas",
+      "Special preference given to women, senior citizens, and physically challenged applicants",
+      "Mandatory joint ownership with female head of the family to promote women empowerment"
+    ],
     "eligibility": { "maxIncome": 1800000, "occupation": [], "states": [] },
     "documents": ["Aadhaar Card", "Income Certificate", "Property documents (if any)"],
     "applyUrl": "https://pmaymis.gov.in"
@@ -15,41 +20,61 @@
     "name": "PM Kisan Samman Nidhi",
     "ministry": "Ministry of Agriculture and Farmers Welfare",
     "category": "Agriculture",
-    "description": "Direct income support of Rs. 6,000 per year for landholding farmer families.",
-    "benefits": ["Rs. 6,000/year in 3 installments", "Direct bank transfer, no middlemen"],
+    "description": "A direct income support scheme providing assured financial assistance to all landholding farmer families across India to help buy agricultural inputs and meet domestic needs.",
+    "benefits": [
+      "Assured direct income support of Rs. 6,000 per year",
+      "Transferred in three equal installments of Rs. 2,000 every 4 months",
+      "Direct benefit transfer (DBT) directly into Aadhaar-seeded bank accounts",
+      "Covers all landholding farmer families regardless of land size"
+    ],
     "eligibility": { "occupation": ["farmer"], "states": [] },
     "documents": ["Aadhaar Card", "Land records", "Bank passbook"],
     "applyUrl": "https://pmkisan.gov.in"
   },
   {
     "id": "pmmy",
-    "name": "Pradhan Mantri Mudra Yojana",
+    "name": "Pradhan Mantri Mudra Yojana (MUDRA)",
     "ministry": "Ministry of Finance",
     "category": "Entrepreneurship",
-    "description": "Collateral-free loans up to Rs. 10 lakh for micro and small business owners.",
-    "benefits": ["No collateral required", "Loans up to Rs. 10 lakh", "Available via banks and NBFCs"],
+    "description": "Provides collateral-free institutional loans up to Rs. 10 Lakh to help micro, small business owners, and startup founders start, expand, or modernize non-corporate, non-farm businesses.",
+    "benefits": [
+      "No collateral or third-party guarantee required for any loan tier",
+      "Three customized categories: Shishu (up to Rs. 50,000), Kishor (up to Rs. 5 Lakh), and Tarun (up to Rs. 10 Lakh)",
+      "Low processing fees and flexible repayment periods up to 5 years",
+      "Mudra Card provided for easy working capital cash withdrawals"
+    ],
     "eligibility": { "occupation": ["msme", "startup"], "states": [] },
     "documents": ["Business plan", "Aadhaar Card", "Bank account details"],
     "applyUrl": "https://www.mudra.org.in"
   },
   {
     "id": "ssy",
-    "name": "Sukanya Samriddhi Yojana",
+    "name": "Sukanya Samriddhi Yojana (SSY)",
     "ministry": "Ministry of Finance",
     "category": "Women & Girl Child",
-    "description": "High-interest savings scheme for the future education and marriage expenses of a girl child.",
-    "benefits": ["Higher interest than regular savings", "Tax benefits under Section 80C"],
+    "description": "A small deposit savings scheme for girl children, launched as part of the 'Beti Bachao Beti Padhao' campaign. Offers high tax-free interest to build a fund for education and marriage.",
+    "benefits": [
+      "Highest government-backed interest rate among small savings schemes",
+      "Triple tax exemptions: No tax on investment, interest earned, or final maturity amount (Section 80C)",
+      "Minimum deposit of just Rs. 250 per year, making it affordable for everyone",
+      "Partial withdrawal allowed for higher education expenses after the girl turns 18"
+    ],
     "eligibility": { "gender": "female", "maxAge": 10, "occupation": [], "states": [] },
     "documents": ["Girl child's birth certificate", "Guardian's ID proof"],
     "applyUrl": "https://www.nsiindia.gov.in"
   },
   {
     "id": "abpmjay",
-    "name": "Ayushman Bharat - PMJAY",
+    "name": "Ayushman Bharat (PM-JAY)",
     "ministry": "Ministry of Health and Family Welfare",
     "category": "Healthcare",
-    "description": "Free health cover of up to Rs. 5 lakh per family per year for secondary and tertiary hospitalization.",
-    "benefits": ["Cashless hospitalization up to Rs. 5 lakh/year", "Covers pre-existing conditions"],
+    "description": "The world's largest government-funded health insurance scheme. Provides completely free secondary and tertiary care hospitalization cover to poor and vulnerable families.",
+    "benefits": [
+      "Cashless and paperless health insurance cover of Rs. 5 Lakh per family per year",
+      "Covers all pre-existing medical conditions from day one of enrollment",
+      "No cap on family size, age of members, or gender of the beneficiaries",
+      "Covers up to 3 days of pre-hospitalization and 15 days of post-hospitalization costs (including medicines)"
+    ],
     "eligibility": { "maxIncome": 250000, "occupation": [], "states": [] },
     "documents": ["Aadhaar Card", "Ration Card / SECC ID"],
     "applyUrl": "https://pmjay.gov.in"
@@ -59,30 +84,45 @@
     "name": "Skill India Mission (PMKVY)",
     "ministry": "Ministry of Skill Development and Entrepreneurship",
     "category": "Education & Skills",
-    "description": "Free short-term skill training with certification for youth to improve employability.",
-    "benefits": ["Free industry-relevant training", "Certification", "Placement assistance"],
+    "description": "A skill certification scheme aiming to enable Indian youth to take up industry-relevant skill training that helps secure a better livelihood and job placement.",
+    "benefits": [
+      "100% free short-term skill training in multiple technical and services sectors",
+      "Government-recognized Skill Certificate and Assessment Card on completion",
+      "Placement assistance, job fairs, and entrepreneurship guidance support",
+      "Pravasi Kaushal Vikas Yojana option for overseas job seekers"
+    ],
     "eligibility": { "minAge": 15, "maxAge": 45, "occupation": ["student", "unemployed"], "states": [] },
     "documents": ["Aadhaar Card", "Educational certificates"],
     "applyUrl": "https://www.skillindia.gov.in"
   },
   {
     "id": "startupindia",
-    "name": "Startup India",
+    "name": "Startup India Initiative",
     "ministry": "DPIIT",
     "category": "Entrepreneurship",
-    "description": "Tax exemptions, funding support, and simplified compliance for recognized startups.",
-    "benefits": ["Tax exemption for eligible startups", "Access to seed funding", "Fast-track patent filing"],
+    "description": "An action plan designed to build a strong ecosystem for nurturing innovation, driving sustainable economic growth, and generating large-scale employment opportunities for startups.",
+    "benefits": [
+      "Income tax exemption for 3 consecutive block years out of the first 10 years",
+      "Self-certification compliance for labor laws and environmental inspections",
+      "80% rebate on patent filing fees and 50% rebate on trademark applications",
+      "Easy winding up process (within 90 days) under the Insolvency Code"
+    ],
     "eligibility": { "occupation": ["startup"], "states": [] },
     "documents": ["Certificate of Incorporation", "Business description"],
     "applyUrl": "https://www.startupindia.gov.in"
   },
   {
     "id": "apy",
-    "name": "Atal Pension Yojana",
+    "name": "Atal Pension Yojana (APY)",
     "ministry": "Ministry of Finance",
     "category": "Pension",
-    "description": "Guaranteed monthly pension of Rs. 1,000-5,000 after age 60 for unorganized sector workers.",
-    "benefits": ["Guaranteed pension after 60", "Government co-contribution for eligible subscribers"],
+    "description": "A pension scheme targeted at unorganized sector workers (like maids, drivers, delivery partners). Offers a guaranteed monthly pension to secure retirement years.",
+    "benefits": [
+      "Guaranteed monthly pension of Rs. 1,000, Rs. 2,000, Rs. 3,000, or Rs. 5,000 after age 60",
+      "Spouse receives the exact same pension amount automatically upon subscriber's death",
+      "Maturity corpus handed over to the nominee after both subscriber and spouse pass away",
+      "Auto-debit facility from savings bank account with flexible contribution upgrades"
+    ],
     "eligibility": { "minAge": 18, "maxAge": 40, "occupation": [], "states": [] },
     "documents": ["Aadhaar Card", "Savings bank account"],
     "applyUrl": "https://www.npscra.nsdl.co.in/scheme-details.php"
@@ -92,8 +132,13 @@
     "name": "PM SVANidhi",
     "ministry": "Ministry of Housing and Urban Affairs",
     "category": "Finance",
-    "description": "Micro-credit collateral-free working capital loan up to Rs. 10,000 for street vendors.",
-    "benefits": ["Working capital loan up to Rs. 10,000", "7% interest subsidy on early repayment", "Cashback on digital transactions"],
+    "description": "A micro-credit loan scheme providing affordable working capital loans to street vendors to help restart their livelihoods, promote digital transactions, and integrate vendors into the formal economy.",
+    "benefits": [
+      "Initial collateral-free working capital loan up to Rs. 10,000, progressing to Rs. 20,000 and Rs. 50,000 upon timely repayment",
+      "Interest subsidy of 7% per annum credited directly into bank accounts on regular repayments",
+      "Cashback incentives up to Rs. 1,200 per year on conducting digital transactions",
+      "No prepayment penalty for clearing the loan before the scheduled tenure"
+    ],
     "eligibility": { "occupation": ["self-employed", "street-vendor"], "states": [] },
     "documents": ["Aadhaar Card", "Vending Certificate (Livelihood proof)"],
     "applyUrl": "https://pmsvanidhi.mohua.gov.in"
@@ -103,8 +148,13 @@
     "name": "Post Matric Scholarship Scheme",
     "ministry": "Ministry of Social Justice and Empowerment",
     "category": "Education & Skills",
-    "description": "Financial assistance to students belonging to backward classes for pursuing higher education.",
-    "benefits": ["Full tuition fee coverage", "Monthly maintenance allowance based on course category"],
+    "description": "Provides financial support to SC, ST, and OBC students to complete post-matriculation or post-secondary courses. Minimizes dropouts at the higher education stage.",
+    "benefits": [
+      "100% tuition fees and compulsory non-refundable fees reimbursed by the government",
+      "Monthly maintenance allowance up to Rs. 1,200 for hostellers and Rs. 550 for day scholars",
+      "Additional allowances provided for study tours, thesis typing, and disabled students",
+      "Online direct bank transfer of scholarship amounts into students' bank accounts"
+    ],
     "eligibility": { "maxIncome": 250000, "occupation": ["student"], "states": [] },
     "documents": ["Aadhaar Card", "Income Certificate", "Caste Certificate", "Fee Receipt"],
     "applyUrl": "https://scholarships.gov.in"
@@ -114,8 +164,13 @@
     "name": "PM Ujjwala Yojana (PMUY)",
     "ministry": "Ministry of Petroleum and Natural Gas",
     "category": "Women & Girl Child",
-    "description": "Free LPG cooking gas connections to women belonging to below poverty line households.",
-    "benefits": ["Free LPG stove & cylinder connection", "Financial support of Rs. 1,600 per connection", "Interest-free loan for first refill"],
+    "description": "Provides clean cooking fuel (LPG connections) to women from economically backward households. Replaces traditional firewood and coal fuels, protecting health and the environment.",
+    "benefits": [
+      "Completely free first LPG gas cylinder and double-burner stove connection",
+      "Financial assistance of Rs. 1,600 provided for connection administrative charges",
+      "Interest-free loans available to purchase hot plates and pay for subsequent refills",
+      "Distributions done directly to the female head of BPL/SECC households"
+    ],
     "eligibility": { "gender": "female", "maxIncome": 150000, "occupation": [], "states": [] },
     "documents": ["Aadhaar Card", "Ration Card / SECC ID", "KYC Form"],
     "applyUrl": "https://www.pmuy.gov.in"
