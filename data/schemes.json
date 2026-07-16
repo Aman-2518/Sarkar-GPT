@@ -285,7 +285,7 @@
       "Must hold a savings bank account with auto-debit facility enabled.",
       "Must not be an active taxpayer or subscriber of any other statutory social security scheme (e.g. EPF, NPS)."
     ],
-    "amountDetails": "Monthly pension tiers: Rs. 1,000, Rs. 2,000, Rs. 3,000, Rs. 4,000, or Rs. 5,000. Contributions depend on your age of entry (e.g., starting at age 18 requires Rs. 42/month for a Rs. 1,000 pension).",
+    "amountDetails": "Monthly pension tiers: Rs. 1,000, Rs. 2,000, Rs. 3,000, or Rs. 5,000. Contributions depend on your age of entry (e.g., starting at age 18 requires Rs. 42/month for a Rs. 1,000 pension).",
     "applicationSteps": [
       "Approach the bank/post office branch where you hold your savings bank account.",
       "Fill out the APY registration form with nominee details and choose your pension amount.",
@@ -566,5 +566,191 @@
     "applyStartDate": "15th August 2023",
     "benefitDuration": "Ongoing business support and credit lines",
     "lastDateToApply": "No deadline (Continuous intakes)"
+  },
+  {
+    "id": "pmjjby",
+    "name": "Pradhan Mantri Jeevan Jyoti Bima Yojana (PMJJBY)",
+    "ministry": "Ministry of Finance",
+    "category": "Finance",
+    "description": "A one-year life insurance scheme renewable from year to year, offering high-value life cover for death due to any reason at a highly affordable annual premium.",
+    "benefits": [
+      "Life insurance cover of Rs. 2 Lakh in case of death of the subscriber due to any reason",
+      "Very low premium of just Rs. 436 per year",
+      "Direct auto-debit from linked savings bank account",
+      "Simple enrollment without any medical examination required"
+    ],
+    "eligibility": { "minAge": 18, "maxAge": 50, "occupation": [], "states": [] },
+    "documents": ["Aadhaar Card", "Savings bank account passbook", "Nominee details"],
+    "applyUrl": "https://jansuraksha.gov.in",
+    "eligibilityCriteria": [
+      "All savings bank account holders aged between 18 and 50 years.",
+      "Must give consent to enable auto-debit of premium from savings bank account.",
+      "Individuals who join the scheme before completing 50 years can continue cover up to 55 years."
+    ],
+    "amountDetails": "Rs. 2,00,000 paid to the nominee upon the subscriber's death. Annual premium: Rs. 436.",
+    "applicationSteps": [
+      "Visit the bank branch or post office where you hold your savings account.",
+      "Fill out the PMJJBY application and consent-cum-declaration form.",
+      "Submit Aadhaar copy and nominee declaration details.",
+      "Keep sufficient balance in the account for the annual auto-debit on May 31st."
+    ],
+    "extraIntel": [
+      "Jansuraksha Helpline: 1800-180-1111 / 1800-110-001.",
+      "A 30-day lien period applies from the date of enrollment, during which claims for natural death are not payable."
+    ],
+    "applicationPeriod": "Open year-round (Auto-renewal annually on June 1st)",
+    "disbursementSchedule": "Direct claim settlement to the nominee's bank account within 30 days of claim submission.",
+    "nextMilestoneDate": "Annual auto-debit premium date: May 31st annually",
+    "applyStartDate": "9th May 2015",
+    "benefitDuration": "Renewable annually up to age 55",
+    "lastDateToApply": "Continuous enrollment (Renewable every May 31st)"
+  },
+  {
+    "id": "pmsby",
+    "name": "Pradhan Mantri Suraksha Bima Yojana (PMSBY)",
+    "ministry": "Ministry of Finance",
+    "category": "Finance",
+    "description": "A one-year personal accident insurance scheme offering coverage against accidental death and disability at an extremely low annual premium.",
+    "benefits": [
+      "Accidental death insurance cover of Rs. 2 Lakh",
+      "Total and irrecoverable loss of both eyes or loss of use of both hands/feet cover of Rs. 2 Lakh",
+      "Partial disability cover of Rs. 1 Lakh for loss of one eye/hand/foot",
+      "Extremely affordable premium of just Rs. 20 per year"
+    ],
+    "eligibility": { "minAge": 18, "maxAge": 70, "occupation": [], "states": [] },
+    "documents": ["Aadhaar Card", "Bank account details", "Nominee details"],
+    "applyUrl": "https://jansuraksha.gov.in",
+    "eligibilityCriteria": [
+      "All savings bank account holders aged between 18 and 70 years.",
+      "Must provide auto-debit consent for premium deduction."
+    ],
+    "amountDetails": "Death / Total disability: Rs. 2,00,000. Partial disability: Rs. 1,00,000. Annual premium: Rs. 20.",
+    "applicationSteps": [
+      "Log into net banking of your account bank or visit nearest branch.",
+      "Select 'Social Security Schemes' and enroll in PMSBY.",
+      "Provide nominee name and verify Aadhaar registration.",
+      "Consent to auto-debit of Rs. 20 annually from savings bank account."
+    ],
+    "extraIntel": [
+      "Helpline: 1800-180-1111.",
+      "Accidental death includes deaths from drowning, snakebite, slip-and-fall, road accidents, and similar mishaps."
+    ],
+    "applicationPeriod": "Open year-round (Renewable every June 1st)",
+    "disbursementSchedule": "Direct transfer to nominee or claimant's bank account on approval of accident report.",
+    "nextMilestoneDate": "Annual renewal auto-debit: May 31st annually",
+    "applyStartDate": "9th May 2015",
+    "benefitDuration": "Renewable annually up to age 70",
+    "lastDateToApply": "Continuous enrollment (Renewable every May 31st)"
+  },
+  {
+    "id": "pmjdy",
+    "name": "Pradhan Mantri Jan Dhan Yojana (PMJDY)",
+    "ministry": "Ministry of Finance",
+    "category": "Finance",
+    "description": "A national mission for financial inclusion, ensuring access to financial services like savings bank accounts, remittances, credit, insurance, and pensions.",
+    "benefits": [
+      "Zero-balance basic savings bank account with no minimum balance requirements",
+      "Free RuPay Debit Card with built-in Rs. 2 Lakh accidental insurance cover",
+      "Overdraft facility up to Rs. 10,000 for eligible account holders",
+      "Direct Benefit Transfer (DBT) eligibility for all government schemes"
+    ],
+    "eligibility": { "occupation": [], "states": [] },
+    "documents": ["Aadhaar Card (or officially valid document)", "Passport photo"],
+    "applyUrl": "https://pmjdy.gov.in",
+    "eligibilityCriteria": [
+      "Any Indian citizen who does not hold a bank account.",
+      "Minimum age to open account is 10 years."
+    ],
+    "amountDetails": "No minimum balance. Overdraft limit up to Rs. 10,000 based on transaction history. RuPay card accidental cover: Rs. 2,00,000.",
+    "applicationSteps": [
+      "Visit any bank branch or Customer Service Point (CSP) / Bank Mitra.",
+      "Fill out the Jan Dhan account opening form.",
+      "Provide your Aadhaar card for biometric instant verification.",
+      "Receive your account passbook and RuPay debit card instantly."
+    ],
+    "extraIntel": [
+      "PMJDY National Toll-free: 1800-11-0001 / 1800-180-1111.",
+      "Use your debit card at least once in 90 days to keep the Rs. 2 Lakh accidental insurance cover active."
+    ],
+    "applicationPeriod": "Open year-round",
+    "disbursementSchedule": "Overdraft limit activated after 6 months of active account operations; insurance disbursed on claim.",
+    "nextMilestoneDate": "Ongoing account creation",
+    "applyStartDate": "28th August 2014",
+    "benefitDuration": "Lifetime account validity",
+    "lastDateToApply": "No deadline (Ongoing scheme)"
+  },
+  {
+    "id": "pmcareschildren",
+    "name": "PM-Cares for Children Scheme",
+    "ministry": "Ministry of Women and Child Development",
+    "category": "Education & Skills",
+    "description": "Provides comprehensive care and support for children who lost both parents, surviving parent, legal guardian, or adoptive parents due to the COVID-19 pandemic.",
+    "benefits": [
+      "Fixed deposit of Rs. 10 Lakh created in the child's name in post offices",
+      "Monthly stipend from age 18 to 23 years for education and personal needs",
+      "Lump sum fund of Rs. 10 Lakh handed over on attaining 23 years of age",
+      "Free health insurance under PM-JAY up to 18 years with premium paid by PM-CARES"
+    ],
+    "eligibility": { "maxAge": 18, "occupation": [], "states": [] },
+    "documents": ["Death certificates of parents", "Aadhaar Card of child", "Guardian details"],
+    "applyUrl": "https://pmcaresforchildren.in",
+    "eligibilityCriteria": [
+      "Children who lost both parents or surviving parent during the period 11th March 2020 to 5th May 2022 due to COVID-19.",
+      "Must have been below 18 years of age on the date of death of parents."
+    ],
+    "amountDetails": "Fixed corpus of Rs. 10 Lakh. Monthly stipend during age 18-23. Health cover of Rs. 5 Lakh/year. Education fees fully funded in government schools.",
+    "applicationSteps": [
+      "District Magistrates identify eligible children with child welfare committees.",
+      "Register details on the PM Cares for Children portal (pmcaresforchildren.in).",
+      "Open joint post office account with District Magistrate as guardian.",
+      "Generate PM-CARES ID Card and Ayushman Bharat health card."
+    ],
+    "extraIntel": [
+      "Childline Helpline: 1098.",
+      "The scheme covers private school admission fees and books under Right to Education (RTE) provisions."
+    ],
+    "applicationPeriod": "Closed (For children orphaned during COVID window)",
+    "disbursementSchedule": "Monthly stipends paid between ages 18-23; Rs. 10 Lakh maturity corpus paid on 23rd birthday.",
+    "nextMilestoneDate": "Stipend disbursements monthly",
+    "applyStartDate": "29th May 2021",
+    "benefitDuration": "Until child reaches 23 years of age",
+    "lastDateToApply": "Enrollments concluded (Historical verification ongoing)"
+  },
+  {
+    "id": "pmmvy",
+    "name": "Pradhan Mantri Matru Vandana Yojana (PMMVY)",
+    "ministry": "Ministry of Women and Child Development",
+    "category": "Women & Girl Child",
+    "description": "A maternity benefit program providing cash incentives to pregnant and lactating mothers for the first living child, compensating for wage loss and promoting health-seeking behavior.",
+    "benefits": [
+      "Cash incentive of Rs. 5,000 for the first child paid in two tranches",
+      "Additional Rs. 6,000 paid for the second child (if girl child) to promote gender balance",
+      "Direct Benefit Transfer (DBT) directly into bank accounts linked with Aadhaar",
+      "Encourages institutional deliveries and complete child immunization"
+    ],
+    "eligibility": { "gender": "female", "occupation": [], "states": [] },
+    "documents": ["Mother's Aadhaar Card", "MCP Card (Mother & Child Protection Card)", "Birth Certificate of child"],
+    "applyUrl": "https://pmmvy.wcd.gov.in",
+    "eligibilityCriteria": [
+      "Pregnant Women and Lactating Mothers (PW&LM) for their first or second child.",
+      "Excludes government employees and those receiving similar benefits under other laws."
+    ],
+    "amountDetails": "First child: Rs. 5,000 (Tranche 1: Rs. 3,000 on registration; Tranche 2: Rs. 2,000 after child birth and 1st immunization cycle). Second girl child: Rs. 6,000 in a single installment.",
+    "applicationSteps": [
+      "Register at the local Anganwadi Center (AWC) or healthcare center.",
+      "Fill out Form 1A (for first child) or Form 1B on the PMMVY portal (pmmvy.wcd.gov.in).",
+      "Submit MCP Card details, antenatal check-up proofs, and Aadhaar card.",
+      "Biometrics and bank details are validated online for direct DBT transfer."
+    ],
+    "extraIntel": [
+      "PMMVY Helpline: 011-23381611.",
+      "Register within 270 days of the Last Menstrual Period (LMP) date to claim the first tranche."
+    ],
+    "applicationPeriod": "Open year-round",
+    "disbursementSchedule": "Direct bank transfer within 30 days of submitting verification milestone proofs.",
+    "nextMilestoneDate": "Milestone verification checks daily",
+    "applyStartDate": "1st January 2017",
+    "benefitDuration": "Pregnancy through 1 year post-delivery",
+    "lastDateToApply": "Within 270 days of child birth"
   }
 ]
