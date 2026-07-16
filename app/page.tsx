@@ -276,7 +276,13 @@ export default function Home() {
       </motion.section>
 
       {/* Key Benefits Grid */}
-      <section className="flex flex-col gap-8">
+      <motion.section
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.5 }}
+        className="flex flex-col gap-8"
+      >
         <h2 className="text-center font-display text-3xl font-extrabold text-neutral-800 dark:text-white">Why SarkarGPT?</h2>
         <div className="grid gap-6 md:grid-cols-3">
           <motion.div
@@ -318,10 +324,16 @@ export default function Home() {
             </p>
           </motion.div>
         </div>
-      </section>
+      </motion.section>
 
-      {/* 50+ Schemes Directory Section */}
-      <section className="flex flex-col gap-8 max-w-6xl mx-auto px-4 pb-16">
+      {/* 60+ Schemes Directory Section */}
+      <motion.section
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.5 }}
+        className="flex flex-col gap-8 max-w-6xl mx-auto px-4 pb-16"
+      >
         <div className="text-center flex flex-col gap-2">
           <h2 className="font-display text-3xl font-extrabold text-neutral-800 dark:text-white">
             Directory of 60+ Monitored Government Schemes
@@ -360,10 +372,16 @@ export default function Home() {
             );
           })}
         </div>
-      </section>
+      </motion.section>
 
       {/* Upcoming Features & Roadmap Section */}
-      <section className="flex flex-col gap-8 max-w-4xl mx-auto px-4 pb-20 border-t border-neutral-200 dark:border-white/10 pt-16">
+      <motion.section
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.5 }}
+        className="flex flex-col gap-8 max-w-4xl mx-auto px-4 pb-20 border-t border-neutral-200 dark:border-white/10 pt-16"
+      >
         <div className="text-center flex flex-col gap-2">
           <span className="w-fit mx-auto rounded-full bg-saffron-100 dark:bg-white/10 px-3 py-1 text-[10px] font-bold text-saffron-700 dark:text-saffron-300 uppercase tracking-widest">
             Future Roadmap
@@ -429,7 +447,7 @@ export default function Home() {
             </div>
           </motion.div>
         </div>
-      </section>
+      </motion.section>
     </div>
   );
 }
