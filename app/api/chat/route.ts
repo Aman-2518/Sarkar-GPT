@@ -62,10 +62,10 @@ export async function POST(req: NextRequest) {
     cache.set(cacheKey, answer);
 
     return NextResponse.json({ answer, cached: false });
-  } catch (err) {
+  } catch (err: any) {
     console.error("OpenAI error:", err);
     return NextResponse.json(
-      { error: "Failed to get a response from the AI service. Please try again in a moment." },
+      { error: `AI Service Error: ${err?.message || "Unknown error occurred"}` },
       { status: 502 }
     );
   }
