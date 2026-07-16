@@ -21,24 +21,24 @@ html {
 
 @layer components {
   .glass {
-    @apply bg-white/60 dark:bg-white/5 backdrop-blur-xl border border-white/40 dark:border-white/10 shadow-lg;
+    @apply bg-white/75 dark:bg-zinc-950/40 backdrop-blur-xl border border-white/50 dark:border-white/5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.2)];
   }
   .btn-primary {
     @apply inline-flex items-center justify-center gap-2 rounded-full bg-warm-gradient px-6 py-3
-      font-display font-semibold text-white shadow-md transition-all duration-300
-      hover:shadow-lg hover:shadow-saffron-500/20 hover:brightness-105 hover:-translate-y-0.5 active:scale-95;
+      font-display font-semibold text-white shadow-[0_4px_14px_0_rgba(249,115,22,0.3)] transition-all duration-300
+      hover:shadow-[0_6px_20px_0_rgba(249,115,22,0.4)] hover:brightness-105 hover:-translate-y-0.5 active:scale-95;
     will-change: transform, box-shadow;
     transform: translateZ(0);
   }
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border border-saffron-500/40
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-saffron-500/30
       px-6 py-3 font-display font-semibold text-saffron-700 dark:text-saffron-300 transition-all duration-300
-      hover:bg-saffron-100 dark:hover:bg-white/10 hover:shadow-sm hover:-translate-y-0.5 active:scale-95;
+      hover:bg-saffron-500/5 hover:border-saffron-500/50 hover:shadow-[0_4px_12px_rgba(249,115,22,0.05)] hover:-translate-y-0.5 active:scale-95;
     will-change: transform, box-shadow;
     transform: translateZ(0);
   }
   .card {
-    @apply glass rounded-xl2 p-6 transition-all duration-300 hover:shadow-xl hover:shadow-saffron-500/5 hover:-translate-y-1 hover:border-saffron-500/30;
+    @apply glass rounded-xl2 p-6 transition-all duration-300 hover:shadow-[0_20px_40px_rgba(249,115,22,0.08)] dark:hover:shadow-[0_20px_40px_rgba(249,115,22,0.03)] hover:-translate-y-1 hover:border-saffron-500/25;
     will-change: transform, box-shadow, border-color;
     transform: translateZ(0);
   }
