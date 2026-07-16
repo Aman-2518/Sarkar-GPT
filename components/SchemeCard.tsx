@@ -12,7 +12,7 @@ const DocumentGuideModal = dynamic(() => import("./DocumentGuideModal"), {
 });
 
 export default function SchemeCard({ scheme, onBookmarkChange }: { scheme: Scheme; onBookmarkChange?: () => void }) {
-  const { t, currentSpeechLang, voiceGender, voiceRate, voicePitch } = useLanguage();
+  const { t, currentSpeechLang, voiceGender, voiceRate, voicePitch, selectedVoiceName } = useLanguage();
   const [saved, setSaved] = useState(false);
   const [open, setOpen] = useState(false);
   const [isSpeaking, setIsSpeaking] = useState(false);
@@ -69,7 +69,7 @@ export default function SchemeCard({ scheme, onBookmarkChange }: { scheme: Schem
       
       const utterance = new SpeechSynthesisUtterance(textToSpeak);
       utterance.lang = currentSpeechLang;
-      configureSpeechUtterance(utterance, voiceGender, voiceRate, voicePitch);
+      configureSpeechUtterance(utterance, voiceGender, voiceRate, voicePitch, selectedVoiceName);
       utterance.onend = () => setIsSpeaking(false);
       utterance.onerror = () => setIsSpeaking(false);
       setIsSpeaking(true);

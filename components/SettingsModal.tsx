@@ -18,6 +18,12 @@ export default function SettingsModal({ onClose }: { onClose: () => void }) {
     selectedVoiceName,
     setSelectedVoiceName,
     availableVoices,
+    fontSize,
+    setFontSize,
+    autoPlaySpeech,
+    setAutoPlaySpeech,
+    soundEffects,
+    setSoundEffects,
     t,
   } = useLanguage();
 
@@ -51,11 +57,19 @@ export default function SettingsModal({ onClose }: { onClose: () => void }) {
     localStorage.removeItem("sarkargpt_voice_gender");
     localStorage.removeItem("sarkargpt_voice_rate");
     localStorage.removeItem("sarkargpt_voice_pitch");
+    localStorage.removeItem("sarkargpt_selected_voice_name");
+    localStorage.removeItem("sarkargpt_font_size");
+    localStorage.removeItem("sarkargpt_autoplay");
+    localStorage.removeItem("sarkargpt_sounds");
     
     // Reset to local defaults
     setVoiceGender("female");
     setVoiceRate(0.95);
     setVoicePitch(1.0);
+    setSelectedVoiceName("");
+    setFontSize("normal");
+    setAutoPlaySpeech(false);
+    setSoundEffects(true);
     
     setResetSuccess(true);
     setTimeout(() => {
@@ -148,6 +162,45 @@ export default function SettingsModal({ onClose }: { onClose: () => void }) {
             </div>
           </div>
 
+          {/* Typography Scale */}
+          <div className="flex flex-col gap-2">
+            <span className="text-xs font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
+              Text Font Size
+            </span>
+            <div className="grid grid-cols-3 gap-2">
+              <button
+                onClick={() => setFontSize("normal")}
+                className={`py-2 px-1 rounded-xl border text-xs font-semibold transition-all ${
+                  fontSize === "normal"
+                    ? "bg-saffron-500/10 border-saffron-500 text-saffron-855"
+                    : "border-neutral-200 dark:border-white/10 hover:bg-neutral-100 dark:hover:bg-white/5"
+                }`}
+              >
+                Normal
+              </button>
+              <button
+                onClick={() => setFontSize("large")}
+                className={`py-2 px-1 rounded-xl border text-xs font-semibold transition-all ${
+                  fontSize === "large"
+                    ? "bg-saffron-500/10 border-saffron-500 text-saffron-855"
+                    : "border-neutral-200 dark:border-white/10 hover:bg-neutral-100 dark:hover:bg-white/5"
+                }`}
+              >
+                Large
+              </button>
+              <button
+                onClick={() => setFontSize("xl")}
+                className={`py-2 px-1 rounded-xl border text-xs font-semibold transition-all ${
+                  fontSize === "xl"
+                    ? "bg-saffron-500/10 border-saffron-500 text-saffron-855"
+                    : "border-neutral-200 dark:border-white/10 hover:bg-neutral-100 dark:hover:bg-white/5"
+                }`}
+              >
+                Extra Large
+              </button>
+            </div>
+          </div>
+
           {/* 3. Voice Assist Customization */}
           <div className="flex flex-col gap-3.5 border-t border-neutral-200 dark:border-white/10 pt-4">
             <span className="text-xs font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
@@ -234,6 +287,55 @@ export default function SettingsModal({ onClose }: { onClose: () => void }) {
                 onChange={(e) => setVoicePitch(parseFloat(e.target.value))}
                 className="w-full h-1 bg-neutral-200 dark:bg-white/10 rounded-lg appearance-none cursor-pointer accent-saffron-500"
               />
+            </div>
+          </div>
+
+          {/* Autoplay & Sound toggles */}
+          <div className="flex flex-col gap-4 border-t border-neutral-200 dark:border-white/10 pt-4">
+            <span className="text-xs font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
+              Interactive Preferences
+            </span>
+
+            <div className="flex items-center justify-between">
+              <div className="flex flex-col">
+                <span className="text-xs font-semibold text-neutral-700 dark:text-neutral-300">
+                  Read Chat Answers Aloud
+                </span>
+                <span className="text-[10px] text-neutral-500">Automatically speak chatbot responses</span>
+              </div>
+              <button
+                onClick={() => setAutoPlaySpeech(!autoPlaySpeech)}
+                className={`w-10 h-6 flex items-center rounded-full p-0.5 transition-colors duration-300 focus:outline-none ${
+                  autoPlaySpeech ? "bg-saffron-500" : "bg-neutral-300 dark:bg-white/15"
+                }`}
+              >
+                <div
+                  className={`bg-white w-5 h-5 rounded-full shadow-md transform duration-300 ${
+                    autoPlaySpeech ? "translate-x-4" : ""
+                  }`}
+                />
+              </button>
+            </div>
+
+            <div className="flex items-center justify-between">
+              <div className="flex flex-col">
+                <span className="text-xs font-semibold text-neutral-700 dark:text-neutral-300">
+                  Sound Effects
+                </span>
+                <span className="text-[10px] text-neutral-500">Play audio chimes on user actions</span>
+              </div>
+              <button
+                onClick={() => setSoundEffects(!soundEffects)}
+                className={`w-10 h-6 flex items-center rounded-full p-0.5 transition-colors duration-300 focus:outline-none ${
+                  soundEffects ? "bg-saffron-500" : "bg-neutral-300 dark:bg-white/15"
+                }`}
+              >
+                <div
+                  className={`bg-white w-5 h-5 rounded-full shadow-md transform duration-300 ${
+                    soundEffects ? "translate-x-4" : ""
+                  }`}
+                />
+              </button>
             </div>
           </div>
 

@@ -21,7 +21,17 @@ interface IWindow extends Window {
 }
 
 export default function ChatWindow() {
-  const { language, t, currentSpeechLang, voiceGender, voiceRate, voicePitch } = useLanguage();
+  const { 
+    language, 
+    t, 
+    currentSpeechLang, 
+    voiceGender, 
+    voiceRate, 
+    voicePitch,
+    selectedVoiceName,
+    autoPlaySpeech,
+    soundEffects,
+  } = useLanguage();
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -57,11 +67,42 @@ export default function ChatWindow() {
     };
   }, []);
 
+  const playChirp = (type: "send" | "reply") => {
+    if (typeof window === "undefined" || !soundEffects) return;
+    const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext;
+    if (!AudioContextClass) return;
+    try {
+      const ctx = new AudioContextClass();
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      if (type === "send") {
+        osc.type = "sine";
+        osc.frequency.setValueAtTime(880, ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(1320, ctx.currentTime + 0.12);
+        gain.gain.setValueAtTime(0.06, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.12);
+        osc.start(ctx.currentTime);
+        osc.stop(ctx.currentTime + 0.12);
+      } else {
+        osc.type = "triangle";
+        osc.frequency.setValueAtTime(587, ctx.currentTime);
+        osc.frequency.setValueAtTime(880, ctx.currentTime + 0.08);
+        gain.gain.setValueAtTime(0.05, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.2);
+        osc.start(ctx.currentTime);
+        osc.stop(ctx.currentTime + 0.2);
+      }
+    } catch {}
+  };
+
   async function send(question: string) {
     if (!question.trim() || loading) return;
     setInput("");
     setMessages((m) => [...m, { role: "user", content: question }]);
     setLoading(true);
+    playChirp("send");
 
     if (typeof window !== "undefined" && window.speechSynthesis) {
       window.speechSynthesis.cancel();
@@ -76,6 +117,7 @@ export default function ChatWindow() {
     );
     const relevant = (matched.length > 0 ? matched : schemes).slice(0, 6);
 
+    let replyContent = "Network error — please try again.";
     try {
       const res = await fetch("/api/chat", {
         method: "POST",
@@ -84,14 +126,22 @@ export default function ChatWindow() {
       });
       const data = await res.json();
       if (!res.ok) {
-        setMessages((m) => [...m, { role: "assistant", content: data.error ?? "Failed to get a response from the server." }]);
+        replyContent = data.error ?? "Failed to get a response from the server.";
       } else {
-        setMessages((m) => [...m, { role: "assistant", content: data.answer ?? "Something went wrong." }]);
+        replyContent = data.answer ?? "Something went wrong.";
       }
     } catch {
-      setMessages((m) => [...m, { role: "assistant", content: "Network error — please try again." }]);
     } finally {
+      // Get the index of the newly added reply
+      const newReplyIndex = messages.length + 1;
+      setMessages((m) => [...m, { role: "assistant", content: replyContent }]);
       setLoading(false);
+      playChirp("reply");
+      if (autoPlaySpeech) {
+        setTimeout(() => {
+          toggleSpeakMessage(replyContent, newReplyIndex);
+        }, 120);
+      }
     }
   }
 
@@ -151,7 +201,7 @@ export default function ChatWindow() {
       window.speechSynthesis.cancel();
       const utterance = new SpeechSynthesisUtterance(text);
       utterance.lang = currentSpeechLang;
-      configureSpeechUtterance(utterance, voiceGender, voiceRate, voicePitch);
+      configureSpeechUtterance(utterance, voiceGender, voiceRate, voicePitch, selectedVoiceName);
       utterance.onend = () => setSpeakingMsgIndex(null);
       utterance.onerror = () => setSpeakingMsgIndex(null);
       setSpeakingMsgIndex(index);

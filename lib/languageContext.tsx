@@ -14,7 +14,7 @@ export interface LanguageOption {
 }
 
 export const SUPPORTED_LANGUAGES: LanguageOption[] = [
-  { code: "en", name: "English", nativeName: "English", speechLang: "en-US" },
+  { code: "en", name: "English", nativeName: "English", speechLang: "en-IN" },
   { code: "hi", name: "Hindi", nativeName: "हिन्दी", speechLang: "hi-IN" },
   { code: "bn", name: "Bengali", nativeName: "বাংলা", speechLang: "bn-IN" },
   { code: "te", name: "Telugu", nativeName: "తెలుగు", speechLang: "te-IN" },
@@ -1114,6 +1114,12 @@ interface LanguageContextType {
   selectedVoiceName: string;
   setSelectedVoiceName: (name: string) => void;
   availableVoices: SpeechSynthesisVoice[];
+  fontSize: "normal" | "large" | "xl";
+  setFontSize: (size: "normal" | "large" | "xl") => void;
+  autoPlaySpeech: boolean;
+  setAutoPlaySpeech: (val: boolean) => void;
+  soundEffects: boolean;
+  setSoundEffects: (val: boolean) => void;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
@@ -1125,6 +1131,9 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [voicePitch, setVoicePitchState] = useState<number>(1.0);
   const [selectedVoiceName, setSelectedVoiceNameState] = useState<string>("");
   const [availableVoices, setAvailableVoices] = useState<SpeechSynthesisVoice[]>([]);
+  const [fontSize, setFontSizeState] = useState<"normal" | "large" | "xl">("normal");
+  const [autoPlaySpeech, setAutoPlaySpeechState] = useState<boolean>(false);
+  const [soundEffects, setSoundEffectsState] = useState<boolean>(true);
 
   // Function to load system voices
   const loadVoices = () => {
@@ -1154,12 +1163,32 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     if (savedVoice) {
       setSelectedVoiceNameState(savedVoice);
     }
+    const savedFontSize = localStorage.getItem("sarkargpt_font_size") as "normal" | "large" | "xl";
+    if (savedFontSize === "normal" || savedFontSize === "large" || savedFontSize === "xl") {
+      setFontSizeState(savedFontSize);
+    }
+    const savedAutoplay = localStorage.getItem("sarkargpt_autoplay");
+    if (savedAutoplay !== null) {
+      setAutoPlaySpeechState(savedAutoplay === "true");
+    }
+    const savedSounds = localStorage.getItem("sarkargpt_sounds");
+    if (savedSounds !== null) {
+      setSoundEffectsState(savedSounds === "true");
+    }
     
     loadVoices();
     if (typeof window !== "undefined" && window.speechSynthesis) {
       window.speechSynthesis.onvoiceschanged = loadVoices;
     }
   }, []);
+
+  // Update root typography scaling class when fontSize changes
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      document.documentElement.classList.remove("font-normal", "font-large", "font-xl");
+      document.documentElement.classList.add(`font-${fontSize}`);
+    }
+  }, [fontSize]);
 
   const setLanguage = (lang: LanguageCode) => {
     setLanguageState(lang);
@@ -1186,6 +1215,21 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     localStorage.setItem("sarkargpt_selected_voice_name", name);
   };
 
+  const setFontSize = (size: "normal" | "large" | "xl") => {
+    setFontSizeState(size);
+    localStorage.setItem("sarkargpt_font_size", size);
+  };
+
+  const setAutoPlaySpeech = (val: boolean) => {
+    setAutoPlaySpeechState(val);
+    localStorage.setItem("sarkargpt_autoplay", val.toString());
+  };
+
+  const setSoundEffects = (val: boolean) => {
+    setSoundEffectsState(val);
+    localStorage.setItem("sarkargpt_sounds", val.toString());
+  };
+
   const t = (key: string): string => {
     return TRANSLATIONS[language]?.[key] || TRANSLATIONS["en"]?.[key] || key;
   };
@@ -1209,6 +1253,12 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
         selectedVoiceName,
         setSelectedVoiceName,
         availableVoices,
+        fontSize,
+        setFontSize,
+        autoPlaySpeech,
+        setAutoPlaySpeech,
+        soundEffects,
+        setSoundEffects,
       }}
     >
       {children}
