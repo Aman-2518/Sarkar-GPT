@@ -759,54 +759,7 @@ export default function Home() {
         </div>
       </motion.section>
 
-      {/* 60+ Schemes Directory Section */}
-      <motion.section
-        id="directory"
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-50px" }}
-        transition={{ duration: 0.5 }}
-        className="flex flex-col gap-8 max-w-6xl mx-auto px-4 pb-16 scroll-mt-24"
-      >
-        <div className="text-center flex flex-col gap-2">
-          <h2 className="font-display text-3xl font-extrabold text-neutral-800 dark:text-white">
-            Directory of 60+ Monitored Government Schemes
-          </h2>
-          <p className="text-base text-ink-900/75 dark:text-saffron-50/75 max-w-2xl mx-auto">
-            Browse our complete live catalog of government schemes across multiple sectors and ministries.
-          </p>
-        </div>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {Array.from(new Set(schemes.map((s) => s.category))).map((category) => {
-            const catSchemes = schemes.filter((s) => s.category === category);
-            return (
-              <motion.div
-                key={category}
-                whileHover={{ scale: 1.02, y: -2 }}
-                className="p-5 rounded-2xl border border-neutral-200 dark:border-white/10 bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md flex flex-col gap-3.5 hover:shadow-lg transition-all duration-300"
-              >
-                <div className="flex items-center justify-between border-b border-neutral-200 dark:border-white/10 pb-2.5">
-                  <span className="font-extrabold text-base text-saffron-600 dark:text-saffron-400 uppercase tracking-wider">
-                    {category}
-                  </span>
-                  <span className="text-xs bg-saffron-500/10 text-saffron-700 dark:text-saffron-300 px-2.5 py-0.5 rounded-full font-bold">
-                    {catSchemes.length}
-                  </span>
-                </div>
-                <ul className="flex flex-col gap-2.5 text-sm">
-                  {catSchemes.map((s) => (
-                    <li key={s.id} className="text-neutral-800 dark:text-saffron-50/85 hover:text-saffron-600 dark:hover:text-saffron-400 transition-colors flex items-start gap-2 leading-snug font-medium">
-                      <span className="text-saffron-500 mt-0.5">•</span>
-                      <span>{s.name}</span>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            );
-          })}
-        </div>
-      </motion.section>
 
       {/* Upcoming Features & Roadmap Section */}
       <motion.section
