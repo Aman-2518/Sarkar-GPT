@@ -160,7 +160,7 @@ export default function SettingsModal({ onClose }: { onClose: () => void }) {
         animate={{ scale: 1, y: 0, opacity: 1, rotateX: 0 }}
         exit={{ scale: 0.9, y: 30, opacity: 0, rotateX: -5 }}
         transition={{ type: "spring", stiffness: 300, damping: 25 }}
-        className="relative w-full max-w-md overflow-hidden rounded-2xl border border-white/20 bg-white/90 dark:bg-ink-950/90 shadow-2xl backdrop-blur-xl transition-colors duration-200 text-ink-950 dark:text-white"
+        className="relative w-full max-w-md overflow-hidden rounded-2xl border border-neutral-200 dark:border-white/10 bg-white dark:bg-zinc-900 shadow-2xl p-0 transition-colors duration-200 text-neutral-900 dark:text-neutral-100"
       >
         {/* Decorative gradient strip at top */}
         <motion.div

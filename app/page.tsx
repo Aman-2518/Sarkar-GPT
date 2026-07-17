@@ -467,9 +467,9 @@ export default function Home() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.2 }}
-                  className="mb-4 p-3 rounded-xl bg-amber-50 dark:bg-amber-500/5 border border-amber-200 dark:border-amber-500/10"
+                  className="mb-4 p-3 rounded-xl bg-amber-50 dark:bg-saffron-950/20 border border-amber-200 dark:border-saffron-500/20"
                 >
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-amber-700 dark:text-amber-400 mb-2 flex items-center gap-1.5">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-amber-700 dark:text-saffron-400 mb-2 flex items-center gap-1.5">
                     <FileText size={14} /> Documents Required
                   </h4>
                   <div className="flex flex-wrap gap-1.5">
@@ -479,7 +479,7 @@ export default function Home() {
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: 0.2 + i * 0.04 }}
-                        className="text-xs bg-white dark:bg-white/10 text-neutral-700 dark:text-neutral-300 px-2.5 py-1 rounded-lg font-medium border border-amber-200 dark:border-amber-500/10"
+                        className="text-xs bg-white dark:bg-zinc-800 text-neutral-800 dark:text-saffron-100 px-2.5 py-1 rounded-lg font-medium border border-amber-200 dark:border-saffron-500/10"
                       >
                         {d}
                       </motion.span>
