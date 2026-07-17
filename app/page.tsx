@@ -724,16 +724,16 @@ export default function Home() {
           {/* Card 1 */}
           <motion.div
             whileHover={{ scale: 1.02, y: -2 }}
-            className="card !p-4 flex gap-4 items-start border-2 border-neutral-300 dark:border-zinc-700 bg-white/60 dark:bg-zinc-900/40 hover:border-emerald-500/40 dark:hover:border-emerald-500/30 transition-all duration-300"
+            className="card !p-5 flex flex-col items-center text-center gap-3 border-2 border-neutral-300 dark:border-zinc-700 bg-white/60 dark:bg-zinc-900/40 hover:border-emerald-500/40 dark:hover:border-emerald-500/30 transition-all duration-300"
           >
-            <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+            <span className="grid h-10 w-10 place-items-center rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
               <ShieldCheck size={20} />
             </span>
-            <div className="flex flex-col gap-1">
-              <h3 className="font-display font-bold text-base text-neutral-900 dark:text-white leading-snug">
+            <div className="flex flex-col gap-1.5">
+              <h3 className="font-display font-extrabold text-base text-neutral-900 dark:text-white leading-snug">
                 100% Local Privacy
               </h3>
-              <p className="text-xs text-neutral-600 dark:text-neutral-300 leading-relaxed">
+              <p className="text-xs text-neutral-600 dark:text-neutral-350 leading-relaxed font-medium">
                 Demographic filters are processed locally in your browser. None of your profile data is uploaded or tracked.
               </p>
             </div>
@@ -742,16 +742,16 @@ export default function Home() {
           {/* Card 2 */}
           <motion.div
             whileHover={{ scale: 1.02, y: -2 }}
-            className="card !p-4 flex gap-4 items-start border-2 border-neutral-300 dark:border-zinc-700 bg-white/60 dark:bg-zinc-900/40 hover:border-saffron-500/40 dark:hover:border-saffron-500/30 transition-all duration-300"
+            className="card !p-5 flex flex-col items-center text-center gap-3 border-2 border-neutral-300 dark:border-zinc-700 bg-white/60 dark:bg-zinc-900/40 hover:border-saffron-500/40 dark:hover:border-saffron-500/30 transition-all duration-300"
           >
-            <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-saffron-500/10 text-saffron-600 dark:text-saffron-400 border border-saffron-500/20">
+            <span className="grid h-10 w-10 place-items-center rounded-xl bg-saffron-500/10 text-saffron-600 dark:text-saffron-400 border border-saffron-500/20">
               <MessageCircle size={20} />
             </span>
-            <div className="flex flex-col gap-1">
-              <h3 className="font-display font-bold text-base text-neutral-900 dark:text-white leading-snug">
+            <div className="flex flex-col gap-1.5">
+              <h3 className="font-display font-extrabold text-base text-neutral-900 dark:text-white leading-snug">
                 Multi-Language Chat
               </h3>
-              <p className="text-xs text-neutral-600 dark:text-neutral-300 leading-relaxed">
+              <p className="text-xs text-neutral-600 dark:text-neutral-350 leading-relaxed font-medium">
                 Ask questions in Hindi, English, or 13 other languages. Receive responses directly in your chosen language.
               </p>
             </div>
@@ -760,16 +760,16 @@ export default function Home() {
           {/* Card 3 */}
           <motion.div
             whileHover={{ scale: 1.02, y: -2 }}
-            className="card !p-4 flex gap-4 items-start border-2 border-neutral-300 dark:border-zinc-700 bg-white/60 dark:bg-zinc-900/40 hover:border-blue-500/40 dark:hover:border-blue-500/30 transition-all duration-300"
+            className="card !p-5 flex flex-col items-center text-center gap-3 border-2 border-neutral-300 dark:border-zinc-700 bg-white/60 dark:bg-zinc-900/40 hover:border-blue-500/40 dark:hover:border-blue-500/30 transition-all duration-300"
           >
-            <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
+            <span className="grid h-10 w-10 place-items-center rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
               <Sparkles size={20} />
             </span>
-            <div className="flex flex-col gap-1">
-              <h3 className="font-display font-bold text-base text-neutral-900 dark:text-white leading-snug">
+            <div className="flex flex-col gap-1.5">
+              <h3 className="font-display font-extrabold text-base text-neutral-900 dark:text-white leading-snug">
                 Voice Assistant Guides
               </h3>
-              <p className="text-xs text-neutral-600 dark:text-neutral-300 leading-relaxed">
+              <p className="text-xs text-neutral-600 dark:text-neutral-350 leading-relaxed font-medium">
                 Equipped with screen read-aloud support and voice typing to aid accessibility for all citizens.
               </p>
             </div>
