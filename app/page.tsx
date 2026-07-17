@@ -669,8 +669,8 @@ export default function Home() {
                 <div>
                   <div className="flex flex-wrap gap-1.5 mb-4 border-t border-neutral-100 dark:border-white/5 pt-3">
                     {s.documents.slice(0, 2).map((d) => (
-                      <span key={d} className="text-xs bg-neutral-100 dark:bg-white/8 text-neutral-700 dark:text-saffron-50/80 px-2.5 py-1 rounded-md flex items-center gap-1.5 font-medium">
-                        <FileText size={12} /> {d}
+                      <span key={d} className="text-xs bg-neutral-100 dark:bg-white/10 text-neutral-700 dark:text-neutral-200 px-2.5 py-1 rounded-md flex items-center gap-1.5 font-semibold border border-neutral-200/50 dark:border-white/5">
+                        <FileText size={12} className="text-neutral-500 dark:text-neutral-400" /> {d}
                       </span>
                     ))}
                     {s.documents.length > 2 && (
