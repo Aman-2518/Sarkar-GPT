@@ -19,7 +19,9 @@ import {
   FileText,
   Search,
   ExternalLink,
-  X
+  X,
+  Mic,
+  MicOff
 } from "lucide-react";
 import { useLanguage } from "@/lib/languageContext";
 import schemesData from "@/data/schemes.json";
@@ -44,13 +46,35 @@ export default function Home() {
   const [searchResults, setSearchResults] = useState<Scheme[]>([]);
   const [showSearchResults, setShowSearchResults] = useState(false);
   const [selectedScheme, setSelectedScheme] = useState<Scheme | null>(null);
+  const [searchFocused, setSearchFocused] = useState(false);
+  const [isListening, setIsListening] = useState(false);
+  const [placeholderIdx, setPlaceholderIdx] = useState(0);
   const searchRef = useRef<HTMLDivElement>(null);
+  const searchInputRef = useRef<HTMLInputElement>(null);
+  const recognitionRef = useRef<any>(null);
+
+  const SEARCH_PLACEHOLDERS = [
+    "Search for PM Kisan, Ayushman Bharat, PMAY...",
+    "Try: farmer schemes, education, healthcare...",
+    "Search by document: Aadhaar, Income Certificate...",
+    "Find schemes for students, women, senior citizens...",
+  ];
+
+  // Rotate placeholder text
+  useEffect(() => {
+    if (searchFocused || searchQuery) return;
+    const interval = setInterval(() => {
+      setPlaceholderIdx((prev) => (prev + 1) % SEARCH_PLACEHOLDERS.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [searchFocused, searchQuery]);
 
   // Close search dropdown on outside click
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (searchRef.current && !searchRef.current.contains(e.target as Node)) {
         setShowSearchResults(false);
+        setSearchFocused(false);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
@@ -76,6 +100,40 @@ export default function Home() {
     setSearchResults(results.slice(0, 8));
     setShowSearchResults(true);
   }, [searchQuery]);
+
+  // Voice search (Speech-to-Text)
+  const toggleVoiceSearch = () => {
+    const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    if (!SpeechRecognition) {
+      alert("Voice search is not supported in this browser. Please use Chrome or Edge.");
+      return;
+    }
+
+    if (isListening && recognitionRef.current) {
+      recognitionRef.current.stop();
+      setIsListening(false);
+      return;
+    }
+
+    const recognition = new SpeechRecognition();
+    recognition.lang = "en-IN";
+    recognition.interimResults = true;
+    recognition.continuous = false;
+    recognitionRef.current = recognition;
+
+    recognition.onstart = () => setIsListening(true);
+    recognition.onresult = (event: any) => {
+      const transcript = Array.from(event.results)
+        .map((r: any) => r[0].transcript)
+        .join("");
+      setSearchQuery(transcript);
+      setSelectedScheme(null);
+    };
+    recognition.onerror = () => setIsListening(false);
+    recognition.onend = () => setIsListening(false);
+    recognition.start();
+    searchInputRef.current?.focus();
+  };
 
   useEffect(() => {
     setFilteredSchemes(
@@ -142,52 +200,184 @@ export default function Home() {
 
       {/* Scheme Search Bar */}
       <motion.section
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.1 }}
+        transition={{ duration: 0.6, delay: 0.15, type: "spring", stiffness: 120 }}
         className="relative z-20 max-w-3xl mx-auto w-full"
         ref={searchRef}
       >
-        <div className="relative">
-          <Search size={20} className="absolute left-4 top-1/2 -translate-y-1/2 text-neutral-400 dark:text-neutral-500" />
-          <input
-            type="text"
-            value={searchQuery}
-            onChange={(e) => { setSearchQuery(e.target.value); setSelectedScheme(null); }}
-            onFocus={() => searchQuery.trim().length >= 2 && setShowSearchResults(true)}
-            placeholder="Search any government scheme by name, category, or document..."
-            className="w-full pl-12 pr-12 py-4 rounded-2xl border border-neutral-200 dark:border-white/10 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-xl text-base text-neutral-900 dark:text-white placeholder:text-neutral-400 dark:placeholder:text-neutral-500 outline-none focus:ring-2 focus:ring-saffron-500 focus:border-saffron-500/40 shadow-lg transition-all duration-300"
-          />
-          {searchQuery && (
-            <button
-              onClick={() => { setSearchQuery(""); setSearchResults([]); setShowSearchResults(false); setSelectedScheme(null); }}
-              className="absolute right-4 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300 transition-colors"
-            >
-              <X size={18} />
-            </button>
+        {/* Label */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.4 }}
+          className="text-center text-sm font-semibold text-neutral-500 dark:text-neutral-400 mb-3"
+        >
+          🔍 Search across <span className="text-saffron-600 dark:text-saffron-400 font-bold">60+ government schemes</span> instantly
+        </motion.p>
+
+        {/* Glowing border wrapper */}
+        <motion.div
+          animate={{
+            boxShadow: searchFocused
+              ? "0 0 0 3px rgba(249,122,31,0.25), 0 8px 40px rgba(249,122,31,0.12)"
+              : isListening
+              ? "0 0 0 3px rgba(239,68,68,0.3), 0 8px 40px rgba(239,68,68,0.1)"
+              : "0 4px 20px rgba(0,0,0,0.06)",
+          }}
+          transition={{ duration: 0.3 }}
+          className="relative rounded-2xl"
+        >
+          {/* Animated gradient border for listening state */}
+          {isListening && (
+            <motion.div
+              className="absolute -inset-[2px] rounded-2xl bg-gradient-to-r from-red-500 via-saffron-500 to-red-500 opacity-60"
+              animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+              style={{ backgroundSize: "200% 200%" }}
+            />
           )}
-        </div>
+
+          <div className="relative">
+            {/* Search icon with animation */}
+            <motion.div
+              animate={{ scale: searchFocused ? 1.15 : 1, rotate: searchFocused ? -10 : 0 }}
+              transition={{ type: "spring", stiffness: 300 }}
+              className="absolute left-4 top-1/2 -translate-y-1/2 z-10"
+            >
+              <Search size={20} className={`transition-colors duration-300 ${
+                searchFocused ? "text-saffron-500" : "text-neutral-400 dark:text-neutral-500"
+              }`} />
+            </motion.div>
+
+            <input
+              ref={searchInputRef}
+              type="text"
+              value={searchQuery}
+              onChange={(e) => { setSearchQuery(e.target.value); setSelectedScheme(null); }}
+              onFocus={() => { setSearchFocused(true); searchQuery.trim().length >= 2 && setShowSearchResults(true); }}
+              onBlur={() => !showSearchResults && setSearchFocused(false)}
+              placeholder={SEARCH_PLACEHOLDERS[placeholderIdx]}
+              className="relative w-full pl-12 pr-24 py-4.5 rounded-2xl border-2 border-neutral-200 dark:border-white/10 bg-white dark:bg-zinc-900 backdrop-blur-xl text-base font-medium text-neutral-900 dark:text-white placeholder:text-neutral-400 dark:placeholder:text-neutral-500 outline-none transition-all duration-300 focus:border-saffron-500/50"
+            />
+
+            {/* Right side buttons */}
+            <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-1.5 z-10">
+              {/* Clear button */}
+              <AnimatePresence>
+                {searchQuery && (
+                  <motion.button
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.5 }}
+                    onClick={() => { setSearchQuery(""); setSearchResults([]); setShowSearchResults(false); setSelectedScheme(null); searchInputRef.current?.focus(); }}
+                    className="p-1.5 rounded-lg text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/5 transition-all"
+                  >
+                    <X size={16} />
+                  </motion.button>
+                )}
+              </AnimatePresence>
+
+              {/* Voice search button */}
+              <motion.button
+                onClick={toggleVoiceSearch}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className={`relative p-2.5 rounded-xl transition-all duration-300 ${
+                  isListening
+                    ? "bg-red-500 text-white shadow-lg shadow-red-500/30"
+                    : "bg-saffron-500/10 text-saffron-600 dark:text-saffron-400 hover:bg-saffron-500/20"
+                }`}
+              >
+                {isListening ? <MicOff size={18} /> : <Mic size={18} />}
+                {/* Pulsing ring when listening */}
+                {isListening && (
+                  <>
+                    <motion.span
+                      className="absolute inset-0 rounded-xl border-2 border-red-400"
+                      animate={{ scale: [1, 1.4], opacity: [0.6, 0] }}
+                      transition={{ duration: 1, repeat: Infinity }}
+                    />
+                    <motion.span
+                      className="absolute inset-0 rounded-xl border-2 border-red-400"
+                      animate={{ scale: [1, 1.7], opacity: [0.4, 0] }}
+                      transition={{ duration: 1, repeat: Infinity, delay: 0.3 }}
+                    />
+                  </>
+                )}
+              </motion.button>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Listening indicator */}
+        <AnimatePresence>
+          {isListening && (
+            <motion.p
+              initial={{ opacity: 0, y: -5 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -5 }}
+              className="text-center text-sm font-semibold text-red-500 mt-2 flex items-center justify-center gap-2"
+            >
+              <motion.span
+                className="inline-block w-2 h-2 rounded-full bg-red-500"
+                animate={{ scale: [1, 1.4, 1] }}
+                transition={{ duration: 0.8, repeat: Infinity }}
+              />
+              Listening... speak a scheme name
+            </motion.p>
+          )}
+        </AnimatePresence>
+
+        {/* Quick category chips */}
+        <AnimatePresence>
+          {searchFocused && !searchQuery && !isListening && (
+            <motion.div
+              initial={{ opacity: 0, y: -5 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -5 }}
+              className="flex flex-wrap justify-center gap-2 mt-3"
+            >
+              {["Healthcare", "Agriculture", "Education", "Housing", "Finance"].map((chip, i) => (
+                <motion.button
+                  key={chip}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: i * 0.05 }}
+                  onClick={() => { setSearchQuery(chip); searchInputRef.current?.focus(); }}
+                  className="text-xs font-bold px-3 py-1.5 rounded-full border border-neutral-200 dark:border-white/10 text-neutral-600 dark:text-neutral-300 hover:border-saffron-500/40 hover:bg-saffron-500/5 hover:text-saffron-600 dark:hover:text-saffron-400 transition-all"
+                >
+                  {chip}
+                </motion.button>
+              ))}
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         {/* Search Results Dropdown */}
         <AnimatePresence>
           {showSearchResults && searchResults.length > 0 && !selectedScheme && (
             <motion.div
-              initial={{ opacity: 0, y: -8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.2 }}
-              className="absolute top-full mt-2 w-full rounded-2xl border border-neutral-200 dark:border-white/10 bg-white/95 dark:bg-zinc-900/95 backdrop-blur-xl shadow-2xl overflow-hidden max-h-[420px] overflow-y-auto"
+              initial={{ opacity: 0, y: -10, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -10, scale: 0.98 }}
+              transition={{ duration: 0.25, type: "spring", stiffness: 200 }}
+              className="absolute top-full mt-2 w-full rounded-2xl border border-neutral-200 dark:border-white/10 bg-white/98 dark:bg-zinc-900/98 backdrop-blur-2xl shadow-2xl overflow-hidden max-h-[420px] overflow-y-auto"
             >
-              <div className="p-3 border-b border-neutral-100 dark:border-white/5">
+              <div className="p-3 border-b border-neutral-100 dark:border-white/5 flex items-center justify-between">
                 <span className="text-xs font-bold text-neutral-500 dark:text-neutral-400 uppercase tracking-wider">
                   {searchResults.length} scheme{searchResults.length !== 1 ? "s" : ""} found
                 </span>
+                <span className="text-[10px] text-neutral-400 dark:text-neutral-500">Click to view details</span>
               </div>
-              {searchResults.map((s) => (
-                <button
+              {searchResults.map((s, idx) => (
+                <motion.button
                   key={s.id}
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: idx * 0.04 }}
                   onClick={() => { setSelectedScheme(s); setShowSearchResults(false); }}
-                  className="w-full text-left px-4 py-3.5 hover:bg-saffron-500/5 dark:hover:bg-white/5 border-b border-neutral-100 dark:border-white/5 last:border-0 transition-colors group"
+                  className="w-full text-left px-4 py-3.5 hover:bg-saffron-500/5 dark:hover:bg-white/5 border-b border-neutral-100 dark:border-white/5 last:border-0 transition-all duration-200 group hover:pl-5"
                 >
                   <div className="flex items-start justify-between gap-3">
                     <div className="flex-1 min-w-0">
@@ -196,11 +386,14 @@ export default function Home() {
                       </h4>
                       <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-0.5">{s.ministry}</p>
                     </div>
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-saffron-600 dark:text-saffron-400 bg-saffron-500/10 px-2 py-1 rounded-full whitespace-nowrap flex-shrink-0">
-                      {s.category}
-                    </span>
+                    <div className="flex items-center gap-2 flex-shrink-0">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-saffron-600 dark:text-saffron-400 bg-saffron-500/10 px-2 py-1 rounded-full whitespace-nowrap">
+                        {s.category}
+                      </span>
+                      <ArrowRight size={14} className="text-neutral-300 group-hover:text-saffron-500 transition-colors" />
+                    </div>
                   </div>
-                </button>
+                </motion.button>
               ))}
             </motion.div>
           )}
@@ -210,18 +403,22 @@ export default function Home() {
         <AnimatePresence>
           {selectedScheme && (
             <motion.div
-              initial={{ opacity: 0, y: -8, scale: 0.98 }}
+              initial={{ opacity: 0, y: -10, scale: 0.96 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -8, scale: 0.98 }}
-              transition={{ duration: 0.25 }}
-              className="absolute top-full mt-2 w-full rounded-2xl border border-neutral-200 dark:border-white/10 bg-white/95 dark:bg-zinc-900/95 backdrop-blur-xl shadow-2xl overflow-hidden"
+              exit={{ opacity: 0, y: -10, scale: 0.96 }}
+              transition={{ duration: 0.3, type: "spring", stiffness: 180 }}
+              className="absolute top-full mt-2 w-full rounded-2xl border border-neutral-200 dark:border-white/10 bg-white/98 dark:bg-zinc-900/98 backdrop-blur-2xl shadow-2xl overflow-hidden"
             >
               <div className="p-5">
                 <div className="flex items-start justify-between gap-3 mb-3">
                   <div>
-                    <span className="text-xs font-bold uppercase tracking-wider text-saffron-600 dark:text-saffron-400 bg-saffron-500/10 px-2.5 py-1 rounded-full">
+                    <motion.span
+                      initial={{ scale: 0.8 }}
+                      animate={{ scale: 1 }}
+                      className="inline-block text-xs font-bold uppercase tracking-wider text-saffron-600 dark:text-saffron-400 bg-saffron-500/10 px-2.5 py-1 rounded-full"
+                    >
                       {selectedScheme.category}
-                    </span>
+                    </motion.span>
                     <h3 className="font-display font-extrabold text-lg text-neutral-900 dark:text-white mt-2">
                       {selectedScheme.name}
                     </h3>
@@ -229,7 +426,7 @@ export default function Home() {
                   </div>
                   <button
                     onClick={() => setSelectedScheme(null)}
-                    className="text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300 transition-colors p-1"
+                    className="text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300 transition-colors p-1.5 hover:bg-neutral-100 dark:hover:bg-white/5 rounded-lg"
                   >
                     <X size={18} />
                   </button>
@@ -241,35 +438,62 @@ export default function Home() {
 
                 {/* Benefits */}
                 {selectedScheme.benefits.length > 0 && (
-                  <div className="mb-4">
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.1 }}
+                    className="mb-4"
+                  >
                     <h4 className="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 mb-2">Key Benefits</h4>
                     <ul className="space-y-1.5">
                       {selectedScheme.benefits.slice(0, 3).map((b, i) => (
-                        <li key={i} className="text-sm text-neutral-700 dark:text-neutral-300 flex items-start gap-2">
+                        <motion.li
+                          key={i}
+                          initial={{ opacity: 0, x: -8 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.1 + i * 0.05 }}
+                          className="text-sm text-neutral-700 dark:text-neutral-300 flex items-start gap-2"
+                        >
                           <CheckCircle size={14} className="text-emerald-500 mt-0.5 flex-shrink-0" />
                           <span>{b}</span>
-                        </li>
+                        </motion.li>
                       ))}
                     </ul>
-                  </div>
+                  </motion.div>
                 )}
 
                 {/* Documents Required */}
-                <div className="mb-4 p-3 rounded-xl bg-amber-50 dark:bg-amber-500/5 border border-amber-200 dark:border-amber-500/10">
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.2 }}
+                  className="mb-4 p-3 rounded-xl bg-amber-50 dark:bg-amber-500/5 border border-amber-200 dark:border-amber-500/10"
+                >
                   <h4 className="text-xs font-bold uppercase tracking-wider text-amber-700 dark:text-amber-400 mb-2 flex items-center gap-1.5">
                     <FileText size={14} /> Documents Required
                   </h4>
                   <div className="flex flex-wrap gap-1.5">
-                    {selectedScheme.documents.map((d) => (
-                      <span key={d} className="text-xs bg-white dark:bg-white/10 text-neutral-700 dark:text-neutral-300 px-2.5 py-1 rounded-lg font-medium border border-amber-200 dark:border-amber-500/10">
+                    {selectedScheme.documents.map((d, i) => (
+                      <motion.span
+                        key={d}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: 0.2 + i * 0.04 }}
+                        className="text-xs bg-white dark:bg-white/10 text-neutral-700 dark:text-neutral-300 px-2.5 py-1 rounded-lg font-medium border border-amber-200 dark:border-amber-500/10"
+                      >
                         {d}
-                      </span>
+                      </motion.span>
                     ))}
                   </div>
-                </div>
+                </motion.div>
 
                 {/* Action Buttons */}
-                <div className="flex gap-3">
+                <motion.div
+                  initial={{ opacity: 0, y: 5 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                  className="flex gap-3"
+                >
                   <a
                     href={selectedScheme.applyUrl}
                     target="_blank"
@@ -284,7 +508,7 @@ export default function Home() {
                   >
                     Check Eligibility <ArrowRight size={14} />
                   </Link>
-                </div>
+                </motion.div>
               </div>
             </motion.div>
           )}
