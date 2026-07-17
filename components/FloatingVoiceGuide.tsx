@@ -6,24 +6,24 @@ import { Volume2, VolumeX, Mic, MicOff, HelpCircle, Navigation } from "lucide-re
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage, configureSpeechUtterance } from "@/lib/languageContext";
 
-// Localized helper announcements for pages
+// Localized helper announcements for pages (warm, soft, humanized Indian tone)
 const NAV_INTRODUCTIONS: Record<string, Record<string, string>> = {
   en: {
-    "/": "Namaste! Welcome to SarkarGPT. I am your Indian voice guide. I will help you find government schemes you qualify for. Click 'Find my schemes' to fill out the eligibility form, or click 'Ask SarkarGPT' to start chatting with our AI assistant.",
-    "/find-schemes": "You are on the scheme finder page. Fill out the three steps with your state, age, occupation, and income details. If you qualify for any schemes, they will show up instantly. You can click the speaker icon on any question to hear it read aloud.",
-    "/chat": "You are on the AI Chat assistant page. Click the microphone icon at the bottom of the screen to speak your question in Hindi or English, or type it in. I will help you understand any scheme details, eligibility criteria, or document requirements.",
+    "/": "Namaste ji. Welcome to SarkarGPT. I am your personal guide for government schemes. You can click on 'Find my schemes' to check which schemes are right for you, or you can click 'Ask SarkarGPT' to chat with me directly. I am here to help you, okay?",
+    "/find-schemes": "You are on the scheme finder page now. Don't worry, it is very simple. Just fill three easy steps — your state, your age, your work, and your income. I will instantly show you all the schemes that match your profile. If you want me to read any question aloud, just tap the speaker icon next to it.",
+    "/chat": "You are on the AI Chat page. You can ask me anything about government schemes in Hindi, English, or any language you are comfortable with. Just type your question, or tap the microphone and speak to me directly. I will explain everything step by step.",
   },
   hi: {
-    "/": "नमस्ते! सरकारजीपीटी में आपका स्वागत है। मैं आपका भारतीय वॉइस गाइड हूँ। मैं आपकी पात्रता वाली सरकारी योजनाओं को खोजने में मदद करूँगा। फ़ॉर्म भरने के लिए 'मेरी योजनाएं खोजें' पर क्लिक करें, या चैट शुरू करने के लिए 'सरकारजीपीटी से पूछें' पर क्लिक करें।",
-    "/find-schemes": "आप योजना खोजक पृष्ठ पर हैं। तीन चरणों में अपने राज्य, आयु, व्यवसाय और आय की जानकारी भरें। आपकी पात्रता वाली योजनाएं तुरंत दिखाई देंगी। आप किसी भी प्रश्न को सुनने के लिए उसके पास वाले स्पीकर आइकन पर क्लिक कर सकते हैं।",
-    "/chat": "आप एआई चैट सहायक पर हैं। प्रश्न पूछने के लिए स्क्रीन के नीचे माइक्रोफ़ोन आइकन पर क्लिक करें और हिंदी या अंग्रेजी में बोलें। मैं आपको किसी भी योजना के विवरण या आवश्यक दस्तावेजों को समझने में मदद करूँगा।",
+    "/": "नमस्ते जी। सरकारजीपीटी में आपका स्वागत है। मैं सरकारी योजनाओं के लिए आपका व्यक्तिगत गाइड हूँ। आप 'मेरी योजनाएं खोजें' पर क्लिक करके देख सकते हैं कि कौन सी योजनाएं आपके लिए सही हैं, या 'सरकारजीपीटी से पूछें' पर क्लिक करके मुझसे सीधे बात कर सकते हैं। मैं आपकी मदद के लिए यहाँ हूँ।",
+    "/find-schemes": "आप अभी योजना खोजक पृष्ठ पर हैं। चिंता मत कीजिए, यह बहुत आसान है। बस तीन आसान चरणों में अपना राज्य, उम्र, काम और आय की जानकारी भरिए। मैं तुरंत आपको वो सभी योजनाएं दिखाऊंगा जो आपके लिए बनी हैं। अगर कोई सवाल सुनना चाहें तो उसके पास वाले स्पीकर आइकन पर टैप कीजिए।",
+    "/chat": "आप एआई चैट पेज पर हैं। आप मुझसे हिंदी, अंग्रेजी या किसी भी भाषा में सरकारी योजनाओं के बारे में कुछ भी पूछ सकते हैं। बस अपना सवाल टाइप करें, या माइक पर टैप करके मुझसे सीधे बोलिए। मैं सब कुछ आपको कदम दर कदम समझाऊंगा।",
   },
 };
 
-// Short auto-greetings (spoken once per session when user first opens the site)
+// Short auto-greetings (spoken once per session — warm, soft, humanized Indian tone)
 const AUTO_GREETINGS: Record<string, string> = {
-  en: "Namaste! Welcome to SarkarGPT. I am your voice guide. Tap the orange button anytime for help.",
-  hi: "नमस्ते! सरकारजीपीटी में आपका स्वागत है। मैं आपका वॉइस गाइड हूँ। मदद के लिए कभी भी ऑरेंज बटन दबाएं।",
+  en: "Namaste ji. Welcome to SarkarGPT. I am here to help you find the right government schemes for you and your family. Just tap the orange button whenever you need my help, okay?",
+  hi: "नमस्ते जी। सरकारजीपीटी में आपका स्वागत है। मैं यहाँ हूँ आपकी और आपके परिवार की सही सरकारी योजनाएं ढूंढने में मदद करने के लिए। जब भी मदद चाहिए, बस ऑरेंज बटन दबा दीजिए।",
 };
 
 export default function FloatingVoiceGuide() {

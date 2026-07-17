@@ -65,7 +65,7 @@ export async function POST(req: NextRequest) {
   const activeProvider = groqKey ? "groq" : geminiKey ? "gemini" : "openai";
   const profileKey = JSON.stringify(profile ?? {});
   const cacheKey = `${sanitizedQuestion.toLowerCase()}::${schemes.map((s) => s.id).join(",")}::${profileKey}::${language || "en"}::${activeProvider}`;
-  
+
   const cached = cache.get(cacheKey);
   if (cached) return NextResponse.json({ answer: cached, cached: true });
 
@@ -140,10 +140,10 @@ export async function POST(req: NextRequest) {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          contents: [{ 
-            parts: [{ 
-              text: `System Instruction: ${systemInstruction}\n\nContext: ${JSON.stringify(context)}\n\nQuestion: ${sanitizedQuestion}` 
-            }] 
+          contents: [{
+            parts: [{
+              text: `System Instruction: ${systemInstruction}\n\nContext: ${JSON.stringify(context)}\n\nQuestion: ${sanitizedQuestion}`
+            }]
           }],
           generationConfig: {
             temperature: 0.3,

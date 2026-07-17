@@ -1037,65 +1037,71 @@ export function configureSpeechUtterance(
 
   // Fallback to automatic neural scoring if no voice selected or selected voice not found
   if (!selectedVoice) {
-    // Smart scoring system to prioritize natural, human-sounding neural voices
+    // Smart scoring system — heavily prioritizes Natural/Neural Indian voices
+    // for a soft, warm, humanized speaking experience
     const getVoiceScore = (voice: SpeechSynthesisVoice, targetGender: "male" | "female") => {
       const name = voice.name.toLowerCase();
       let score = 0;
 
-      // 1. Precise Premium Voice Matches (gives 100% human-like experience)
+      // ──────────────────────────────────────────────────────────
+      // TIER 1: Natural / Neural voices (sound genuinely human)
+      // These are Microsoft Edge/Chrome's premium voices and should
+      // ALWAYS be selected over offline robotic synthesizers.
+      // ──────────────────────────────────────────────────────────
+      const isNatural = name.includes("natural") || name.includes("neural");
+      if (isNatural) {
+        score += 200; // Massive priority — these sound like real Indian people
+      }
+
+      // ──────────────────────────────────────────────────────────
+      // TIER 2: Specific Indian voice name matches
+      // ──────────────────────────────────────────────────────────
       if (targetGender === "female") {
-        if (
-          name.includes("neerja") ||
-          name.includes("swara") ||
-          name.includes("heera") ||
-          name.includes("kavita") ||
-          name.includes("sangeeta") ||
-          name.includes("shruti")
-        ) {
-          score += 100; // High priority for local Indian female accents
-        }
+        // Premium Indian female voices (warm, soft, nurturing tone)
+        if (name.includes("neerja"))    score += 150; // Microsoft Neerja — best quality
+        if (name.includes("swara"))     score += 140;
+        if (name.includes("kavita"))    score += 130;
+        if (name.includes("sangeeta"))  score += 120;
+        if (name.includes("shruti"))    score += 110;
+        if (name.includes("heera"))     score += 100;
+        if (name.includes("ananya"))    score += 100;
+        if (name.includes("priya"))     score += 100;
       } else {
-        if (name.includes("ravi")) {
-          score += 100; // Prioritize Ravi India above all other male voices!
-        } else if (
-          name.includes("prabhat") ||
-          name.includes("madhur") ||
-          name.includes("hemant")
-        ) {
-          score += 60; // High priority for local Indian male accents
+        // Premium Indian male voices
+        if (name.includes("ravi"))      score += 150; // Microsoft Ravi — best quality
+        if (name.includes("prabhat"))   score += 130;
+        if (name.includes("madhur"))    score += 120;
+        if (name.includes("hemant"))    score += 110;
+      }
+
+      // ──────────────────────────────────────────────────────────
+      // TIER 3: Gender match indicators
+      // ──────────────────────────────────────────────────────────
+      if (targetGender === "female") {
+        if (name.includes("female") || name.includes("woman")) score += 15;
+      } else {
+        if (name.includes("male") && !name.includes("female")) score += 15;
+      }
+
+      // ──────────────────────────────────────────────────────────
+      // TIER 4: Cloud/Online voices (better than offline but not as good as Natural)
+      // ──────────────────────────────────────────────────────────
+      if (!isNatural) {
+        if (name.includes("online") || name.includes("cloud") || name.includes("google")) {
+          score += 25;
         }
       }
 
-      // 2. Gender Match Indicators
-      if (targetGender === "female") {
-        if (
-          name.includes("female") ||
-          name.includes("google हिन्दी")
-        ) {
-          score += 15;
-        }
-      } else {
-        if (
-          name.includes("male") ||
-          name.includes("george") ||
-          name.includes("harsh")
-        ) {
-          score += 15;
-        }
-      }
-
-      // 3. Premium Human-like Neural / Natural prioritizers
-      if (name.includes("natural") || name.includes("neural")) {
-        score += 30; // Maximum priority for natural-sounding speech
-      } else if (name.includes("google") || name.includes("online") || name.includes("cloud")) {
-        score += 15; // Medium priority for cloud-assisted voices
+      // Penalize desktop/offline robotic voices
+      if (name.includes("desktop") || name.includes("compact") || name.includes("espeak")) {
+        score -= 50;
       }
 
       return score;
     };
 
     if (langVoices.length > 0) {
-      // Sort descending by score
+      // Sort descending by score — Natural Indian voices always come first
       langVoices.sort((a, b) => getVoiceScore(b, gender) - getVoiceScore(a, gender));
       selectedVoice = langVoices[0];
     }
@@ -1107,18 +1113,29 @@ export function configureSpeechUtterance(
     utterance.voice = langVoices[0];
   }
 
-  // Adjust synthesis rates. Neural/Natural voices sound realistic at 1.0 pitch,
-  // whereas offline legacy synthesizers need adjustment to sound less robotic.
+  // ──────────────────────────────────────────────────────────
+  // Voice tuning for soft, warm, humanized Indian delivery
+  // ──────────────────────────────────────────────────────────
   const selectedName = selectedVoice ? selectedVoice.name.toLowerCase() : "";
-  const isNeural = selectedName.includes("natural") || selectedName.includes("neural");
+  const isNatural = selectedName.includes("natural") || selectedName.includes("neural");
+  const isOnline = selectedName.includes("online") || selectedName.includes("cloud") || selectedName.includes("google");
 
-  if (gender === "female") {
-    utterance.pitch = isNeural ? 1.0 : 1.1;
+  if (isNatural) {
+    // Natural voices already sound human — subtle tuning only
+    utterance.pitch = gender === "female" ? 1.05 : 0.95;  // Slightly warm
+    utterance.rate = 0.88;   // Slow, deliberate, caring pace
+    utterance.volume = 0.92; // Slightly soft — feels intimate, not aggressive
+  } else if (isOnline) {
+    // Online voices — moderate tuning
+    utterance.pitch = gender === "female" ? 1.08 : 0.9;
+    utterance.rate = 0.85;   // Slower for warmth
+    utterance.volume = 0.9;
   } else {
-    utterance.pitch = isNeural ? 1.0 : 0.85;
+    // Offline robotic voices — maximum tuning to reduce harshness
+    utterance.pitch = gender === "female" ? 1.12 : 0.82;
+    utterance.rate = 0.8;    // Slow enough to sound deliberate, not rushed
+    utterance.volume = 0.85; // Softer output to mask synthesis artifacts
   }
-
-  utterance.rate = isNeural ? 0.96 : 0.92; // Pacing setup for high fluency
 }
 
 interface LanguageContextType {
