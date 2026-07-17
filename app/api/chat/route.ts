@@ -77,6 +77,10 @@ export async function POST(req: NextRequest) {
       description: s.description,
       benefits: s.benefits,
       documents: s.documents,
+      eligibilityCriteria: s.eligibilityCriteria,
+      amountDetails: s.amountDetails,
+      applicationSteps: s.applicationSteps,
+      extraIntel: s.extraIntel,
     })),
   };
 
@@ -96,6 +100,8 @@ export async function POST(req: NextRequest) {
     "You are SarkarGPT, an assistant that helps Indian citizens understand government schemes. " +
     "Only use the schemes provided in the context — never invent scheme names or benefits. " +
     "Be concise, plain-language, and practical. " +
+    "IMPORTANT: Whenever you mention or recommend a scheme, you MUST list ALL the required documents needed to apply. " +
+    "Always present documents as a clear bulleted list under a 'Documents Required' heading so the user knows exactly what to prepare. " +
     `CRITICAL: You must write your response in the language: ${language || "English"}. ` +
     "Use simple vocabulary suitable for general public understanding. Keep responses structured and brief. " +
     profileContextString;
