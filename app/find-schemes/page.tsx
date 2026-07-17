@@ -6,8 +6,9 @@ import SchemeCard from "@/components/SchemeCard";
 import schemesData from "@/data/schemes.json";
 import { filterSchemes } from "@/lib/filterSchemes";
 import { Scheme, UserProfile } from "@/lib/types";
-import { RotateCcw, Bookmark, FileDown, CheckCircle } from "lucide-react";
+import { RotateCcw, Bookmark, FileDown, CheckCircle, ArrowLeft } from "lucide-react";
 import { useLanguage } from "@/lib/languageContext";
+import Link from "next/link";
 
 const schemes = schemesData as Scheme[];
 
@@ -79,6 +80,17 @@ export default function FindSchemesPage() {
     <div className="relative">
       {/* 1. Main Page Contents (visible on screen, hidden on print via no-print class) */}
       <div className="no-print">
+        {/* Back Button */}
+        <div className="mb-6 flex items-center">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2 text-sm font-bold text-neutral-600 hover:text-saffron-600 dark:text-saffron-300 dark:hover:text-saffron-400 transition-colors group"
+          >
+            <ArrowLeft size={16} className="transform group-hover:-translate-x-1 transition-transform" />
+            Back to Home
+          </Link>
+        </div>
+
         <div className="mb-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
             <h1 className="font-display text-3xl font-bold leading-tight">
