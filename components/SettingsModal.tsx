@@ -216,10 +216,10 @@ export default function SettingsModal({ onClose }: { onClose: () => void }) {
                 <select
                   value={language}
                   onChange={(e) => setLanguage(e.target.value as LanguageCode)}
-                  className="w-full bg-neutral-100 dark:bg-white/5 border border-neutral-200 dark:border-white/10 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-saffron-500 focus:ring-2 focus:ring-saffron-500/20 cursor-pointer transition-all"
+                  className="w-full bg-neutral-100 dark:bg-white/5 border border-neutral-200 dark:border-white/10 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-saffron-500 focus:ring-2 focus:ring-saffron-500/20 cursor-pointer transition-all dark:text-white"
                 >
                   {SUPPORTED_LANGUAGES.map((lang) => (
-                    <option key={lang.code} value={lang.code} className="text-neutral-900 bg-white">
+                    <option key={lang.code} value={lang.code} className="text-neutral-900 bg-white dark:bg-zinc-800 dark:text-white">
                       {lang.nativeName} ({lang.name})
                     </option>
                   ))}
@@ -310,13 +310,13 @@ export default function SettingsModal({ onClose }: { onClose: () => void }) {
                   <select
                     value={selectedVoiceName}
                     onChange={(e) => setSelectedVoiceName(e.target.value)}
-                    className="w-full bg-neutral-100 dark:bg-white/5 border border-neutral-200 dark:border-white/10 rounded-xl px-3 py-2.5 text-xs focus:outline-none focus:border-saffron-500 focus:ring-2 focus:ring-saffron-500/20 cursor-pointer transition-all"
+                    className="w-full bg-neutral-100 dark:bg-white/5 border border-neutral-200 dark:border-white/10 rounded-xl px-3 py-2.5 text-xs focus:outline-none focus:border-saffron-500 focus:ring-2 focus:ring-saffron-500/20 cursor-pointer transition-all dark:text-white"
                   >
-                    <option value="">-- Auto-Select (Neural/Natural) --</option>
+                    <option value="" className="text-neutral-900 bg-white dark:bg-zinc-800 dark:text-white">-- Auto-Select (Neural/Natural) --</option>
                     {availableVoices
                       .filter((v) => v.lang.toLowerCase().startsWith(language.toLowerCase().split("-")[0]))
                       .map((v) => (
-                        <option key={v.name} value={v.name} className="text-neutral-900 bg-white">
+                        <option key={v.name} value={v.name} className="text-neutral-900 bg-white dark:bg-zinc-800 dark:text-white">
                           {v.name} {!v.localService ? "☁️ (Online/Neural)" : "💻 (Local)"}
                         </option>
                       ))}

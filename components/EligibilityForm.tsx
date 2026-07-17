@@ -151,19 +151,19 @@ export default function EligibilityForm({ onSubmit }: { onSubmit: (p: UserProfil
           {step === 0 && (
             <>
               <Field label={t("state")}>
-                <select className="input" value={profile.state} onChange={(e) => update("state", e.target.value)}>
-                  <option value="">{t("selectState")}</option>
-                  {INDIAN_STATES.map((s) => <option key={s} value={s}>{s}</option>)}
+                <select className="input dark:text-white" value={profile.state} onChange={(e) => update("state", e.target.value)}>
+                  <option value="" className="text-neutral-900 bg-white dark:bg-zinc-900 dark:text-white">{t("selectState")}</option>
+                  {INDIAN_STATES.map((s) => <option key={s} value={s} className="text-neutral-900 bg-white dark:bg-zinc-900 dark:text-white">{s}</option>)}
                 </select>
               </Field>
               <Field label={t("age")}>
-                <input type="number" min={0} className="input" value={profile.age || ""} onChange={(e) => update("age", Number(e.target.value))} />
+                <input type="number" min={0} className="input dark:text-white" value={profile.age || ""} onChange={(e) => update("age", Number(e.target.value))} />
               </Field>
               <Field label={t("gender")}>
-                <select className="input" value={profile.gender} onChange={(e) => update("gender", e.target.value as UserProfile["gender"])}>
-                  <option value="male">{t("male")}</option>
-                  <option value="female">{t("female")}</option>
-                  <option value="other">{t("other")}</option>
+                <select className="input dark:text-white" value={profile.gender} onChange={(e) => update("gender", e.target.value as UserProfile["gender"])}>
+                  <option value="male" className="text-neutral-900 bg-white dark:bg-zinc-900 dark:text-white">{t("male")}</option>
+                  <option value="female" className="text-neutral-900 bg-white dark:bg-zinc-900 dark:text-white">{t("female")}</option>
+                  <option value="other" className="text-neutral-900 bg-white dark:bg-zinc-900 dark:text-white">{t("other")}</option>
                 </select>
               </Field>
             </>
@@ -172,17 +172,17 @@ export default function EligibilityForm({ onSubmit }: { onSubmit: (p: UserProfil
           {step === 1 && (
             <>
               <Field label={t("occupation")}>
-                <select className="input" value={profile.occupation} onChange={(e) => update("occupation", e.target.value)}>
-                  <option value="">{t("selectOccupation")}</option>
-                  <option value="farmer">{t("farmer")}</option>
-                  <option value="student">{t("student")}</option>
-                  <option value="salaried">{t("salaried")}</option>
-                  <option value="self-employed">{t("selfEmployed")}</option>
-                  <option value="unemployed">{t("unemployed")}</option>
+                <select className="input dark:text-white" value={profile.occupation} onChange={(e) => update("occupation", e.target.value)}>
+                  <option value="" className="text-neutral-900 bg-white dark:bg-zinc-900 dark:text-white">{t("selectOccupation")}</option>
+                  <option value="farmer" className="text-neutral-900 bg-white dark:bg-zinc-900 dark:text-white">{t("farmer")}</option>
+                  <option value="student" className="text-neutral-900 bg-white dark:bg-zinc-900 dark:text-white">{t("student")}</option>
+                  <option value="salaried" className="text-neutral-900 bg-white dark:bg-zinc-900 dark:text-white">{t("salaried")}</option>
+                  <option value="self-employed" className="text-neutral-900 bg-white dark:bg-zinc-900 dark:text-white">{t("selfEmployed")}</option>
+                  <option value="unemployed" className="text-neutral-900 bg-white dark:bg-zinc-900 dark:text-white">{t("unemployed")}</option>
                 </select>
               </Field>
               <Field label={t("incomeLabel")}>
-                <input type="number" min={0} className="input" value={profile.income || ""} onChange={(e) => update("income", Number(e.target.value))} />
+                <input type="number" min={0} className="input dark:text-white" value={profile.income || ""} onChange={(e) => update("income", Number(e.target.value))} />
               </Field>
             </>
           )}
