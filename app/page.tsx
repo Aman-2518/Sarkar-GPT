@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowRight,
@@ -16,7 +16,10 @@ import {
   Briefcase,
   HelpCircle,
   CheckCircle,
-  FileText
+  FileText,
+  Search,
+  ExternalLink,
+  X
 } from "lucide-react";
 import { useLanguage } from "@/lib/languageContext";
 import schemesData from "@/data/schemes.json";
@@ -37,6 +40,42 @@ export default function Home() {
   const [activeCategory, setActiveCategory] = useState<string>("Finance");
   const [filteredSchemes, setFilteredSchemes] = useState<Scheme[]>([]);
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState<Scheme[]>([]);
+  const [showSearchResults, setShowSearchResults] = useState(false);
+  const [selectedScheme, setSelectedScheme] = useState<Scheme | null>(null);
+  const searchRef = useRef<HTMLDivElement>(null);
+
+  // Close search dropdown on outside click
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (searchRef.current && !searchRef.current.contains(e.target as Node)) {
+        setShowSearchResults(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  // Search filter
+  useEffect(() => {
+    if (searchQuery.trim().length < 2) {
+      setSearchResults([]);
+      setShowSearchResults(false);
+      return;
+    }
+    const q = searchQuery.toLowerCase();
+    const results = schemes.filter(
+      (s) =>
+        s.name.toLowerCase().includes(q) ||
+        s.category.toLowerCase().includes(q) ||
+        s.description.toLowerCase().includes(q) ||
+        s.ministry.toLowerCase().includes(q) ||
+        s.documents.some((d) => d.toLowerCase().includes(q))
+    );
+    setSearchResults(results.slice(0, 8));
+    setShowSearchResults(true);
+  }, [searchQuery]);
 
   useEffect(() => {
     setFilteredSchemes(
@@ -100,6 +139,176 @@ export default function Home() {
         }}
         className="absolute top-1/3 right-1/4 w-96 h-96 bg-orange-300/20 dark:bg-orange-500/10 rounded-full blur-3xl -z-10"
       />
+
+      {/* Scheme Search Bar */}
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+        className="relative z-20 max-w-3xl mx-auto w-full"
+        ref={searchRef}
+      >
+        <div className="relative">
+          <Search size={20} className="absolute left-4 top-1/2 -translate-y-1/2 text-neutral-400 dark:text-neutral-500" />
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={(e) => { setSearchQuery(e.target.value); setSelectedScheme(null); }}
+            onFocus={() => searchQuery.trim().length >= 2 && setShowSearchResults(true)}
+            placeholder="Search any government scheme by name, category, or document..."
+            className="w-full pl-12 pr-12 py-4 rounded-2xl border border-neutral-200 dark:border-white/10 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-xl text-base text-neutral-900 dark:text-white placeholder:text-neutral-400 dark:placeholder:text-neutral-500 outline-none focus:ring-2 focus:ring-saffron-500 focus:border-saffron-500/40 shadow-lg transition-all duration-300"
+          />
+          {searchQuery && (
+            <button
+              onClick={() => { setSearchQuery(""); setSearchResults([]); setShowSearchResults(false); setSelectedScheme(null); }}
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300 transition-colors"
+            >
+              <X size={18} />
+            </button>
+          )}
+        </div>
+
+        {/* Search Results Dropdown */}
+        <AnimatePresence>
+          {showSearchResults && searchResults.length > 0 && !selectedScheme && (
+            <motion.div
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.2 }}
+              className="absolute top-full mt-2 w-full rounded-2xl border border-neutral-200 dark:border-white/10 bg-white/95 dark:bg-zinc-900/95 backdrop-blur-xl shadow-2xl overflow-hidden max-h-[420px] overflow-y-auto"
+            >
+              <div className="p-3 border-b border-neutral-100 dark:border-white/5">
+                <span className="text-xs font-bold text-neutral-500 dark:text-neutral-400 uppercase tracking-wider">
+                  {searchResults.length} scheme{searchResults.length !== 1 ? "s" : ""} found
+                </span>
+              </div>
+              {searchResults.map((s) => (
+                <button
+                  key={s.id}
+                  onClick={() => { setSelectedScheme(s); setShowSearchResults(false); }}
+                  className="w-full text-left px-4 py-3.5 hover:bg-saffron-500/5 dark:hover:bg-white/5 border-b border-neutral-100 dark:border-white/5 last:border-0 transition-colors group"
+                >
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="flex-1 min-w-0">
+                      <h4 className="font-bold text-sm text-neutral-900 dark:text-white group-hover:text-saffron-600 dark:group-hover:text-saffron-400 transition-colors truncate">
+                        {s.name}
+                      </h4>
+                      <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-0.5">{s.ministry}</p>
+                    </div>
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-saffron-600 dark:text-saffron-400 bg-saffron-500/10 px-2 py-1 rounded-full whitespace-nowrap flex-shrink-0">
+                      {s.category}
+                    </span>
+                  </div>
+                </button>
+              ))}
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Selected Scheme Detail Card */}
+        <AnimatePresence>
+          {selectedScheme && (
+            <motion.div
+              initial={{ opacity: 0, y: -8, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -8, scale: 0.98 }}
+              transition={{ duration: 0.25 }}
+              className="absolute top-full mt-2 w-full rounded-2xl border border-neutral-200 dark:border-white/10 bg-white/95 dark:bg-zinc-900/95 backdrop-blur-xl shadow-2xl overflow-hidden"
+            >
+              <div className="p-5">
+                <div className="flex items-start justify-between gap-3 mb-3">
+                  <div>
+                    <span className="text-xs font-bold uppercase tracking-wider text-saffron-600 dark:text-saffron-400 bg-saffron-500/10 px-2.5 py-1 rounded-full">
+                      {selectedScheme.category}
+                    </span>
+                    <h3 className="font-display font-extrabold text-lg text-neutral-900 dark:text-white mt-2">
+                      {selectedScheme.name}
+                    </h3>
+                    <p className="text-sm text-neutral-500 dark:text-neutral-400 mt-0.5">{selectedScheme.ministry}</p>
+                  </div>
+                  <button
+                    onClick={() => setSelectedScheme(null)}
+                    className="text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300 transition-colors p-1"
+                  >
+                    <X size={18} />
+                  </button>
+                </div>
+
+                <p className="text-sm text-neutral-700 dark:text-neutral-300 leading-relaxed mb-4">
+                  {selectedScheme.description}
+                </p>
+
+                {/* Benefits */}
+                {selectedScheme.benefits.length > 0 && (
+                  <div className="mb-4">
+                    <h4 className="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 mb-2">Key Benefits</h4>
+                    <ul className="space-y-1.5">
+                      {selectedScheme.benefits.slice(0, 3).map((b, i) => (
+                        <li key={i} className="text-sm text-neutral-700 dark:text-neutral-300 flex items-start gap-2">
+                          <CheckCircle size={14} className="text-emerald-500 mt-0.5 flex-shrink-0" />
+                          <span>{b}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {/* Documents Required */}
+                <div className="mb-4 p-3 rounded-xl bg-amber-50 dark:bg-amber-500/5 border border-amber-200 dark:border-amber-500/10">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-amber-700 dark:text-amber-400 mb-2 flex items-center gap-1.5">
+                    <FileText size={14} /> Documents Required
+                  </h4>
+                  <div className="flex flex-wrap gap-1.5">
+                    {selectedScheme.documents.map((d) => (
+                      <span key={d} className="text-xs bg-white dark:bg-white/10 text-neutral-700 dark:text-neutral-300 px-2.5 py-1 rounded-lg font-medium border border-amber-200 dark:border-amber-500/10">
+                        {d}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Action Buttons */}
+                <div className="flex gap-3">
+                  <a
+                    href={selectedScheme.applyUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-primary !py-2.5 !px-5 text-sm flex items-center gap-2 flex-1 justify-center"
+                  >
+                    Apply Now <ExternalLink size={14} />
+                  </a>
+                  <Link
+                    href="/find-schemes"
+                    className="btn-secondary !py-2.5 !px-5 text-sm flex items-center gap-2 flex-1 justify-center"
+                  >
+                    Check Eligibility <ArrowRight size={14} />
+                  </Link>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* No Results Message */}
+        <AnimatePresence>
+          {showSearchResults && searchQuery.trim().length >= 2 && searchResults.length === 0 && (
+            <motion.div
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              className="absolute top-full mt-2 w-full rounded-2xl border border-neutral-200 dark:border-white/10 bg-white/95 dark:bg-zinc-900/95 backdrop-blur-xl shadow-2xl p-6 text-center"
+            >
+              <HelpCircle size={28} className="mx-auto text-neutral-300 dark:text-neutral-600 mb-2" />
+              <p className="text-sm font-semibold text-neutral-600 dark:text-neutral-400">No schemes found for "{searchQuery}"</p>
+              <p className="text-xs text-neutral-400 dark:text-neutral-500 mt-1">Try searching by scheme name, category, or document type</p>
+              <Link href="/chat" className="inline-flex items-center gap-1.5 mt-3 text-sm font-bold text-saffron-600 dark:text-saffron-400 hover:underline">
+                <MessageCircle size={14} /> Ask SarkarGPT instead
+              </Link>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.section>
 
       {/* Hero Section */}
       <section className="grid items-center gap-10 pt-8 md:grid-cols-12">
