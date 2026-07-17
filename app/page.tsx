@@ -710,51 +710,69 @@ export default function Home() {
 
       {/* Key Benefits Grid */}
       <motion.section
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-50px" }}
         transition={{ duration: 0.5 }}
-        className="flex flex-col gap-8"
+        className="flex flex-col gap-6 max-w-5xl mx-auto w-full"
       >
-        <h2 className="text-center font-display text-3xl font-extrabold text-neutral-800 dark:text-white">Why SarkarGPT?</h2>
-        <div className="grid gap-6 md:grid-cols-3">
+        <h2 className="text-center font-display text-2xl font-extrabold text-neutral-800 dark:text-white">
+          Why SarkarGPT?
+        </h2>
+        
+        <div className="grid gap-4 md:grid-cols-3">
+          {/* Card 1 */}
           <motion.div
-            whileHover={{ scale: 1.025, y: -4 }}
-            className="card border border-neutral-200 dark:border-white/10 hover:border-saffron-500/40 shadow-md"
+            whileHover={{ scale: 1.02, y: -2 }}
+            className="card !p-4 flex gap-4 items-start border-2 border-neutral-300 dark:border-zinc-700 bg-white/60 dark:bg-zinc-900/40 hover:border-emerald-500/40 dark:hover:border-emerald-500/30 transition-all duration-300"
           >
-            <span className="grid h-10 w-10 place-items-center rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
+            <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
               <ShieldCheck size={20} />
             </span>
-            <h3 className="mt-4 font-display font-bold text-lg text-neutral-800 dark:text-white">100% Local Privacy</h3>
-            <p className="mt-2 text-sm text-ink-900/80 dark:text-saffron-50/80 leading-relaxed">
-              We process your age, occupation, and state filters completely local in your browser. None of your demographic data is uploaded to external tracking servers.
-            </p>
+            <div className="flex flex-col gap-1">
+              <h3 className="font-display font-bold text-base text-neutral-900 dark:text-white leading-snug">
+                100% Local Privacy
+              </h3>
+              <p className="text-xs text-neutral-600 dark:text-neutral-300 leading-relaxed">
+                Demographic filters are processed locally in your browser. None of your profile data is uploaded or tracked.
+              </p>
+            </div>
           </motion.div>
 
+          {/* Card 2 */}
           <motion.div
-            whileHover={{ scale: 1.025, y: -4 }}
-            className="card border border-neutral-200 dark:border-white/10 hover:border-saffron-500/40 shadow-md"
+            whileHover={{ scale: 1.02, y: -2 }}
+            className="card !p-4 flex gap-4 items-start border-2 border-neutral-300 dark:border-zinc-700 bg-white/60 dark:bg-zinc-900/40 hover:border-saffron-500/40 dark:hover:border-saffron-500/30 transition-all duration-300"
           >
-            <span className="grid h-10 w-10 place-items-center rounded-full bg-saffron-500/10 text-saffron-600 dark:text-saffron-400">
+            <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-saffron-500/10 text-saffron-600 dark:text-saffron-400 border border-saffron-500/20">
               <MessageCircle size={20} />
             </span>
-            <h3 className="mt-4 font-display font-bold text-lg text-neutral-800 dark:text-white">Multi-Language Chatbot</h3>
-            <p className="mt-2 text-sm text-ink-900/80 dark:text-saffron-50/80 leading-relaxed">
-              Chat with SarkarGPT in Hindi, Bengali, Tamil, Telugu, and 11 other Indian languages. The AI responds directly in your chosen language.
-            </p>
+            <div className="flex flex-col gap-1">
+              <h3 className="font-display font-bold text-base text-neutral-900 dark:text-white leading-snug">
+                Multi-Language Chat
+              </h3>
+              <p className="text-xs text-neutral-600 dark:text-neutral-300 leading-relaxed">
+                Ask questions in Hindi, English, or 13 other languages. Receive responses directly in your chosen language.
+              </p>
+            </div>
           </motion.div>
 
+          {/* Card 3 */}
           <motion.div
-            whileHover={{ scale: 1.025, y: -4 }}
-            className="card border border-neutral-200 dark:border-white/10 hover:border-saffron-500/40 shadow-md"
+            whileHover={{ scale: 1.02, y: -2 }}
+            className="card !p-4 flex gap-4 items-start border-2 border-neutral-300 dark:border-zinc-700 bg-white/60 dark:bg-zinc-900/40 hover:border-blue-500/40 dark:hover:border-blue-500/30 transition-all duration-300"
           >
-            <span className="grid h-10 w-10 place-items-center rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400">
+            <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
               <Sparkles size={20} />
             </span>
-            <h3 className="mt-4 font-display font-bold text-lg text-neutral-800 dark:text-white">Illiteracy Assisted Guides</h3>
-            <p className="mt-2 text-sm text-ink-900/80 dark:text-saffron-50/80 leading-relaxed">
-              Equipped with a floating voice guide helper and audio speaker read-outs. Makes discovery simple for citizens who cannot read or write easily.
-            </p>
+            <div className="flex flex-col gap-1">
+              <h3 className="font-display font-bold text-base text-neutral-900 dark:text-white leading-snug">
+                Voice Assistant Guides
+              </h3>
+              <p className="text-xs text-neutral-600 dark:text-neutral-300 leading-relaxed">
+                Equipped with screen read-aloud support and voice typing to aid accessibility for all citizens.
+              </p>
+            </div>
           </motion.div>
         </div>
       </motion.section>
