@@ -720,16 +720,16 @@ export default function Home() {
           Why SarkarGPT?
         </h2>
         
-        <div className="grid gap-6 grid-cols-1 md:grid-cols-3">
+        <div className="flex flex-col gap-4 max-w-3xl mx-auto w-full">
           {/* Card 1 */}
           <motion.div
-            whileHover={{ scale: 1.025, y: -4 }}
-            className="card !p-6 flex flex-col items-center text-center gap-4 border-2 border-neutral-300 dark:border-zinc-700 bg-white/60 dark:bg-zinc-900/40 hover:border-emerald-500/40 dark:hover:border-emerald-500/30 transition-all duration-300"
+            whileHover={{ scale: 1.015, x: 4 }}
+            className="card !p-5 flex flex-row items-center gap-5 border-2 border-neutral-300 dark:border-zinc-700 bg-white/60 dark:bg-zinc-900/40 hover:border-emerald-500/45 dark:hover:border-emerald-500/30 transition-all duration-300"
           >
-            <span className="grid h-12 w-12 place-items-center rounded-2xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+            <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
               <ShieldCheck size={24} />
             </span>
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-1">
               <h3 className="font-display font-extrabold text-lg text-neutral-900 dark:text-white leading-snug">
                 100% Local Privacy
               </h3>
@@ -741,13 +741,13 @@ export default function Home() {
 
           {/* Card 2 */}
           <motion.div
-            whileHover={{ scale: 1.025, y: -4 }}
-            className="card !p-6 flex flex-col items-center text-center gap-4 border-2 border-neutral-300 dark:border-zinc-700 bg-white/60 dark:bg-zinc-900/40 hover:border-saffron-500/40 dark:hover:border-saffron-500/30 transition-all duration-300"
+            whileHover={{ scale: 1.015, x: 4 }}
+            className="card !p-5 flex flex-row items-center gap-5 border-2 border-neutral-300 dark:border-zinc-700 bg-white/60 dark:bg-zinc-900/40 hover:border-saffron-500/45 dark:hover:border-saffron-500/30 transition-all duration-300"
           >
-            <span className="grid h-12 w-12 place-items-center rounded-2xl bg-saffron-500/10 text-saffron-600 dark:text-saffron-400 border border-saffron-500/20">
+            <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-saffron-500/10 text-saffron-600 dark:text-saffron-400 border border-saffron-500/20">
               <MessageCircle size={24} />
             </span>
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-1">
               <h3 className="font-display font-extrabold text-lg text-neutral-900 dark:text-white leading-snug">
                 Multi-Language Chat
               </h3>
@@ -759,13 +759,13 @@ export default function Home() {
 
           {/* Card 3 */}
           <motion.div
-            whileHover={{ scale: 1.025, y: -4 }}
-            className="card !p-6 flex flex-col items-center text-center gap-4 border-2 border-neutral-300 dark:border-zinc-700 bg-white/60 dark:bg-zinc-900/40 hover:border-blue-500/40 dark:hover:border-blue-500/30 transition-all duration-300"
+            whileHover={{ scale: 1.015, x: 4 }}
+            className="card !p-5 flex flex-row items-center gap-5 border-2 border-neutral-300 dark:border-zinc-700 bg-white/60 dark:bg-zinc-900/40 hover:border-blue-500/45 dark:hover:border-blue-500/30 transition-all duration-300"
           >
-            <span className="grid h-12 w-12 place-items-center rounded-2xl bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
+            <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
               <Sparkles size={24} />
             </span>
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-1">
               <h3 className="font-display font-extrabold text-lg text-neutral-900 dark:text-white leading-snug">
                 Voice Assistant Guides
               </h3>
