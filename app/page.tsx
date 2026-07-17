@@ -761,11 +761,12 @@ export default function Home() {
 
       {/* 60+ Schemes Directory Section */}
       <motion.section
+        id="directory"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-50px" }}
         transition={{ duration: 0.5 }}
-        className="flex flex-col gap-8 max-w-6xl mx-auto px-4 pb-16"
+        className="flex flex-col gap-8 max-w-6xl mx-auto px-4 pb-16 scroll-mt-24"
       >
         <div className="text-center flex flex-col gap-2">
           <h2 className="font-display text-3xl font-extrabold text-neutral-800 dark:text-white">

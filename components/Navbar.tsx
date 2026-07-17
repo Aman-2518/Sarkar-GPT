@@ -33,6 +33,9 @@ export default function Navbar() {
             <Link href="/find-schemes" className="text-sm font-medium hover:text-saffron-600 transition-colors">
               {t("findSchemes")}
             </Link>
+            <Link href="/#directory" className="text-sm font-medium hover:text-saffron-600 transition-colors">
+              Directory
+            </Link>
             <Link href="/chat" className="text-sm font-medium hover:text-saffron-600 transition-colors">
               {t("aiChat")}
             </Link>
