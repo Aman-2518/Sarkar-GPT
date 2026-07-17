@@ -153,10 +153,10 @@ export default function Home() {
             <div className="absolute -top-3 -right-3 rounded-xl bg-warm-gradient text-white p-2.5 shadow-lg">
               <Sparkles size={20} className="animate-spin duration-3000" />
             </div>
-            <p className="font-display font-bold text-lg text-neutral-800 dark:text-white flex items-center gap-2">
+            <p className="font-display font-extrabold text-xl text-neutral-900 dark:text-white flex items-center gap-2">
               Interactive Explorer
             </p>
-            <p className="mt-1 text-xs text-ink-900/60 dark:text-saffron-50/60 leading-normal">
+            <p className="mt-1.5 text-sm text-ink-900/80 dark:text-saffron-50/75 leading-relaxed">
               Click a category card below to browse current demo schemes instantly.
             </p>
             
@@ -171,15 +171,15 @@ export default function Home() {
                     onMouseLeave={() => setHoveredCategory(null)}
                     whileHover={{ scale: 1.02, x: 3 }}
                     whileTap={{ scale: 0.98 }}
-                    className={`flex items-center justify-between p-3 rounded-xl border text-sm font-semibold transition-all duration-300 ${
+                    className={`flex items-center justify-between p-3.5 rounded-xl border text-sm font-bold transition-all duration-300 ${
                       activeCategory === label
                         ? "border-saffron-500 bg-saffron-500/10 text-saffron-800 dark:text-saffron-300 shadow-md"
-                        : "border-neutral-200 dark:border-white/10 hover:border-saffron-500/30 hover:bg-neutral-50 dark:hover:bg-white/5"
+                        : "border-neutral-200 dark:border-white/10 hover:border-saffron-500/30 hover:bg-neutral-50 dark:hover:bg-white/5 text-neutral-700 dark:text-neutral-200"
                     }`}
                   >
-                    <div className="flex items-center gap-2.5">
-                      <span className={`p-1.5 rounded-lg bg-gradient-to-tr ${color}`}>
-                        <Icon size={16} />
+                    <div className="flex items-center gap-3">
+                      <span className={`p-2 rounded-lg bg-gradient-to-tr ${color}`}>
+                        <Icon size={18} />
                       </span>
                       <span>{label}</span>
                     </div>
@@ -190,7 +190,7 @@ export default function Home() {
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={{ opacity: 1, scale: 1 }}
                             exit={{ opacity: 0, scale: 0.8 }}
-                            className="text-[10px] bg-saffron-500 text-white font-bold px-2 py-0.5 rounded-full"
+                            className="text-xs bg-saffron-500 text-white font-bold px-2.5 py-0.5 rounded-full"
                           >
                             {count} schemes
                           </motion.span>
@@ -208,7 +208,7 @@ export default function Home() {
 
       {/* Dynamic Interactive Drawer Showcase */}
       <section className="border-y border-neutral-200 dark:border-white/10 py-12">
-        <h2 className="text-center font-display text-2xl font-extrabold mb-8 text-neutral-800 dark:text-white flex items-center justify-center gap-2">
+        <h2 className="text-center font-display text-3xl font-extrabold mb-8 text-neutral-900 dark:text-white flex items-center justify-center gap-2">
           ⚡ Schemes inside <span className="text-saffron-600 dark:text-saffron-400">"{activeCategory}"</span> Category
         </h2>
         
@@ -225,27 +225,27 @@ export default function Home() {
                 className="card flex flex-col justify-between border border-neutral-200 dark:border-white/10 bg-white/50 dark:bg-zinc-900/50 hover:bg-white dark:hover:bg-zinc-900 shadow-md hover:shadow-lg cursor-pointer"
               >
                 <div>
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-saffron-600 dark:text-saffron-400 px-2 py-0.5 rounded-full bg-saffron-500/10 w-fit mb-2 block">
+                  <span className="text-xs font-bold uppercase tracking-wider text-saffron-600 dark:text-saffron-400 px-2.5 py-1 rounded-full bg-saffron-500/10 w-fit mb-2.5 block">
                     {s.category}
                   </span>
-                  <h3 className="font-display font-extrabold text-base mb-1.5 text-neutral-800 dark:text-white">{s.name}</h3>
-                  <p className="text-xs text-ink-900/60 dark:text-saffron-50/60 mb-3">{s.ministry}</p>
-                  <p className="text-xs text-ink-900/80 dark:text-saffron-50/80 leading-relaxed mb-4">{s.description}</p>
+                  <h3 className="font-display font-extrabold text-lg mb-1.5 text-neutral-900 dark:text-white">{s.name}</h3>
+                  <p className="text-sm text-ink-900/70 dark:text-saffron-50/70 mb-3 font-medium">{s.ministry}</p>
+                  <p className="text-sm text-ink-900/80 dark:text-saffron-50/80 leading-relaxed mb-4">{s.description}</p>
                 </div>
                 
                 <div>
                   <div className="flex flex-wrap gap-1.5 mb-4 border-t border-neutral-100 dark:border-white/5 pt-3">
                     {s.documents.slice(0, 2).map((d) => (
-                      <span key={d} className="text-[10px] bg-neutral-100 dark:bg-white/5 text-neutral-600 dark:text-saffron-50/70 px-2 py-1 rounded-md flex items-center gap-1 font-medium">
-                        <FileText size={10} /> {d}
+                      <span key={d} className="text-xs bg-neutral-100 dark:bg-white/8 text-neutral-700 dark:text-saffron-50/80 px-2.5 py-1 rounded-md flex items-center gap-1.5 font-medium">
+                        <FileText size={12} /> {d}
                       </span>
                     ))}
                     {s.documents.length > 2 && (
-                      <span className="text-[10px] text-saffron-600 font-bold px-1.5 py-1">+{s.documents.length - 2} more</span>
+                      <span className="text-xs text-saffron-600 font-bold px-1.5 py-1">+{s.documents.length - 2} more</span>
                     )}
                   </div>
 
-                  <Link href="/find-schemes" className="btn-secondary !py-2 !px-3 text-xs w-full text-center hover:bg-saffron-500 hover:text-white hover:border-saffron-500">
+                  <Link href="/find-schemes" className="btn-secondary !py-2.5 !px-4 text-sm font-bold w-full text-center hover:bg-saffron-500 hover:text-white hover:border-saffron-500">
                     Check Eligibility
                   </Link>
                 </div>
@@ -268,7 +268,7 @@ export default function Home() {
             <h3 className="font-display text-2xl md:text-4xl font-extrabold text-saffron-600 dark:text-saffron-400">
               {stat.value}
             </h3>
-            <p className="text-[10px] md:text-sm font-semibold text-ink-900/70 dark:text-saffron-50/70 uppercase tracking-wide">
+            <p className="text-xs md:text-sm font-bold text-ink-900/80 dark:text-saffron-50/80 uppercase tracking-wide">
               {stat.label}
             </p>
           </div>
@@ -293,7 +293,7 @@ export default function Home() {
               <ShieldCheck size={20} />
             </span>
             <h3 className="mt-4 font-display font-bold text-lg text-neutral-800 dark:text-white">100% Local Privacy</h3>
-            <p className="mt-2 text-xs text-ink-900/70 dark:text-saffron-50/70 leading-relaxed">
+            <p className="mt-2 text-sm text-ink-900/80 dark:text-saffron-50/80 leading-relaxed">
               We process your age, occupation, and state filters completely local in your browser. None of your demographic data is uploaded to external tracking servers.
             </p>
           </motion.div>
@@ -306,7 +306,7 @@ export default function Home() {
               <MessageCircle size={20} />
             </span>
             <h3 className="mt-4 font-display font-bold text-lg text-neutral-800 dark:text-white">Multi-Language Chatbot</h3>
-            <p className="mt-2 text-xs text-ink-900/70 dark:text-saffron-50/70 leading-relaxed">
+            <p className="mt-2 text-sm text-ink-900/80 dark:text-saffron-50/80 leading-relaxed">
               Chat with SarkarGPT in Hindi, Bengali, Tamil, Telugu, and 11 other Indian languages. The AI responds directly in your chosen language.
             </p>
           </motion.div>
@@ -319,7 +319,7 @@ export default function Home() {
               <Sparkles size={20} />
             </span>
             <h3 className="mt-4 font-display font-bold text-lg text-neutral-800 dark:text-white">Illiteracy Assisted Guides</h3>
-            <p className="mt-2 text-xs text-ink-900/70 dark:text-saffron-50/70 leading-relaxed">
+            <p className="mt-2 text-sm text-ink-900/80 dark:text-saffron-50/80 leading-relaxed">
               Equipped with a floating voice guide helper and audio speaker read-outs. Makes discovery simple for citizens who cannot read or write easily.
             </p>
           </motion.div>
@@ -338,7 +338,7 @@ export default function Home() {
           <h2 className="font-display text-3xl font-extrabold text-neutral-800 dark:text-white">
             Directory of 60+ Monitored Government Schemes
           </h2>
-          <p className="text-sm text-ink-900/60 dark:text-saffron-50/60 max-w-2xl mx-auto">
+          <p className="text-base text-ink-900/75 dark:text-saffron-50/75 max-w-2xl mx-auto">
             Browse our complete live catalog of government schemes across multiple sectors and ministries.
           </p>
         </div>
@@ -352,17 +352,17 @@ export default function Home() {
                 whileHover={{ scale: 1.02, y: -2 }}
                 className="p-5 rounded-2xl border border-neutral-200 dark:border-white/10 bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md flex flex-col gap-3.5 hover:shadow-lg transition-all duration-300"
               >
-                <div className="flex items-center justify-between border-b border-neutral-200 dark:border-white/5 pb-2">
-                  <span className="font-bold text-sm text-saffron-600 dark:text-saffron-400 uppercase tracking-wider">
+                <div className="flex items-center justify-between border-b border-neutral-200 dark:border-white/10 pb-2.5">
+                  <span className="font-extrabold text-base text-saffron-600 dark:text-saffron-400 uppercase tracking-wider">
                     {category}
                   </span>
-                  <span className="text-[10px] bg-saffron-500/10 text-saffron-700 dark:text-saffron-300 px-2 py-0.5 rounded-full font-bold">
+                  <span className="text-xs bg-saffron-500/10 text-saffron-700 dark:text-saffron-300 px-2.5 py-0.5 rounded-full font-bold">
                     {catSchemes.length}
                   </span>
                 </div>
-                <ul className="flex flex-col gap-2 text-xs">
+                <ul className="flex flex-col gap-2.5 text-sm">
                   {catSchemes.map((s) => (
-                    <li key={s.id} className="text-neutral-700 dark:text-saffron-50/80 hover:text-saffron-600 dark:hover:text-saffron-400 transition-colors flex items-start gap-1.5 leading-tight">
+                    <li key={s.id} className="text-neutral-800 dark:text-saffron-50/85 hover:text-saffron-600 dark:hover:text-saffron-400 transition-colors flex items-start gap-2 leading-snug font-medium">
                       <span className="text-saffron-500 mt-0.5">•</span>
                       <span>{s.name}</span>
                     </li>
@@ -389,7 +389,7 @@ export default function Home() {
           <h2 className="font-display text-3xl font-extrabold text-neutral-800 dark:text-white">
             What's Coming Next to SarkarGPT?
           </h2>
-          <p className="text-sm text-ink-900/60 dark:text-saffron-50/60">
+          <p className="text-base text-ink-900/75 dark:text-saffron-50/75">
             We are continuously building new features to make government scheme discovery more accessible to every citizen.
           </p>
         </div>
@@ -401,8 +401,8 @@ export default function Home() {
           >
             <span className="text-2xl mt-1">💬</span>
             <div className="flex flex-col gap-1">
-              <h3 className="font-bold text-sm text-neutral-800 dark:text-white">WhatsApp & SMS Assistant</h3>
-              <p className="text-xs text-ink-900/70 dark:text-saffron-50/70 leading-relaxed">
+              <h3 className="font-bold text-base text-neutral-900 dark:text-white">WhatsApp & SMS Assistant</h3>
+              <p className="text-sm text-ink-900/80 dark:text-saffron-50/80 leading-relaxed">
                 Query eligibility and receive step-by-step application guidelines directly on WhatsApp, tailored for remote village areas.
               </p>
             </div>
@@ -414,8 +414,8 @@ export default function Home() {
           >
             <span className="text-2xl mt-1">📡</span>
             <div className="flex flex-col gap-1">
-              <h3 className="font-bold text-sm text-neutral-800 dark:text-white">100% Offline Mode (PWA)</h3>
-              <p className="text-xs text-ink-900/70 dark:text-saffron-50/70 leading-relaxed">
+              <h3 className="font-bold text-base text-neutral-900 dark:text-white">100% Offline Mode (PWA)</h3>
+              <p className="text-sm text-ink-900/80 dark:text-saffron-50/80 leading-relaxed">
                 Full offline database availability, allowing citizens to search schemes and verify documents in zero-connectivity areas.
               </p>
             </div>
@@ -427,8 +427,8 @@ export default function Home() {
           >
             <span className="text-2xl mt-1">🎙️</span>
             <div className="flex flex-col gap-1">
-              <h3 className="font-bold text-sm text-neutral-800 dark:text-white">Regional Dialect Support</h3>
-              <p className="text-xs text-ink-900/70 dark:text-saffron-50/70 leading-relaxed">
+              <h3 className="font-bold text-base text-neutral-900 dark:text-white">Regional Dialect Support</h3>
+              <p className="text-sm text-ink-900/80 dark:text-saffron-50/80 leading-relaxed">
                 Expanding voice synthesis readouts to include regional local accents and localized dialects of major Indian states.
               </p>
             </div>
@@ -440,8 +440,8 @@ export default function Home() {
           >
             <span className="text-2xl mt-1">📝</span>
             <div className="flex flex-col gap-1">
-              <h3 className="font-bold text-sm text-neutral-800 dark:text-white">Direct Form Pre-filling</h3>
-              <p className="text-xs text-ink-900/70 dark:text-saffron-50/70 leading-relaxed">
+              <h3 className="font-bold text-base text-neutral-900 dark:text-white">Direct Form Pre-filling</h3>
+              <p className="text-sm text-ink-900/80 dark:text-saffron-50/80 leading-relaxed">
                 Use your local saved demographic profile to automatically pre-fill official scheme application forms with one click.
               </p>
             </div>
