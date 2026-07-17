@@ -203,7 +203,7 @@ export default function Home() {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.15, type: "spring", stiffness: 120 }}
-        className="relative z-20 max-w-3xl mx-auto w-full"
+        className="relative z-20 max-w-3xl w-full mx-auto px-4"
         ref={searchRef}
       >
         {/* Label */}
