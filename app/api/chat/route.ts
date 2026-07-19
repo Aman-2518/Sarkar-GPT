@@ -36,23 +36,28 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  const geminiKey = process.env.GEMINI_API_KEY;
-  const groqKey = process.env.GROQ_API_KEY;
-  const openaiKey = process.env.OPENAI_API_KEY;
-
-  if (!geminiKey && !openaiKey && !groqKey) {
-    return NextResponse.json(
-      { error: "Please configure GROQ_API_KEY (free), GEMINI_API_KEY (free), or OPENAI_API_KEY in your .env file." },
-      { status: 500 }
-    );
-  }
-
-  const { question, profile, schemes, language } = (await req.json()) as {
+  const { question, profile, schemes, language, userKeys, history } = (await req.json()) as {
     question: string;
     profile: Partial<UserProfile>;
     schemes: Scheme[];
     language?: string;
+    userKeys?: {
+      groq?: string;
+    };
+    history?: { role: "user" | "assistant"; content: string }[];
   };
+
+  const rawGroqKey = userKeys?.groq?.trim() || "";
+  const envGroqKey = process.env.GROQ_API_KEY?.trim() || "";
+  const groqKey = rawGroqKey || envGroqKey;
+
+  if (!groqKey) {
+    return NextResponse.json(
+      { error: "Please configure Groq API key in Settings or .env file to enable AI chat." },
+      { status: 500 }
+    );
+  }
+
 
   if (!question || !schemes) {
     return NextResponse.json({ error: "Missing question or schemes" }, { status: 400 });
@@ -62,7 +67,7 @@ export async function POST(req: NextRequest) {
   const sanitizedQuestion = question.trim().slice(0, 500);
 
   // Define cache key with profile details and active provider combination
-  const activeProvider = groqKey ? "groq" : geminiKey ? "gemini" : "openai";
+  const activeProvider = "groq";
   const profileKey = JSON.stringify(profile ?? {});
   const cacheKey = `${sanitizedQuestion.toLowerCase()}::${schemes.map((s) => s.id).join(",")}::${profileKey}::${language || "en"}::${activeProvider}`;
 
@@ -81,6 +86,7 @@ export async function POST(req: NextRequest) {
       amountDetails: s.amountDetails,
       applicationSteps: s.applicationSteps,
       extraIntel: s.extraIntel,
+      applyUrl: s.applyUrl,
     })),
   };
 
@@ -97,13 +103,25 @@ export async function POST(req: NextRequest) {
   }
 
   const systemInstruction =
-    "You are SarkarGPT, an assistant that helps Indian citizens understand government schemes. " +
+    "You are SarkarGPT, a professional, polite, and reassuring virtual assistant that helps Indian citizens understand government schemes. " +
     "Only use the schemes provided in the context — never invent scheme names or benefits. " +
-    "Be concise, plain-language, and practical. " +
-    "IMPORTANT: Whenever you mention or recommend a scheme, you MUST list ALL the required documents needed to apply. " +
-    "Always present documents as a clear bulleted list under a 'Documents Required' heading so the user knows exactly what to prepare. " +
+    "Maintain a highly respectful, empathetic, and professional tone throughout the interaction. Use clear, easy-to-understand language. " +
+    "IMPORTANT: You must guide the user step-by-step through a conversational flow. Follow these rules strictly based on the conversation history: " +
+    "Rule 1. When the user first asks about a scheme (or asks 'which scheme'): " +
+    "   - Welcomely introduce that scheme name and its brief description. " +
+    "   - Bold the actual scheme name (e.g. **PM Kisan Samman Nidhi**), but NEVER bold generic words like 'scheme' or 'government'. " +
+    "   - DO NOT show benefits or required documents yet. " +
+    "   - Ask the user politely: \"Would you like to know more about the details and benefits of this scheme?\" " +
+    "Rule 2. If the user has just agreed or replied positively to knowing about the scheme and benefits (look at the history): " +
+    "   - Provide detailed info about the scheme and its benefits. " +
+    "   - Bold specific benefits, and wrap key figures, numbers, amounts, dates, and milestones in backticks (e.g., `Rs. 6,000` or `18 years`) to highlight them. Do NOT wrap generic words or long sentences in backticks. " +
+    "   - DO NOT show the required documents or the application URL yet. " +
+    "   - Ask the user politely: \"Would you like to know the required documents to apply for this scheme?\" " +
+    "Rule 3. If the user has just agreed or replied positively to knowing the documents required: " +
+    "   - Provide the complete list of required documents under a 'Documents Required' heading. " +
+    "   - Provide the application link from the context's `applyUrl` using a professional markdown link (e.g., `[Apply/Register Here](applyUrl)`). " +
     `CRITICAL: You must write your response in the language: ${language || "English"}. ` +
-    "Use simple vocabulary suitable for general public understanding. Keep responses structured and brief. " +
+    "Keep responses structured, professional, and aligned with these stages. " +
     profileContextString;
 
   // 4. Smart Failover Router Chain
@@ -111,91 +129,41 @@ export async function POST(req: NextRequest) {
 
   // Try Groq First (Free, Llama 3.1)
   if (groqKey) {
-    try {
-      const groq = new OpenAI({
-        apiKey: groqKey,
-        baseURL: "https://api.groq.com/openai/v1",
-      });
+    const keysToTry = [rawGroqKey, envGroqKey].filter((k) => k !== "");
+    const uniqueKeys = Array.from(new Set(keysToTry));
 
-      const completion = await groq.chat.completions.create({
-        model: "llama-3.1-8b-instant",
-        temperature: 0.3,
-        max_tokens: 450,
-        messages: [
-          { role: "system", content: systemInstruction },
-          { role: "user", content: `Context: ${JSON.stringify(context)}\n\nQuestion: ${sanitizedQuestion}` },
-        ],
-      });
+    for (const key of uniqueKeys) {
+      try {
+        const groq = new OpenAI({
+          apiKey: key,
+          baseURL: "https://api.groq.com/openai/v1",
+        });
 
-      const answer = completion.choices[0]?.message?.content ?? "";
-      if (answer) {
-        cache.set(cacheKey, answer);
-        return NextResponse.json({ answer, cached: false, provider: "groq" });
-      }
-    } catch (err: any) {
-      console.warn("Groq failed, falling back...", err.message);
-      errors.push(`Groq: ${err?.message || "Error"}`);
-    }
-  }
-
-  // Try Gemini Second (Free, Gemini Flash)
-  if (geminiKey) {
-    try {
-      const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=${geminiKey}`;
-      const response = await fetch(url, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          contents: [{
-            parts: [{
-              text: `System Instruction: ${systemInstruction}\n\nContext: ${JSON.stringify(context)}\n\nQuestion: ${sanitizedQuestion}`
-            }]
-          }],
-          generationConfig: {
-            temperature: 0.3,
-            maxOutputTokens: 450
+        const requestMessages: any[] = [{ role: "system", content: systemInstruction }];
+        if (history && history.length > 0) {
+          for (const msg of history) {
+            requestMessages.push({ role: msg.role === "assistant" ? "assistant" : "user", content: msg.content });
           }
-        })
-      });
+        }
+        requestMessages.push({ role: "user", content: `Context: ${JSON.stringify(context)}\n\nQuestion: ${sanitizedQuestion}` });
 
-      const data = await response.json();
-      if (!response.ok) {
-        throw new Error(data.error?.message || "Failed to get response from Gemini API");
+        const completion = await groq.chat.completions.create({
+          model: "llama-3.1-8b-instant",
+          temperature: 0.3,
+          max_tokens: 450,
+          messages: requestMessages,
+        });
+
+        const answer = completion.choices[0]?.message?.content ?? "";
+        if (answer) {
+          cache.set(cacheKey, answer);
+          return NextResponse.json({ answer, cached: false, provider: "groq" });
+        }
+      } catch (err: any) {
+        const isCustom = key === rawGroqKey;
+        console.warn(`Groq (${isCustom ? "custom" : "env"}) failed, falling back...`, err.message);
+        errors.push(`Groq (${isCustom ? "custom" : "env"}): ${err?.message || "Error"}`);
       }
-
-      const answer = data.candidates?.[0]?.content?.parts?.[0]?.text ?? "";
-      if (answer) {
-        cache.set(cacheKey, answer);
-        return NextResponse.json({ answer, cached: false, provider: "gemini" });
-      }
-    } catch (err: any) {
-      console.warn("Gemini failed, falling back...", err.message);
-      errors.push(`Gemini: ${err?.message || "Error"}`);
-    }
-  }
-
-  // Try OpenAI Third (Paid, GPT-4o-mini)
-  if (openaiKey) {
-    try {
-      const openai = new OpenAI({ apiKey: openaiKey });
-      const completion = await openai.chat.completions.create({
-        model: "gpt-4o-mini",
-        temperature: 0.3,
-        max_tokens: 450,
-        messages: [
-          { role: "system", content: systemInstruction },
-          { role: "user", content: `Context: ${JSON.stringify(context)}\n\nQuestion: ${sanitizedQuestion}` },
-        ],
-      });
-
-      const answer = completion.choices[0]?.message?.content ?? "";
-      if (answer) {
-        cache.set(cacheKey, answer);
-        return NextResponse.json({ answer, cached: false, provider: "openai" });
-      }
-    } catch (err: any) {
-      console.warn("OpenAI failed...", err.message);
-      errors.push(`OpenAI: ${err?.message || "Error"}`);
     }
   }
 

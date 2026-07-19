@@ -20,6 +20,127 @@ interface IWindow extends Window {
   SpeechRecognition: any;
 }
 
+function parseMarkdown(text: string) {
+  const lines = text.split("\n");
+  
+  return lines.map((line, index) => {
+    const tokenRegex = /(\*\*.*?\*\*|\[.*?\]\(.*?\)|`[^`]+`)/g;
+    const tokens = line.split(tokenRegex);
+    
+    const parsedLine = tokens.map((token, tIdx) => {
+      if (token.startsWith("**") && token.endsWith("**")) {
+        return <strong key={tIdx} className="font-extrabold text-saffron-600 dark:text-saffron-400">{token.slice(2, -2)}</strong>;
+      }
+      if (token.startsWith("[") && token.includes("](")) {
+        const closeBracketIdx = token.indexOf("](");
+        const label = token.slice(1, closeBracketIdx);
+        const url = token.slice(closeBracketIdx + 2, -1);
+        return (
+          <a
+            key={tIdx}
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-saffron-600 dark:text-saffron-400 underline hover:text-saffron-500 font-bold ml-1 inline-flex items-center gap-0.5"
+          >
+            {label}
+          </a>
+        );
+      }
+      if (token.startsWith("`") && token.endsWith("`")) {
+        return (
+          <span key={tIdx} className="bg-saffron-500/10 dark:bg-saffron-500/20 text-saffron-700 dark:text-saffron-300 px-1.5 py-0.5 rounded font-mono text-xs font-bold mx-0.5 border border-saffron-500/10">
+            {token.slice(1, -1)}
+          </span>
+        );
+      }
+      return token;
+    });
+
+    if (line.trim().startsWith("* ") || line.trim().startsWith("- ")) {
+      const listContent = line.replace(/^\s*[\*\-]\s+/, "");
+      const listTokens = listContent.split(tokenRegex).map((token, tIdx) => {
+        if (token.startsWith("**") && token.endsWith("**")) {
+          return <strong key={tIdx} className="font-extrabold text-saffron-600 dark:text-saffron-400">{token.slice(2, -2)}</strong>;
+        }
+        if (token.startsWith("[") && token.includes("](")) {
+          const closeBracketIdx = token.indexOf("](");
+          const label = token.slice(1, closeBracketIdx);
+          const url = token.slice(closeBracketIdx + 2, -1);
+          return (
+            <a
+              key={tIdx}
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-saffron-600 dark:text-saffron-400 underline hover:text-saffron-500 font-bold ml-1 inline-flex items-center gap-0.5"
+            >
+              {label}
+            </a>
+          );
+        }
+        if (token.startsWith("`") && token.endsWith("`")) {
+          return (
+            <span key={tIdx} className="bg-saffron-500/10 dark:bg-saffron-500/20 text-saffron-700 dark:text-saffron-300 px-1.5 py-0.5 rounded font-mono text-xs font-bold mx-0.5 border border-saffron-500/10">
+              {token.slice(1, -1)}
+            </span>
+          );
+        }
+        return token;
+      });
+      return (
+        <li key={index} className="list-disc ml-5 mt-1 text-ink-900 dark:text-saffron-50/90">
+          {listTokens}
+        </li>
+      );
+    }
+
+    if (/^\s*\d+\.\s+/.test(line)) {
+      const listContent = line.replace(/^\s*\d+\.\s+/, "");
+      const listTokens = listContent.split(tokenRegex).map((token, tIdx) => {
+        if (token.startsWith("**") && token.endsWith("**")) {
+          return <strong key={tIdx} className="font-extrabold text-saffron-600 dark:text-saffron-400">{token.slice(2, -2)}</strong>;
+        }
+        if (token.startsWith("[") && token.includes("](")) {
+          const closeBracketIdx = token.indexOf("](");
+          const label = token.slice(1, closeBracketIdx);
+          const url = token.slice(closeBracketIdx + 2, -1);
+          return (
+            <a
+              key={tIdx}
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-saffron-600 dark:text-saffron-400 underline hover:text-saffron-500 font-bold ml-1 inline-flex items-center gap-0.5"
+            >
+              {label}
+            </a>
+          );
+        }
+        if (token.startsWith("`") && token.endsWith("`")) {
+          return (
+            <span key={tIdx} className="bg-saffron-500/10 dark:bg-saffron-500/20 text-saffron-700 dark:text-saffron-300 px-1.5 py-0.5 rounded font-mono text-xs font-bold mx-0.5 border border-saffron-500/10">
+              {token.slice(1, -1)}
+            </span>
+          );
+        }
+        return token;
+      });
+      return (
+        <li key={index} className="list-decimal ml-5 mt-1 text-ink-900 dark:text-saffron-50/90">
+          {listTokens}
+        </li>
+      );
+    }
+
+    return (
+      <p key={index} className="mt-1">
+        {parsedLine}
+      </p>
+    );
+  });
+}
+
 export default function ChatWindow() {
   const {
     language,
@@ -115,12 +236,16 @@ export default function ChatWindow() {
     );
     const relevant = (matched.length > 0 ? matched : schemes).slice(0, 6);
 
+    const userKeys = {
+      groq: typeof window !== "undefined" ? localStorage.getItem("sarkargpt_groq_key") || "" : "",
+    };
+
     let replyContent = "Network error — please try again.";
     try {
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ question, profile, schemes: relevant, language }),
+        body: JSON.stringify({ question, profile, schemes: relevant, language, userKeys, history: messages }),
       });
       const data = await res.json();
       if (!res.ok) {
@@ -270,7 +395,11 @@ export default function ChatWindow() {
                   m.role === "user" ? "bg-warm-gradient text-white" : "bg-neutral-100 dark:bg-white/5 text-ink-900 dark:text-saffron-50/90"
                 }`}
               >
-                <p className="whitespace-pre-wrap">{m.content}</p>
+                {m.role === "user" ? (
+                  <p className="whitespace-pre-wrap">{m.content}</p>
+                ) : (
+                  <div className="flex flex-col gap-1">{parseMarkdown(m.content)}</div>
+                )}
                 {m.role === "assistant" && (
                   <div className="mt-2 flex gap-4 text-ink-900/40 dark:text-saffron-50/50">
                     <button

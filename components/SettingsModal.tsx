@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Volume2, Sun, Moon, Trash2, Check, Languages, Settings2 } from "lucide-react";
+import { X, Volume2, Sun, Moon, Trash2, Check, Languages, Settings2, KeyRound } from "lucide-react";
 import { useLanguage, SUPPORTED_LANGUAGES, LanguageCode } from "@/lib/languageContext";
 import { useEffect, useState } from "react";
 
@@ -97,12 +97,19 @@ export default function SettingsModal({ onClose }: { onClose: () => void }) {
 
   const [theme, setThemeState] = useState<"light" | "dark">("dark");
   const [resetSuccess, setResetSuccess] = useState(false);
+  const [groqKey, setGroqKeyState] = useState("");
+
+  const updateGroqKey = (val: string) => {
+    setGroqKeyState(val);
+    if (typeof window !== "undefined") localStorage.setItem("sarkargpt_groq_key", val);
+  };
 
   // Initialize theme state from DOM class
   useEffect(() => {
     if (typeof window !== "undefined") {
       const isDark = document.documentElement.classList.contains("dark");
       setThemeState(isDark ? "dark" : "light");
+      setGroqKeyState(localStorage.getItem("sarkargpt_groq_key") || "");
     }
   }, []);
 
@@ -127,6 +134,7 @@ export default function SettingsModal({ onClose }: { onClose: () => void }) {
     localStorage.removeItem("sarkargpt_font_size");
     localStorage.removeItem("sarkargpt_autoplay");
     localStorage.removeItem("sarkargpt_sounds");
+    localStorage.removeItem("sarkargpt_groq_key");
     
     // Reset to local defaults
     setVoiceGender("female");
@@ -134,6 +142,7 @@ export default function SettingsModal({ onClose }: { onClose: () => void }) {
     setFontSize("normal");
     setAutoPlaySpeech(false);
     setSoundEffects(true);
+    setGroqKeyState("");
     
     setResetSuccess(true);
     setTimeout(() => {
@@ -358,9 +367,39 @@ export default function SettingsModal({ onClose }: { onClose: () => void }) {
               </div>
             </motion.div>
 
-            {/* 4. Reset Session Data */}
+            {/* 4. Custom API Keys */}
             <motion.div
               custom={5}
+              variants={sectionVariants}
+              initial="hidden"
+              animate="visible"
+              className="flex flex-col gap-3.5 border-t border-neutral-200 dark:border-white/10 pt-4"
+            >
+              <label className="text-xs font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400 flex items-center gap-1.5">
+                <KeyRound size={13} /> Custom Groq API Key (Optional)
+              </label>
+              <span className="text-[10px] text-neutral-500 -mt-2">
+                Override default key if the AI chat is failing. Keys are stored locally on your browser.
+              </span>
+              
+              <div className="flex flex-col gap-1.5">
+                <span className="text-xs font-semibold text-neutral-700 dark:text-neutral-300 flex justify-between items-center">
+                  <span>Groq API Key</span>
+                  {groqKey && <span className="text-[9px] text-emerald-600 dark:text-emerald-400 font-bold">Active</span>}
+                </span>
+                <input
+                  type="password"
+                  value={groqKey}
+                  onChange={(e) => updateGroqKey(e.target.value)}
+                  placeholder="gsk_..."
+                  className="w-full bg-neutral-100 dark:bg-white/5 border border-neutral-200 dark:border-white/10 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-saffron-500 focus:ring-2 focus:ring-saffron-500/20 transition-all dark:text-white"
+                />
+              </div>
+            </motion.div>
+
+            {/* 5. Reset Session Data */}
+            <motion.div
+              custom={6}
               variants={sectionVariants}
               initial="hidden"
               animate="visible"
